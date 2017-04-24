@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/wangbhotia/Personal_Project/issues"
   },
-  "homepage": "https://github.com/wangbhotia/Personal_Project#readme"
+  "homepage": "https://github.com/wangbhotia/Personal_Project#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "massive": "^2.6.0"
+  }
 }
