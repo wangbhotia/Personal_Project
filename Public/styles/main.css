@@ -34,15 +34,83 @@ blockquote .featured {
   font-weight: 600;
 }
 
-
-.bus-cards {
-  /*margin: auto;*/
-  /*display: flex;*/
-  /*flex-wrap: wrap;*/
-  /*flex-flow: row;*/
-  /*justify-content: space-around;*/
-}
-
 .card .card-title {
   font-weight: 500;
+}
+
+.cover-american {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-american.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-chinese {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-chinese.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-french {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-french.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-indian {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-indian.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-italian {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-italian.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-japanese {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-japanese.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-korean {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-korean.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-mexican {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-mexican.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-nepali {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-nepali.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-thai {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-thai.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.cover-vietnamese {
+  margin-top: 30px;
+  height: 30vh;
+  background: url('../img/cover-vietnamese.jpg') center no-repeat;
+  background-size: cover;
 }
