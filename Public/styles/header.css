@@ -1,0 +1,12 @@
+
+.nav-wrapper a {
+	color: #000;
+}
+
+nav ul a:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+nav .brand-logo {
+	padding-left: 15px;
+}

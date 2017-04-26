@@ -1,0 +1,48 @@
+
+.cover-container {
+  height: 60vh;
+  /*background: url('https://images.unsplash.com/photo-1490113355845-cdc3b65f0189?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;*/
+  background: url('../img/shops.jpg') center no-repeat;
+  background-size: cover;
+}
+
+/*.intro-text-1 {
+  color: #fff;
+  font-weight: bold;
+}*/
+
+.intro-text {
+  color: #fff;
+  font-weight: bold;
+}
+
+.cover-search {
+  width: 70%;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.input-field input {
+  border-bottom: none;
+}
+
+.bus-cards-container {
+  padding-top: 20px;
+}
+
+blockquote .featured {
+  font-weight: 600;
+}
+
+
+.bus-cards {
+  /*margin: auto;*/
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  /*flex-flow: row;*/
+  /*justify-content: space-around;*/
+}
+
+.card .card-title {
+  font-weight: 500;
+}
