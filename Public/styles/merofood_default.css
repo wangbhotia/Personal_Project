@@ -1,0 +1,27 @@
+
+.def-cover-container {
+  height: 100vh;
+  /*background: url('../img/shops.jpg') center no-repeat;*/
+  background: url('https://images.unsplash.com/photo-1484659619207-9165d119dafe?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
+  background-size: cover;
+}
+
+.def-cover {
+	height: 100vh;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.def-logo {
+	padding-top: 90px;
+	padding-bottom: 30px;
+}
+
+/*.intro-text-1 {
+  color: #fff;
+  font-weight: bold;
+}*/
+
+.def-intro-text {
+  color: #fff;
+  font-weight: bold;
+}

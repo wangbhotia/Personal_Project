@@ -7,6 +7,11 @@ angular.module('merofood', ['ui.router'])
 				url: '/',
 				templateUrl: '../views/main.html',
 				controller: 'mainCtrl'
+			})
+
+			.state('default', {
+				url: '/default',
+				templateUrl: '../views/merofood_default.html'
 			});
 
 			// .state('details', {

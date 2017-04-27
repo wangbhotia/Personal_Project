@@ -38,79 +38,45 @@ blockquote .featured {
   font-weight: 500;
 }
 
-.cover-american {
+.cover-restaurants {
   margin-top: 30px;
   height: 30vh;
-  background: url('../img/cover-american.jpg') center no-repeat;
+  /*background: url('../img/cover-american.jpg') center no-repeat;*/
+  background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
   background-size: cover;
 }
 
-.cover-chinese {
+.cover-coffee {
   margin-top: 30px;
   height: 30vh;
-  background: url('../img/cover-chinese.jpg') center no-repeat;
+  background: url('https://images.unsplash.com/photo-1483204358806-afc5571f655b?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
   background-size: cover;
 }
 
-.cover-french {
+.cover-bars {
   margin-top: 30px;
   height: 30vh;
-  background: url('../img/cover-french.jpg') center no-repeat;
+  background: url('https://images.unsplash.com/photo-1472245088132-ccd50746725c?dpr=1&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
   background-size: cover;
 }
 
-.cover-indian {
+.cover-bakery {
   margin-top: 30px;
   height: 30vh;
-  background: url('../img/cover-indian.jpg') center no-repeat;
+  background: url('https://images.unsplash.com/photo-1458938354258-3e66eb36eb7b?dpr=1&auto=format&fit=crop&w=1500&h=986&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
   background-size: cover;
 }
 
-.cover-italian {
+.cover-dessert {
   margin-top: 30px;
   height: 30vh;
-  background: url('../img/cover-italian.jpg') center no-repeat;
+  background: url('https://images.unsplash.com/photo-1483908514687-d25c79c15df0?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
   background-size: cover;
 }
 
-.cover-japanese {
+.cover-foodtrucks {
   margin-top: 30px;
   height: 30vh;
-  background: url('../img/cover-japanese.jpg') center no-repeat;
-  background-size: cover;
-}
-
-.cover-korean {
-  margin-top: 30px;
-  height: 30vh;
-  background: url('../img/cover-korean.jpg') center no-repeat;
-  background-size: cover;
-}
-
-.cover-mexican {
-  margin-top: 30px;
-  height: 30vh;
-  background: url('../img/cover-mexican.jpg') center no-repeat;
-  background-size: cover;
-}
-
-.cover-nepali {
-  margin-top: 30px;
-  height: 30vh;
-  background: url('../img/cover-nepali.jpg') center no-repeat;
-  background-size: cover;
-}
-
-.cover-thai {
-  margin-top: 30px;
-  height: 30vh;
-  background: url('../img/cover-thai.jpg') center no-repeat;
-  background-size: cover;
-}
-
-.cover-vietnamese {
-  margin-top: 30px;
-  height: 30vh;
-  background: url('../img/cover-vietnamese.jpg') center no-repeat;
+  background: url('https://images.unsplash.com/photo-1471110338536-858caa3dbe45?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
   background-size: cover;
 }
