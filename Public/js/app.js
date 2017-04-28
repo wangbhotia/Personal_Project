@@ -1,4 +1,4 @@
-angular.module('merofood', ['ui.router'])
+angular.module('merofood', ['ui.router', 'ui.materialize'])
 	.config(function($stateProvider, $urlRouterProvider){
 
 		$stateProvider

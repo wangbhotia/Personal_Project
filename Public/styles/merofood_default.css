@@ -1,9 +1,6 @@
 
 .def-cover-container {
   height: 100vh;
-  /*background: url('../img/shops.jpg') center no-repeat;*/
-  background: url('https://images.unsplash.com/photo-1484659619207-9165d119dafe?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
-  background-size: cover;
 }
 
 .def-cover {
@@ -12,16 +9,44 @@
 }
 
 .def-logo {
-	padding-top: 90px;
-	padding-bottom: 30px;
+	padding-top: 70px;
+	padding-bottom: 50px;
 }
 
-/*.intro-text-1 {
-  color: #fff;
-  font-weight: bold;
-}*/
-
 .def-intro-text {
-  color: #fff;
   font-weight: bold;
+}
+
+.def-menu-container span {
+	display: block;
+}
+
+.def-menu-container .def-menu-icon {
+	padding-top: 100px;
+	text-align: center;
+}
+
+.section-container {
+	height: 600px;
+}
+
+.def-brief-info h4 {
+	padding-top: 50px;
+	font-weight: 500;
+}
+
+.def-brief-info hr {
+	width: 70%;
+}
+
+.def-p-tag {
+	font-size: 1.2em;
+}
+
+.def-brief-info p {
+	padding-top: 30px;
+}
+
+.def-cards {
+	padding-top: 80px;
 }
