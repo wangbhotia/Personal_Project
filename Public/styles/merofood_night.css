@@ -1,0 +1,136 @@
+
+.def-cover-container {
+  height: 100vh;
+  background: url(https://images.unsplash.com/photo-1484659619207-9165d119dafe?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=) center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.def-cover {
+	height: 100vh;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.def-logo {
+	padding-top: 70px;
+	padding-bottom: 50px;
+}
+
+.def-intro-text {
+  font-weight: bold;
+}
+
+.def-menu-container span {
+	display: block;
+}
+
+.def-menu-container .def-menu-icon {
+	padding-top: 100px;
+	text-align: center;
+}
+
+.section-container {
+	height: 800px;
+}
+
+.parallax-bg1 {
+	background: url('https://images.unsplash.com/photo-1491217821879-7f1bb896efc1?dpr=1&auto=format&fit=crop&w=1500&h=994&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
+}
+
+.parallax-bg2 {
+	background: url('https://images.unsplash.com/photo-1446034730750-a0b64d06ad13?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
+}
+
+.bus-parallax {
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.def-section-title h4 {
+	padding-top: 50px;
+	font-weight: 500;
+}
+
+.def-section-title hr {
+	width: 70%;
+}
+
+.def-p-tag {
+	font-size: 1.2em;
+}
+
+/*.def-section-title p {
+	padding-top: 30px;
+}*/
+
+/*.def-cards {
+	padding-top: 90px;
+}*/
+
+/*.custom-cards {
+	height: 600px;
+}
+
+.custom-image {
+	overflow: hidden;
+	position: relative;
+}
+
+.custom-image img {
+	position: absolute;
+}*/
+
+/*.def-bus-menu {
+	background-color: #f1f1f1;
+}*/
+
+.bus-menu-col {
+	max-width: 350px;
+}
+
+.bus-menu-items h5 {
+	font-weight: 600;
+	padding-top: 20px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+dt {
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+dd {
+  margin: 0;
+  padding: 0 0 0.5em 0;
+}
+
+dd small, dd strong {
+	font-size: 1em;
+}
+
+dd strong {
+	float: right;
+}
+
+.gallery {
+	padding-top: 20px;
+}
+
+/*.gallery div {
+	object-fit: fill;
+	overflow: hidden;
+}*/
+
+.gallery div img {
+	width: 100%;
+	height: 33.3vh;
+}
+
+.gallery .col {
+	padding: 0;
+}
+
+.social-icons i {
+	padding: 5px;
+}

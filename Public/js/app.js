@@ -12,24 +12,18 @@ angular.module('merofood', ['ui.router', 'ui.materialize'])
 			.state('default', {
 				url: '/default',
 				templateUrl: '../views/merofood_default.html'
+			})
+
+			.state('night', {
+				url: '/night',
+				templateUrl: '../views/merofood_night.html'
+			})
+
+			.state('new-bus', { //Only if a User is logged in
+				url: '/new-bus',
+				templateUrl: '../views/new_bus.html'
 			});
 
-			// .state('details', {
-			// 	url: '/details/:id',
-			// 	templateUrl: '../views/details.html',
-			// 	controller: 'detailsCtrl'
-			// })
-
-			// .state('dvd', {
-			// 	url: '/dvd',
-			// 	templateUrl: '../views/dvd.html'
-			// })
-
-			// .state('account', {
-			// 	url: '/account',
-			// 	templateUrl: '../views/account.html'
-			// });
-
-			$urlRouterProvider.otherwise('/');
+			// $urlRouterProvider.otherwise('/');
 
 	});
