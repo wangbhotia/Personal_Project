@@ -33,18 +33,25 @@
 	height: 800px;
 }
 
-.parallax-bg {
+.parallax-bg1 {
 	background: url('https://images.unsplash.com/photo-1491217821879-7f1bb896efc1?dpr=1&auto=format&fit=crop&w=1500&h=994&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
+}
+
+.parallax-bg2 {
+	background: url('https://images.unsplash.com/photo-1446034730750-a0b64d06ad13?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
+}
+
+.bus-parallax {
 	background-size: cover;
 	background-attachment: fixed;
 }
 
-.def-brief-info h4 {
+.def-section-title h4 {
 	padding-top: 50px;
 	font-weight: 500;
 }
 
-.def-brief-info hr {
+.def-section-title hr {
 	width: 70%;
 }
 
@@ -52,9 +59,9 @@
 	font-size: 1.2em;
 }
 
-.def-brief-info p {
+/*.def-section-title p {
 	padding-top: 30px;
-}
+}*/
 
 .def-cards {
 	padding-top: 90px;
@@ -77,12 +84,19 @@
 	background-color: #f1f1f1;
 }*/
 
-.bus-menu-items h4 {
+.bus-menu-col {
+	max-width: 350px;
+}
+
+.bus-menu-items h5 {
+	font-weight: 600;
+	padding-top: 20px;
 	text-align: center;
 	text-transform: uppercase;
 }
 
 dt {
+	font-weight: 500;
 	text-transform: uppercase;
 }
 
@@ -91,6 +105,32 @@ dd {
   padding: 0 0 0.5em 0;
 }
 
+dd small, dd strong {
+	font-size: 1em;
+}
+
 dd strong {
 	float: right;
+}
+
+.gallery {
+	padding-top: 20px;
+}
+
+/*.gallery div {
+	object-fit: fill;
+	overflow: hidden;
+}*/
+
+.gallery div img {
+	width: 100%;
+	height: 33.3vh;
+}
+
+.gallery .col {
+	padding: 0;
+}
+
+.social-icons i {
+	padding: 5px;
 }
