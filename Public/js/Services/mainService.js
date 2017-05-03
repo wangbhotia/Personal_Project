@@ -1,5 +1,7 @@
-angular.module('merofood').service('mainService', function(){
+angular.module('merofood').service('mainService', function($http){
 
-	this.test2 = 'Hello from mainService';
+	this.getData = function(){
+		return $http.get('seed_data.json');
+	}
 	
-})
+});

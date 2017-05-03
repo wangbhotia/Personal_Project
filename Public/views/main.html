@@ -27,29 +27,36 @@
 	<!-- ng-repeat this card -->
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Featured</h5></blockquote>
+
 	<div class="bus-cards row">
+
+		<div ng-repeat="b in business">
+
 		<!-- <div class="row"> -->
 		  <div class="col s12 m6 l4">
 		    <div class="card sticky-action">
 		      <div class="card-image">
-		        <img src="https://images.unsplash.com/photo-1428259067396-2d6bd3827878?dpr=1&auto=format&fit=crop&w=1500&h=997&q=80&cs=tinysrgb&crop=&bg=">
+		        <img ui-sref="b({ id: b.id })" ng-src="{{ b.bus_special_img[0].special_img_url }}">
 		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
 		      </div>
 		      <div class="card-content">
-		      	<span class="card-title activator">Card Title<i class="material-icons right">more_vert</i></span> 
-		        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+		      	<span class="card-title activator">{{ b.bus_name }}<i class="material-icons right">more_vert</i></span> 
+		        <p class="truncate">{{ b.bus_desc }}</p>
 		      </div>
 		      <div class="card-action">
             <a href="#">This is a link</a>
             <a href="#">This is a link</a>
           </div>
 		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      			<p>Here is some more information about this product that is only revealed once clicked on.</p>
+      			<span class="card-title grey-text text-darken-4">{{ b.bus_name }}<i class="material-icons right">close</i></span>
+      			<p>{{ b.bus_cuisine }}</p>
+      			<p>{{ b.bus_phone }}</p>
+      			<p>{{ b.bus_email }}</p>
     			</div>
 		    </div>
 		  </div>
 		<!-- </div> -->
+		</div>
 
 		<!-- <div class="row"> -->
 		  <div class="col s12 m6 l4">

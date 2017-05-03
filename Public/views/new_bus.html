@@ -10,19 +10,15 @@
 		<h5>Please fill in with as many information as you can.</h5>
 	</div>
 
-	<div class="col s6 center">
-		<a href="#!" class="waves-effect waves-green btn">PUBLISH</a>
-	</div>
-
   <div class="row new-bus-tabs">
     <div class="col s12">
       <ul tabs reload="allTabContentLoaded">
         <li class="tab col s2"><a class="active" href="#basic">Basic</a></li>
         <li class="tab col s2"><a href="#about">About</a></li>
-        <li class="tab col s2"><a href="#item">Special</a></li>
         <li class="tab col s2"><a href="#menu">Menu</a></li>
         <li class="tab col s2"><a href="#hours">Hours</a></li>
-        <li class="tab col s2"><a href="#gallery">Gallery</a></li>
+        <li class="tab col s2"><a href="#images">Images</a></li>
+        <li class="tab col s2"><a href="#theme">Theme</a></li>
       </ul>
     </div>
  		<div class="wrapper">
@@ -173,24 +169,20 @@
 				</div>
 				<div class="input-field col s6">
           <input id="cuisine" type="text" class="validate">
-          <label for="cuisine">Type of Cuisine</label>
+          <label for="cuisine">Cuisine</label>
         </div>
-			  <div class="row">
-			    <form class="col s12">
-			      <div class="row">
-			        <div class="input-field col s12">
-			          <i class="material-icons prefix">mode_edit</i>
-			          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-			          <label for="icon_prefix2">Write a brief paragraph about your business.</label>
-			        </div>
-			      </div>
-			    </form>
-			  </div>  
-	    </div>
 
-	    <!-- SPECIAL ITEM TAB -->
-	    <div id="item" class="col s12">
-	    	<!-- SPECIAL ITEM 1 -->
+			  <div input-field class="col s12">
+    			<textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea"></textarea>
+    			<label>Write a brief paragraph about your business.</label>
+				</div>
+
+				<div input-field class="col s12">
+    			<textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea"></textarea>
+    			<label>Brief paragraph about Happy Hours or any Special Instructions.</label>
+				</div>
+
+				<!-- SPECIAL ITEM 1 -->
 	    	<div class="special-item-1">
 		    	<div class="col s6">
 					  <form action="#">
@@ -239,9 +231,11 @@
 			          <label for="icon_prefix2">Write a brief paragraph about the item.</label>
 			        </div>
 				    </form>
-				  </div>
+				  </div> 
 				</div>
+
 	    </div>
+
 
 	    <!-- MENU TAB -->
 	    <div id="menu" class="col s12">
@@ -385,8 +379,47 @@
 	      </div>
 	    </div>
 
-	    <!-- GALLERY TAB -->
-	    <div id="gallery" class="col s12">
+	    <!-- IMAGES TAB -->
+	    <div id="images" class="col s12">
+	    	<div class="col s4">
+				  <form action="#">
+				    <div class="file-field input-field">
+				      <div class="btn">
+				        <span>File</span>
+				        <input type="file">
+				      </div>
+				      <div class="file-path-wrapper">
+				        <input class="file-path validate" type="text" placeholder="Cover image here.">
+				      </div>
+				    </div>
+				  </form>
+    		</div>
+    		<div class="col s4">
+				  <form action="#">
+				    <div class="file-field input-field">
+				      <div class="btn">
+				        <span>File</span>
+				        <input type="file">
+				      </div>
+				      <div class="file-path-wrapper">
+				        <input class="file-path validate" type="text" placeholder="Parallax background">
+				      </div>
+				    </div>
+				  </form>
+    		</div>
+    		<div class="col s4">
+				  <form action="#">
+				    <div class="file-field input-field">
+				      <div class="btn">
+				        <span>File</span>
+				        <input type="file">
+				      </div>
+				      <div class="file-path-wrapper">
+				        <input class="file-path validate" type="text" placeholder="Parallax background">
+				      </div>
+				    </div>
+				  </form>
+    		</div>
 	    	<div class="col s12">
 				  <form action="#">
 				    <div class="file-field input-field">
@@ -401,6 +434,37 @@
 				  </form>
 				</div>
 	    </div>
+
+	    <!-- THEME TAB -->
+	    <div id="theme" class="col s12">
+			    <div class="col s12 m6">
+			      <div class="card hoverable">
+			        <div class="card-image">
+			          <img src="../img/mf-default.jpg">
+			        </div>
+			        <span class="card-title">Merofood Light</span>
+			        <div class="card-action">
+			          <a href="#">Preview</a>
+			          <a href="#">Use This</a>
+			        </div>
+			      </div>
+			    </div>
+
+			    <div class="col s12 m6">
+			      <div class="card hoverable">
+			        <div class="card-image">
+			          <img src="../img/mf-night.jpg">
+			        </div>
+			        <span class="card-title">Merofood Night</span>
+			        <div class="card-action">
+			          <a href="#">Preview</a>
+			          <a href="#">Use This</a>
+			        </div>
+			      </div>
+			    </div>
+
+	    </div>
+
 		</div>
 	</div>
 

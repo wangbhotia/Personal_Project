@@ -10,7 +10,8 @@
 		</div>
 	</div> -->
 
-	<div class="fixed-action-btn click-to-toggle"> <!-- hide-on-med-and-up -->
+	<!-- hide-on-med-and-up -->
+<!-- 	<div class="fixed-action-btn click-to-toggle">
     <a class="btn-floating btn-large red">
       <i class="material-icons">menu</i>
     </a>
@@ -20,7 +21,7 @@
       <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
       <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
     </ul>
-  </div>
+  </div> -->
 
 	<!-- COVER -->
 <div class="def-cover-container">
@@ -30,16 +31,16 @@
 
 				<br><br>
 				<div class="center def-logo">
-					<img class="responsive-img" src="../img/mero-sample-logo.png">
+					<img class="responsive-img" ng-src="{{ b1.bus_logo }}">
 				</div>
 				<div class="row center">
-					<h3 class="header col s12 white-text def-intro-text">MERO FOOD - DEFAULT</h3>
-					<h5 class="header col s12 white-text">Serving Best Steak and Burgers for 15 Years</h5>
+					<h3 class="header col s12 white-text def-intro-text">{{ b1.bus_name }}</h3>
+					<h5 class="header col s12 white-text">{{ b1.bus_slogan }}</h5>
 				</div>
 				<br><br>
 				<div class="row center">
-					<h5 class="col s12 white-text">123 Main St. Provo, UT</h5>
-					<h5 class="col s12 white-text">555 - 555 -5555</h5>
+					<h5 class="col s12 white-text">{{ b1.bus_address.street }} {{ b1.bus_address.city }}, {{ b1.bus_address.state }}</h5>
+					<h5 class="col s12 white-text">{{ b1.bus_phone }}</h5>
 				</div>
 				<br><br>
 				<div class="row center def-menu-container">
@@ -77,7 +78,7 @@
 	<div class="container row center def-section-title">
 		<h4>Restaurant</h4>
 		<hr>
-		<p class="def-p-tag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet dictum nisl. Curabitur vitae velit ultricies ante ultricies sodales. Fusce sollicitudin lectus nulla, finibus dapibus mi mollis eget. Nulla placerat ullamcorper augue, sed congue felis mollis rhoncus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada efficitur diam, nec mollis neque feugiat non.</p>
+		<p class="def-p-tag">{{ b1.bus_desc }}</p>
 	</div>
 </div>
 
@@ -85,12 +86,12 @@
 	<div class="container def-cards">
   	<div class="card horizontal custom-cards">
     	<div class="card-image custom-image">
-      	<img src="https://images.unsplash.com/photo-1428259067396-2d6bd3827878?dpr=1&auto=format&fit=crop&w=1500&h=997&q=80&cs=tinysrgb&crop=&bg=">
+      	<img ng-src="{{ b1.bus_special_img[0].special_img_url }}">
     	</div>
     	<div class="card-stacked">
       	<div class="card-content">
-      		<h5 class="center">Title</h5>
-        	<p class="def-p-tag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet dictum nisl. Curabitur vitae velit ultricies ante ultricies sodales. Fusce sollicitudin lectus nulla, finibus dapibus mi mollis eget. Nulla placerat ullamcorper augue, sed congue felis mollis rhoncus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada efficitur diam, nec mollis neque feugiat non.</p>
+      		<h5 class="center">{{ b1.bus_special_desc[0].special_name }}</h5>
+        	<p class="def-p-tag">{{ b1.bus_special_desc[0].special_desc }}</p>
       	</div>
     	</div>
   	</div>
@@ -103,126 +104,22 @@
 		<h4 class="center">Menu</h4>
 		<hr>
 		<div class="row bus-menu-items">
-			<div class="col s12 m4">
+
+			<div class="col s12 m4" ng-repeat="bm in bMenu">
 				<div class="bus-menu-col">
-					<h5>Steaks</h5>
-					<dl>
-						<dt>Steak</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Steak</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Steak</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Steak</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Steak</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
+					<h5>{{ bm.bus_menu_title }}</h5>
+					<div ng-repeat="bmi in bm.bus_menu_items">
+						<dl>
+							<dt>{{ bmi.menu_item_name }}</dt>
+							<dd>
+								<small>{{ bmi.menu_item_desc }}</small>
+								<strong>{{ bmi.menu_item_price }}</strong>
+							</dd>
+						</dl>
+					</div>
 				</div>
 			</div>
-			<div class="col s12 m4">
-				<div class="bus-menu-col">
-					<h5>Burgers</h5>
-					<dl>
-						<dt>Burger</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Burger</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Burger</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Burger</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Burger</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-				</div>	
-			</div>
-			<div class="col s12 m4">
-				<div class="bus-menu-col">
-					<h5>Drinks</h5>
-					<dl>
-						<dt>Drinks</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Drinks</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Drinks</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Drinks</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-					<dl>
-						<dt>Drinks</dt>
-						<dd>
-							<small>Medium rare pink and jucy</small>
-							<strong>$9.99</strong>
-						</dd>
-					</dl>
-				</div>
-			</div>
+
 		</div>
 	</div>
 </div>
@@ -232,12 +129,12 @@
   	<div class="card horizontal custom-cards">
     	<div class="card-stacked">
       	<div class="card-content">
-      		<h5 class="center">Title</h5>
-        	<p class="def-p-tag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet dictum nisl. Curabitur vitae velit ultricies ante ultricies sodales. Fusce sollicitudin lectus nulla, finibus dapibus mi mollis eget. Nulla placerat ullamcorper augue, sed congue felis mollis rhoncus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada efficitur diam, nec mollis neque feugiat non.</p>
+      		<h5 class="center">{{ b1.bus_special_desc[1].special_name }}</h5>
+        	<p class="def-p-tag">{{ b1.bus_special_desc[1].special_desc }}</p>
       	</div>
     	</div>
     	<div class="card-image custom-image">
-      	<img src="https://images.unsplash.com/photo-1428259067396-2d6bd3827878?dpr=1&auto=format&fit=crop&w=1500&h=997&q=80&cs=tinysrgb&crop=&bg=">
+      	<img src="{{ b1.bus_special_img[1].special_img_url }}">
     	</div>
   	</div>
 	</div>
@@ -261,38 +158,38 @@
         <tbody>
           <tr>
             <td>SUNDAY</td>
-            <td>10 AM - 10 PM</td>
+            <td>{{ b1.bus_hours.sunday }}</td>
           </tr>
           <tr>
             <td>MONDAY</td>
-            <td>10 AM - 10 PM</td>
+            <td>{{ b1.bus_hours.monday }}</td>
           </tr>
           <tr>
             <td>TUESDAY</td>
-            <td>10 AM - 10 PM</td>
+            <td>{{ b1.bus_hours.tuesday }}</td>
           </tr>
           <tr>
             <td>WEDNESDAY</td>
-            <td>10 AM - 10 PM</td>
+            <td>{{ b1.bus_hours.wednesday }}</td>
           </tr>
           <tr>
             <td>THURSDAY</td>
-            <td>10 AM - 10 PM</td>
+            <td>{{ b1.bus_hours.thursday }}</td>
           </tr>
           <tr>
             <td>FRIDAY</td>
-            <td>10 AM - 10 PM</td>
+            <td>{{ b1.bus_hours.friday }}</td>
           </tr>
           <tr>
             <td>SATURDAY</td>
-            <td>10 AM - 10 PM</td>
+            <td>{{ b1.bus_hours.saturday }}</td>
           </tr>
         </tbody>
       </table>
 		</div>
 		<div class="col s12 m6 more-hours-info">
 			<h4 class="header">Happy-Hours</h4>
-			<p class="def-p-tag">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet dictum nisl. Curabitur vitae velit ultricies ante ultricies sodales. Fusce sollicitudin lectus nulla, finibus dapibus mi mollis eget. Nulla placerat ullamcorper augue, sed congue felis mollis rhoncus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada efficitur diam, nec mollis neque feugiat non.</p>
+			<p class="def-p-tag">{{ b1.bus_happy_hours }}</p>
 		</div>
 	</div>
 </div>
@@ -304,29 +201,8 @@
 		<br>
 	</div>
 	<div class="row gallery">
-		<div class="col s6 m4 l3">
-			<img class="responsive-img" src="https://images.unsplash.com/photo-1453831362806-3d5577f014a4?dpr=1&auto=format&fit=crop&w=1500&h=1016&q=80&cs=tinysrgb&crop=&bg=">
-		</div>
-		<div class="col s6 m4 l3">
-			<img class="responsive-img" src="https://images.unsplash.com/photo-1453831210728-695502f9f795?dpr=1&auto=format&fit=crop&w=1500&h=900&q=80&cs=tinysrgb&crop=&bg=">
-		</div>
-		<div class="col s6 m4 l3">
-			<img class="responsive-img" src="https://images.unsplash.com/photo-1491739481003-2991327b66e2?dpr=1&auto=format&fit=crop&w=1500&h=996&q=80&cs=tinysrgb&crop=&bg=">
-		</div>
-		<div class="col s6 m4 l3">
-			<img class="responsive-img" src="https://images.unsplash.com/photo-1488558980948-81db7f6c239c?dpr=1&auto=format&fit=crop&w=1500&h=1040&q=80&cs=tinysrgb&crop=&bg=">
-		</div>
-		<div class="col s6 m4 l3">
-			<img class="responsive-img" src="https://images.unsplash.com/photo-1455853659719-4b521eebc76d?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=">
-		</div>
-		<div class="col s6 m4 l3">
-			<img class="responsive-img" src="https://images.unsplash.com/photo-1490990813269-10586274747f?dpr=1&auto=format&fit=crop&w=1500&h=1225&q=80&cs=tinysrgb&crop=&bg=">
-		</div>
-		<div class="col s6 m4 l3">
-			<img class="responsive-img" src="https://images.unsplash.com/photo-1477534980688-3ac008b36996?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=">
-		</div>
-		<div class="col s6 m4 l3">
-			<img class="responsive-img" src="https://images.unsplash.com/photo-1492683513054-55277abccd99?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=">
+		<div class="col s6 m4 l3" ng-repeat="img in b1.bus_gallery">
+			<img class="responsive-img" ng-src="{{ img.gallery_img_url }}">
 		</div>
 	</div>
 </div>
@@ -336,28 +212,28 @@
 		<h4>Contact Us</h4>
 		<hr>
 		<div class="center col s12 m6">
-			<h4>Mero Food</h4>
+			<h4>{{ b1.bus_name }}</h4>
 			<p class="def-p-tag">
-				123 Main St. <br>
-				Provo. UT <br>
-				123-456-7890 <br>
-				email@email.com
+				{{ b1.bus_address.street}} <br>
+				{{ b1.bus_address.city }}, {{ b1.bus_address.state }} <br>
+				{{ b1.bus_phone }} <br>
+				{{ b1.bus_email }}
 			</p>
 		</div>
 		<div class="col s12 m6">
 			<h4>Social</h4>
 			<div class="row center social-icons">
-				
-      		<i class="fa fa-facebook-square fa-3x"></i>
-      		<i class="fa fa-google-plus-square fa-3x"></i>
-      		<i class="fa fa-instagram fa-3x"></i>
+					
+      		<a href=""><i class="fa fa-facebook-square fa-3x"></i></a>
+      		<a href=""><i class="fa fa-google-plus-square fa-3x"></i></a>
+      		<a href=""><i class="fa fa-instagram fa-3x"></i></a>
       	
       		<br>
       		<!-- <i class="fa fa-twitter-square fa-3x"></i> -->
       	
-      		<i class="fa fa-yelp fa-3x"></i>
-      		<i class="fa fa-tripadvisor fa-3x"></i>
-      		<i class="fa fa-pinterest-square fa-3x"></i>
+      		<a href=""><i class="fa fa-yelp fa-3x"></i></a>
+      		<a href=""><i class="fa fa-tripadvisor fa-3x"></i></a>
+      		<a href=""><i class="fa fa-pinterest-square fa-3x"></i></a>
 			</div>
 		</div>
 	</div>

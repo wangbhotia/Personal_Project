@@ -9,6 +9,12 @@ angular.module('merofood', ['ui.router', 'ui.materialize'])
 				controller: 'mainCtrl'
 			})
 
+			.state('b', {
+				url: '/b/:id',
+				templateUrl: '../views/merofood_default.html',
+				controller: 'detailsCtrl'
+			})
+
 			.state('default', {
 				url: '/default',
 				templateUrl: '../views/merofood_default.html'
