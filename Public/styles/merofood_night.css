@@ -1,12 +1,13 @@
 
 .def-cover-container {
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1484659619207-9165d119dafe?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
+  background: center no-repeat;
+  /*background: url('https://images.unsplash.com/photo-1484659619207-9165d119dafe?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;*/
   background-size: cover;
   background-attachment: fixed;
 }
 
-.def-cover {
+.bg-tint {
 	height: 100vh;
 	background-color: rgba(0,0,0,0.3);
 }
@@ -33,15 +34,16 @@
 	height: 800px;
 }
 
-.parallax-bg1 {
+/*.parallax-bg1 {
 	background: url('https://images.unsplash.com/photo-1491217821879-7f1bb896efc1?dpr=1&auto=format&fit=crop&w=1500&h=994&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
-}
+}*/
 
-.parallax-bg2 {
+/*.parallax-bg2 {
 	background: url('https://images.unsplash.com/photo-1446034730750-a0b64d06ad13?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
-}
+}*/
 
 .bus-parallax {
+	background: center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 }
@@ -58,27 +60,6 @@
 .def-p-tag {
 	font-size: 1.2em;
 }
-
-/*.def-section-title p {
-	padding-top: 30px;
-}*/
-
-/*.def-cards {
-	padding-top: 90px;
-}*/
-
-/*.custom-cards {
-	height: 600px;
-}
-
-.custom-image {
-	overflow: hidden;
-	position: relative;
-}
-
-.custom-image img {
-	position: absolute;
-}*/
 
 /*.def-bus-menu {
 	background-color: #f1f1f1;
@@ -116,11 +97,6 @@ dd strong {
 .gallery {
 	padding-top: 20px;
 }
-
-/*.gallery div {
-	object-fit: fill;
-	overflow: hidden;
-}*/
 
 .gallery div img {
 	width: 100%;

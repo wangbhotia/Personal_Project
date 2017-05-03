@@ -6,7 +6,7 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 	$scope.getBusiness = function(){
 		mainService.getData().then(function(response){
 			$scope.business = response.data;
-			console.log($scope.business);
+			// console.log($scope.business);
 
 			// GET ONE BUSINESS WITH MATCHED ID
 			for(var i = 0; i < $scope.business.length; i++){

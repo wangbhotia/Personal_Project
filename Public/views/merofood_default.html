@@ -1,14 +1,5 @@
 
-	<!-- DEFAULT THEME -->
-
-<link rel="stylesheet" href="./styles/merofood_default.css">
-
-	<!-- MATERIALIZE CSS / ANGULAR-MATERIALIZE 'PARALLAX' -->
-	<!-- <div class="parallax-container">
-		<div parallax>
-			<img src="./image/path">
-		</div>
-	</div> -->
+	<!-- DEFAULT LIGHT THEME -->
 
 	<!-- hide-on-med-and-up -->
 <!-- 	<div class="fixed-action-btn click-to-toggle">
@@ -24,8 +15,8 @@
   </div> -->
 
 	<!-- COVER -->
-<div class="def-cover-container">
-	<div class="def-cover">
+<div class="def-cover-container" ng-style="{'background-image': 'url('+ b1.bus_cover_img +')'}">
+	<div class="bg-tint">
 		<div class="section no-pad-bot">
 			<div class="container">
 
@@ -82,7 +73,7 @@
 	</div>
 </div>
 
-<div class="section-container parallax-bg1 bus-parallax valign-wrapper">
+<div class="section-container bus-parallax valign-wrapper" ng-style="{'background-image': 'url('+ b1.bus_parallax_img[0].parallax_img_url +')'}">
 	<div class="container def-cards">
   	<div class="card horizontal custom-cards">
     	<div class="card-image custom-image">
@@ -124,7 +115,7 @@
 	</div>
 </div>
 
-<div class="section-container parallax-bg2 bus-parallax valign-wrapper">
+<div class="section-container bus-parallax valign-wrapper" ng-style="{'background-image': 'url('+ b1.bus_parallax_img[1].parallax_img_url +')'}">
 	<div class="container def-cards">
   	<div class="card horizontal custom-cards">
     	<div class="card-stacked">
@@ -227,13 +218,11 @@
       		<a href=""><i class="fa fa-facebook-square fa-3x"></i></a>
       		<a href=""><i class="fa fa-google-plus-square fa-3x"></i></a>
       		<a href=""><i class="fa fa-instagram fa-3x"></i></a>
-      	
-      		<br>
-      		<!-- <i class="fa fa-twitter-square fa-3x"></i> -->
-      	
+      		<br>      	
       		<a href=""><i class="fa fa-yelp fa-3x"></i></a>
       		<a href=""><i class="fa fa-tripadvisor fa-3x"></i></a>
       		<a href=""><i class="fa fa-pinterest-square fa-3x"></i></a>
+      		<a href=""><i class="fa fa-twitter-square fa-3x"></i></a>
 			</div>
 		</div>
 	</div>
