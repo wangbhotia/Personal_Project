@@ -3,18 +3,29 @@ let express = require('express'),
 		cors = require('cors'),
 		massive = require('massive');
 
-var seed = require('../seed_data.json');
-// console.log(seed);
-
 const port = 3000;
 let app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + './../public'));
 
+let conn = massive.connectSync({
+	connectionString: 'postgres://postgres:dm21-wb@localhost/merofood'
+});
 
-app.get('/', function(req, res){
-	res.status(200).send(seed);
+app.set('db', conn);
+let db = app.get('db');
+
+app.get('/businesses', function(req, res) {
+	db.get_all_bus(function(err, businesses) {
+		if(!err){
+			// console.log(businesses);
+			res.send(businesses);
+		} else {
+			// console.log(err)
+			res.send(err);
+		}
+	});
 });
 
 

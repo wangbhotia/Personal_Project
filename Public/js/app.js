@@ -30,6 +30,6 @@ angular.module('merofood', ['ui.router', 'ui.materialize'])
 				templateUrl: '../views/new_bus.html'
 			});
 
-			// $urlRouterProvider.otherwise('/');
+			$urlRouterProvider.otherwise('/');
 
 	});
