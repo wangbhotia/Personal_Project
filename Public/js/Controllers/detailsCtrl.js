@@ -1,37 +1,59 @@
 angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams){
 	
-	var menuArray = [];
+	var bid = parseInt($stateParams.id);
+	//var menuArray = [];
 
 	// GET ALL BUSINESSES
-	$scope.getBusiness = function(){
-		mainService.getData().then(function(response){
-			$scope.business = response.data;
-			// console.log($scope.business);
+	$scope.getAllBus = function(){
+		mainService.getBusData().then(function(response){
+			// console.log(response);
 
 			// GET ONE BUSINESS WITH MATCHED ID
-			for(var i = 0; i < $scope.business.length; i++){
-				if($scope.business[i].id === parseInt($stateParams.id)){
-					$scope.b1 = $scope.business[i];
+			for(var i = 0; i < response.length; i++){
+				if(response[i].id === bid){
+					$scope.b1 = response[i];
 					// console.log($scope.b1);
-
-					// LOOPING THROUGH OBJECTS AND ARRAYS WITHIN TO FIND MENU ITEMS
-					for(var key in $scope.b1){
-						if(key === "bus_menu"){
-							$scope.b1m1 = $scope.b1[key];
-							// console.log($scope.b1m1);
-
-							for(var j = 0; j < $scope.b1m1.length; j++){
-								menuArray.push($scope.b1m1[j]);
-								// console.log(menuArray);
-							}
-						}
-					}
-					$scope.bMenu = menuArray;
 				}
 			}
 		});
 	}
 
-	$scope.getBusiness();
+	$scope.getAllBus();
+
+
+	// GET ALL SPECIAL
+	$scope.getSpecial = function(){
+		mainService.getSpecialData(bid).then(function(response){
+			$scope.s1 = response;
+			// console.log($scope.s1);
+		});
+	}
+
+	$scope.getSpecial();
+
+
+	// GET ALL MENUe
+	$scope.getMenu = function(){
+		mainService.getMenuData().then(function(response){
+			$scope.m1 = response;
+			// console.log($scope.m1);
+			$scope.itemdesc = $scope.m1.itemdesc
+		});
+	}
+
+	$scope.getMenu();
+
+
+	// GET ALL GALLERY
+	$scope.getGallery = function(){
+		mainService.getGalleryData(bid).then(function(response){
+			$scope.g1 = response;
+			// console.log($scope.g1)
+		});
+	}
+
+	$scope.getGallery();
+
+
 
 });

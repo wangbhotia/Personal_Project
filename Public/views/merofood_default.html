@@ -30,7 +30,7 @@
 				</div>
 				<br><br>
 				<div class="row center">
-					<h5 class="col s12 white-text">{{ b1.bus_address.street }} {{ b1.bus_address.city }}, {{ b1.bus_address.state }}</h5>
+					<h5 class="col s12 white-text">{{ b1.street }} {{ b1.city }}, {{ b1.state }}</h5>
 					<h5 class="col s12 white-text">{{ b1.bus_phone }}</h5>
 				</div>
 				<br><br>
@@ -73,16 +73,16 @@
 	</div>
 </div>
 
-<div class="section-container bus-parallax valign-wrapper" ng-style="{'background-image': 'url('+ b1.bus_parallax_img[0].parallax_img_url +')'}">
+<div class="section-container bus-parallax valign-wrapper" ng-style="{'background-image': 'url('+ s1[0].parallax_img +')'}">
 	<div class="container def-cards">
   	<div class="card horizontal custom-cards">
     	<div class="card-image custom-image">
-      	<img ng-src="{{ b1.bus_special_img[0].special_img_url }}">
+      	<img ng-src="{{ s1[0].special_img }}">
     	</div>
     	<div class="card-stacked">
       	<div class="card-content">
-      		<h5 class="center">{{ b1.bus_special_desc[0].special_name }}</h5>
-        	<p class="def-p-tag">{{ b1.bus_special_desc[0].special_desc }}</p>
+      		<h5 class="center">{{ s1[0].special_name }}</h5>
+        	<p class="def-p-tag">{{ s1[0].special_desc }}</p>
       	</div>
     	</div>
   	</div>
@@ -96,18 +96,20 @@
 		<hr>
 		<div class="row bus-menu-items">
 
-			<div class="col s12 m4" ng-repeat="bm in bMenu">
+			<div class="col s12 m4" ng-repeat="menu in m1">
 				<div class="bus-menu-col">
-					<h5>{{ bm.bus_menu_title }}</h5>
-					<div ng-repeat="bmi in bm.bus_menu_items">
+					<h5>{{ menu.bus_menu_title }}</h5>
+					<!-- <div ng-repeat="name in menu.itemname"> -->
 						<dl>
-							<dt>{{ bmi.menu_item_name }}</dt>
+							<dt>{{ menu.itemname }}</dt>
 							<dd>
-								<small>{{ bmi.menu_item_desc }}</small>
-								<strong>{{ bmi.menu_item_price }}</strong>
+								<div ng-repeat="item in itemdesc">
+								<small>{{ item }}</small>
+								</div>
+								<strong>{{ menu.itemprice }}</strong>
 							</dd>
 						</dl>
-					</div>
+					<!-- </div> -->
 				</div>
 			</div>
 
@@ -115,17 +117,17 @@
 	</div>
 </div>
 
-<div class="section-container bus-parallax valign-wrapper" ng-style="{'background-image': 'url('+ b1.bus_parallax_img[1].parallax_img_url +')'}">
+<div class="section-container bus-parallax valign-wrapper" ng-style="{'background-image': 'url('+ s1[1].parallax_img +')'}">
 	<div class="container def-cards">
   	<div class="card horizontal custom-cards">
     	<div class="card-stacked">
       	<div class="card-content">
-      		<h5 class="center">{{ b1.bus_special_desc[1].special_name }}</h5>
-        	<p class="def-p-tag">{{ b1.bus_special_desc[1].special_desc }}</p>
+      		<h5 class="center">{{ s1[1].special_name }}</h5>
+        	<p class="def-p-tag">{{ s1[1].special_desc }}</p>
       	</div>
     	</div>
     	<div class="card-image custom-image">
-      	<img src="{{ b1.bus_special_img[1].special_img_url }}">
+      	<img src="{{ s1[1].special_img }}">
     	</div>
   	</div>
 	</div>
@@ -149,31 +151,31 @@
         <tbody>
           <tr>
             <td>SUNDAY</td>
-            <td>{{ b1.bus_hours.sunday }}</td>
+            <td>{{ b1.sunday }}</td>
           </tr>
           <tr>
             <td>MONDAY</td>
-            <td>{{ b1.bus_hours.monday }}</td>
+            <td>{{ b1.monday }}</td>
           </tr>
           <tr>
             <td>TUESDAY</td>
-            <td>{{ b1.bus_hours.tuesday }}</td>
+            <td>{{ b1.tuesday }}</td>
           </tr>
           <tr>
             <td>WEDNESDAY</td>
-            <td>{{ b1.bus_hours.wednesday }}</td>
+            <td>{{ b1.wednesday }}</td>
           </tr>
           <tr>
             <td>THURSDAY</td>
-            <td>{{ b1.bus_hours.thursday }}</td>
+            <td>{{ b1.thursday }}</td>
           </tr>
           <tr>
             <td>FRIDAY</td>
-            <td>{{ b1.bus_hours.friday }}</td>
+            <td>{{ b1.friday }}</td>
           </tr>
           <tr>
             <td>SATURDAY</td>
-            <td>{{ b1.bus_hours.saturday }}</td>
+            <td>{{ b1.saturday }}</td>
           </tr>
         </tbody>
       </table>
@@ -192,7 +194,7 @@
 		<br>
 	</div>
 	<div class="row gallery">
-		<div class="col s6 m4 l3" ng-repeat="img in b1.bus_gallery">
+		<div class="col s6 m4 l3" ng-repeat="img in g1">
 			<img class="responsive-img" ng-src="{{ img.gallery_img_url }}">
 		</div>
 	</div>
@@ -205,8 +207,8 @@
 		<div class="center col s12 m6">
 			<h4>{{ b1.bus_name }}</h4>
 			<p class="def-p-tag">
-				{{ b1.bus_address.street}} <br>
-				{{ b1.bus_address.city }}, {{ b1.bus_address.state }} <br>
+				{{ b1.street}} <br>
+				{{ b1.city }}, {{ b1.state }} {{ b1.zip }} <br>
 				{{ b1.bus_phone }} <br>
 				{{ b1.bus_email }}
 			</p>
@@ -215,14 +217,14 @@
 			<h4>Social</h4>
 			<div class="row center social-icons">
 					
-      		<a href=""><i class="fa fa-facebook-square fa-3x"></i></a>
-      		<a href=""><i class="fa fa-google-plus-square fa-3x"></i></a>
-      		<a href=""><i class="fa fa-instagram fa-3x"></i></a>
+      		<a href="{{ b1.facebook }}"><i class="fa fa-facebook-square fa-3x"></i></a>
+      		<a href="{{ b1.googleplus }}"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      		<a href="{{ b1.instagram }}"><i class="fa fa-instagram fa-3x"></i></a>
       		<br>      	
-      		<a href=""><i class="fa fa-yelp fa-3x"></i></a>
-      		<a href=""><i class="fa fa-tripadvisor fa-3x"></i></a>
-      		<a href=""><i class="fa fa-pinterest-square fa-3x"></i></a>
-      		<a href=""><i class="fa fa-twitter-square fa-3x"></i></a>
+      		<a href="{{ b1.yelp }}"><i class="fa fa-yelp fa-3x"></i></a>
+      		<a href="{{ b1.tripadvisor }}"><i class="fa fa-tripadvisor fa-3x"></i></a>
+      		<a href="{{ b1.pinterest }}"><i class="fa fa-pinterest-square fa-3x"></i></a>
+      		<a href="{{ b1.twitter }}"><i class="fa fa-twitter-square fa-3x"></i></a>
 			</div>
 		</div>
 	</div>

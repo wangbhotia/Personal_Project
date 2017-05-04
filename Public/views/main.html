@@ -35,21 +35,23 @@
 		<!-- <div class="row"> -->
 		  <div class="col s12 m6 l4">
 		    <div class="card sticky-action">
-		      <div class="card-image">
-		        <img ui-sref="b({ id: b.id })" ng-src="{{ b.bus_cover_img }}">
+		      <div ui-sref="b({ id: b.id })" class="card-image">
+		        <!-- <img ng-src="{{ b.bus_cover_img }}"> -->
+		        <img ng-src="{{ special[0].special_img }}">
 		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
 		      </div>
 		      <div class="card-content">
 		      	<span class="card-title activator">{{ b.bus_name }}<i class="material-icons right">more_vert</i></span> 
+		        <p>{{ b.bus_cuisine }} cuisine</p>
 		        <p class="truncate">{{ b.bus_desc }}</p>
 		      </div>
 		      <div class="card-action">
-            <a href="#">This is a link</a>
+            <a ui-sref="b({ id: b.id })">View</a>
             <a href="#">This is a link</a>
           </div>
 		      <div class="card-reveal">
       			<span class="card-title grey-text text-darken-4">{{ b.bus_name }}<i class="material-icons right">close</i></span>
-      			<p>{{ b.bus_cuisine }}</p>
+      			<p>{{ b.bus_cuisine }} cuisine</p>
       			<p>{{ b.bus_phone }}</p>
       			<p>{{ b.bus_email }}</p>
     			</div>

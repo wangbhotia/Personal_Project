@@ -231,4 +231,37 @@ menu.id = menuitems.mi_id
 join social on
 business.id = social.bus_id
 join special on
-business.id = special.bus_id 
+business.id = special.bus_id
+
+
+
+select * from menu
+ join menuitems on
+ menu.id = menuitems.mi_id
+
+
+
+SELECT 
+  menu.id, 
+  menu.bus_menu_title,
+  menuitems.menu_item_name,
+  menuitems.menu_item_desc,
+  menuitems.menu_item_price
+FROM 
+  menu AS menu 
+  LEFT JOIN menuitems AS menuitems
+  ON (menu.id = menuitems.mi_id);
+
+
+
+
+-------------------------------------------------------------------
+-- SELECT ALL MENU TITLE AND MENUITEMS COLUMN WITHOUT DUPLICATES --
+-------------------------------------------------------------------
+select menu.*, array_agg(menuitems.menu_item_name) as itemname,
+array_agg(menuitems.menu_item_desc) as itemdesc,
+array_agg(menuitems.menu_item_price) as itemprice
+from menu
+join menuitems on
+menu.id = menuitems.mi_id
+group by menu.id

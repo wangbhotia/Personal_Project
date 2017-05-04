@@ -16,14 +16,58 @@ let conn = massive.connectSync({
 app.set('db', conn);
 let db = app.get('db');
 
-app.get('/businesses', function(req, res) {
-	db.get_all_bus(function(err, businesses) {
+app.get('/businesses', function(req, res){
+	db.get_all_bus(function(err, businesses){
 		if(!err){
 			// console.log(businesses);
 			res.send(businesses);
 		} else {
 			// console.log(err)
 			res.send(err);
+		}
+	});
+});
+
+app.get('/special/:id', function(req, res){
+	let sId = parseInt(req.params.id);
+	db.get_special(sId, function(err, special){
+		if(!err){
+			res.send(special);
+		} else {
+			res.send(err)
+		}
+	});
+});
+
+// app.get('/menu/:id', function(req, res){
+// 	let mId = parseInt(req.params.id);
+// 	db.get_menu(mId, function(err, menu){
+// 		if(!err){
+// 			res.send(menu);
+// 		} else {
+// 			res.send(err)
+// 		}
+// 	});
+// });
+
+app.get('/menu', function(req, res){
+	// let mId = parseInt(req.params.id);
+	db.get_menu( function(err, menu){
+		if(!err){
+			res.send(menu);
+		} else {
+			res.send(err)
+		}
+	});
+});
+
+app.get('/gallery/:id', function(req, res){
+	let gId = parseInt(req.params.id);
+	db.get_gallery(gId, function(err, gallery){
+		if(!err){
+			res.send(gallery);
+		} else {
+			res.send(err)
 		}
 	});
 });

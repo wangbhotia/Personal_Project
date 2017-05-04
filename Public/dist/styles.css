@@ -112,8 +112,11 @@ blockquote .featured {
   background-color: rgba(0, 0, 0, 0.3); }
 
 .def-logo {
-  padding-top: 70px;
-  padding-bottom: 50px; }
+  /*padding-top: 70px;*/
+  /*padding-bottom: 50px;*/ }
+
+.def-logo img {
+  max-height: 200px; }
 
 .def-intro-text {
   font-weight: bold; }
