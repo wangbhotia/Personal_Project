@@ -27,7 +27,8 @@ angular.module('merofood', ['ui.router', 'ui.materialize'])
 
 			.state('new-bus', { //Only if a User is logged in
 				url: '/new-bus',
-				templateUrl: '../views/new_bus.html'
+				templateUrl: '../views/new_bus.html',
+				controller: 'formsCtrl'
 			});
 
 			$urlRouterProvider.otherwise('/');

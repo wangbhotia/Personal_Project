@@ -18,7 +18,8 @@ angular.module('merofood', ['ui.router', 'ui.materialize']).config(function ($st
 		templateUrl: '../views/merofood_night.html'
 	}).state('new-bus', { //Only if a User is logged in
 		url: '/new-bus',
-		templateUrl: '../views/new_bus.html'
+		templateUrl: '../views/new_bus.html',
+		controller: 'formsCtrl'
 	});
 
 	$urlRouterProvider.otherwise('/');
@@ -90,6 +91,19 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 });
 'use strict';
 
+angular.module('merofood').controller('formsCtrl', function ($scope, mainService) {
+
+	$scope.addBus = function (newBus) {
+		console.log('addBus fn fired!!!');
+		console.log(newBus);
+		// mainService.addNewBus(newBus).then(function(respose){
+		// $scope.newBusiness = {};
+		// $scope.newB = response;
+		// });
+	};
+});
+'use strict';
+
 angular.module('merofood').controller('mainCtrl', function ($scope, mainService) {
 
 	$scope.getBusiness = function () {
@@ -101,14 +115,14 @@ angular.module('merofood').controller('mainCtrl', function ($scope, mainService)
 
 	$scope.getBusiness();
 
-	$scope.getSpecial = function () {
-		mainService.getSpecialData().then(function (response) {
-			$scope.special = response;
-			// console.log($scope.special);
-		});
-	};
+	// $scope.getSpecial = function(){
+	// 	mainService.getSpecialData().then(function(response){
+	// 		$scope.special = response;
+	// 		// console.log($scope.special);
+	// 	});
+	// }
 
-	$scope.getSpecial();
+	// $scope.getSpecial();
 });
 'use strict';
 

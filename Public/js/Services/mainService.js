@@ -1,6 +1,8 @@
 angular.module('merofood').service('mainService', function($http){
 
 	var baseUrl = 'http://localhost:3000/';
+
+	// GET ROUTES
 	
 	this.getBusData = function(){
 		return $http({
@@ -47,5 +49,10 @@ angular.module('merofood').service('mainService', function($http){
 			return response.data;
 		});
 	}
+
+
+	// POST ROUTES
+
+	
 
 });

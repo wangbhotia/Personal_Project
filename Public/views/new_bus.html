@@ -19,6 +19,7 @@
         <li class="tab col s2"><a href="#theme">Theme</a></li>
       </ul>
     </div>
+
  		<div class="wrapper">
 
 	 		<!-- BASIC INFO TAB -->
@@ -27,23 +28,23 @@
 			    <form class="col s12">
 			      <div class="row">
 			        <div class="input-field col s6">
-			          <input id="bus_name" type="text" class="validate">
+			          <input id="bus_name" type="text" class="validate" ng-model="newBus.name">
 			          <label for="bus_name">Business Name</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="bus_slogan" type="text" class="validate">
+			          <input id="bus_slogan" type="text" class="validate" ng-model="newBus.slogan">
 			          <label for="bus_slogan">Business Slogan</label>
 			        </div>
 			        <div class="input-field col s4">
-			          <input id="address" type="text" class="validate">
+			          <input id="address" type="text" class="validate" ng-model="newBus.street">
 			          <label for="address">Address</label>
 			        </div>
 			        <div class="input-field col s4">
-			          <input id="city" type="text" class="validate">
+			          <input id="city" type="text" class="validate" ng-model="newBus.city">
 			          <label for="city">City</label>
 			        </div>
 			        <div input-field class="col s2">
-						    <select ng-model="select.value" material-select watch>
+						    <select ng-model="select.value" material-select watch ng-model="newBus.state">
 						      <option value="" disabled selected>State</option>
 						      <option value="AL">Alabama</option>
 									<option value="AK">Alaska</option>
@@ -99,7 +100,7 @@
 						    </select>
 						  </div>
 						  <div class="input-field col s2">
-			          <input id="zip" type="text" class="validate">
+			          <input id="zip" type="text" class="validate" ng-model="newBus.zip">
 			          <label for="zip">Zip</label>
 			        </div>
 			        <div class="col s4">
@@ -110,41 +111,41 @@
 							        <input type="file">
 							      </div>
 							      <div class="file-path-wrapper">
-							        <input class="file-path validate" type="text" placeholder="Business logo (.png is better)">
+							        <input class="file-path validate" type="text" placeholder="Business logo (.png is better)" ng-model="newBus.logo">
 							      </div>
 							    </div>
 							  </form>
 	        		</div>
 			        <div class="input-field col s4">
-			          <input id="phone" type="tel" class="validate">
+			          <input id="phone" type="tel" class="validate" ng-model="newBus.phone">
 			          <label for="phone">Phone</label>
 			        </div>
 			        <div class="input-field col s4">
-			          <input id="email" type="email" class="validate">
+			          <input id="email" type="email" class="validate" ng-model="newBus.email">
 			          <label for="email">Email</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="facebook" type="url" class="validate">
+			          <input id="facebook" type="url" class="validate" ng-model="newBus.facebook">
 			          <label for="facebook">Facebook</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="google-plus" type="url" class="validate">
+			          <input id="google-plus" type="url" class="validate" ng-model="newBus.googleplus">
 			          <label for="google-plus">Google Plus</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="instagram" type="url" class="validate">
+			          <input id="instagram" type="url" class="validate" ng-model="newBus.instagram">
 			          <label for="instagram">Instagram</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="yelp" type="url" class="validate">
+			          <input id="yelp" type="url" class="validate" ng-model="newBus.yelp">
 			          <label for="yelp">Yelp</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="trip-advisor" type="url" class="validate">
+			          <input id="trip-advisor" type="url" class="validate" ng-model="newBus.tripadvisor">
 			          <label for="trip-advisor">Trip Advisor</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="pinterest" type="url" class="validate">
+			          <input id="pinterest" type="url" class="validate" ng-model="newBus.pinterest">
 			          <label for="pinterest">Pinterest</label>
 			        </div>
 			      </div>
@@ -155,7 +156,7 @@
 	    <!-- ABOUT TAB -->
 	    <div id="about" class="col s12">
 	    	<div input-field class="col s6">
-			    <select ng-model="select.value" material-select watch>
+			    <select ng-model="select.value" material-select watch ng-model="newBus.type">
 			      <option value="" disabled selected>Type</option>
 			      <option value="Restaurant">Restaurant</option>
 						<option value="Coffee">Coffee / Cafe</option>
@@ -166,17 +167,17 @@
 					</select>
 				</div>
 				<div class="input-field col s6">
-          <input id="cuisine" type="text" class="validate">
+          <input id="cuisine" type="text" class="validate" ng-model="newBus.cuisine">
           <label for="cuisine">Cuisine</label>
         </div>
 
 			  <div input-field class="col s12">
-    			<textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea"></textarea>
+    			<textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea" ng-model="newBus.about"></textarea>
     			<label>Write a brief paragraph about your business.</label>
 				</div>
 
 				<div input-field class="col s12">
-    			<textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea"></textarea>
+    			<textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea" ng-model="newBus.happyh"></textarea>
     			<label>Brief paragraph about Happy Hours or any Special Instructions.</label>
 				</div>
 
@@ -190,7 +191,7 @@
 					        <input type="file">
 					      </div>
 					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text" placeholder="Upload photo here">
+					        <input class="file-path validate" type="text" placeholder="Upload photo here" ng-model="newBus.spimg1">
 					      </div>
 					    </div>
 					  </form>
@@ -199,7 +200,7 @@
 		    	<div class="col s6">
 				    <form>
 			        <div class="input-field">
-			          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+			          <textarea id="icon_prefix2" class="materialize-textarea" ng-model="newBus.spdesc1"></textarea>
 			          <label for="icon_prefix2">Write a brief paragraph about the item.</label>
 			        </div>
 				    </form>
@@ -216,7 +217,7 @@
 					        <input type="file">
 					      </div>
 					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text" placeholder="Upload photo here">
+					        <input class="file-path validate" type="text" placeholder="Upload photo here" ng-model="newBus.spimg2">
 					      </div>
 					    </div>
 					  </form>
@@ -225,7 +226,7 @@
 		    	<div class="col s6">
 				    <form>
 			        <div class="input-field">
-			          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+			          <textarea id="icon_prefix2" class="materialize-textarea" ng-model="newBus.spdesc2"></textarea>
 			          <label for="icon_prefix2">Write a brief paragraph about the item.</label>
 			        </div>
 				    </form>
@@ -237,91 +238,276 @@
 
 	    <!-- MENU TAB -->
 	    <div id="menu" class="col s12">
-	    	<div class="menu-item">
-		    	<div class="input-field col s4">
-	          <input id="item_name" type="text" class="validate">
-	          <label for="item_name">Itam Name</label>
+	    	<!-- MENU INNER TABS -->
+		    <div class="col s12">
+		      <ul tabs reload="allTabContentLoaded">
+		        <li class="tab col s4"><a class="active" href="#menu1">Menu 1</a></li>
+		        <li class="tab col s4"><a href="#menu2">Menu 2</a></li>
+		        <li class="tab col s4"><a href="#menu3">Menu 3</a></li>
+		      </ul>
+	    	</div>
+
+	    	<!-- MENU 1 -->
+	    	<div id="menu1">
+	    		<h5 class="center">MENU 1</h5>
+	    		<div class="row center">
+		    		<div class="input-field col m6">
+			        <input id="item_name" type="text" class="validate" ng-model="newBus.m1_title">
+			        <label for="item_name">Menu Title</label>
+			      </div>
+		      </div>
+	    		<!-- MENU ITEM 1 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m1_item1_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m1_item1_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m1_item1_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s6">
-	          <input id="item_desc" type="text" class="validate">
-	          <label for="item_desc">Short sentence about the item</label>
+	        <!-- MENU ITEM 2 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m1_item2_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m1_item2_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m1_item2_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s2">
-	          <input id="item_price" type="number" class="validate">
-	          <label for="item_price">Price</label>
+	        <!-- MENU ITEM 3 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m1_item3_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m1_item3_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m1_item3_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-        </div>
-        <div class="menu-item">
-		    	<div class="input-field col s4">
-	          <input id="item_name" type="text" class="validate">
-	          <label for="item_name">Itam Name</label>
+	        <!-- MENU ITEM 4 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m1_item4_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m1_item4_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m1_item4_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s6">
-	          <input id="item_desc" type="text" class="validate">
-	          <label for="item_desc">Short sentence about the item</label>
+	        <!-- MENU ITEM 5 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m1_item5_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m1_item5_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m1_item5_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s2">
-	          <input id="item_price" type="number" class="validate">
-	          <label for="item_price">Price</label>
+
+	    	</div>
+
+	    	<!-- MENU 2 -->
+	    	<div id="menu2">
+	    		<h5 class="center">MENU 2</h5>
+	    		<div class="row center">
+		    		<div class="input-field col m6">
+			        <input id="item_name" type="text" class="validate" ng-model="newBus.m2_title">
+			        <label for="item_name">Menu Title</label>
+			      </div>
+		      </div>
+	    		<!-- MENU ITEM 1 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m2_item1_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m2_item1_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m2_item1_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-        </div>
-        <div class="menu-item">
-		    	<div class="input-field col s4">
-	          <input id="item_name" type="text" class="validate">
-	          <label for="item_name">Itam Name</label>
+	        <!-- MENU ITEM 2 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m2_item2_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m2_item2_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m2_item2_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s6">
-	          <input id="item_desc" type="text" class="validate">
-	          <label for="item_desc">Short sentence about the item</label>
+	        <!-- MENU ITEM 3 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m2_item3_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m2_item3_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m2_item3_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s2">
-	          <input id="item_price" type="number" class="validate">
-	          <label for="item_price">Price</label>
+	        <!-- MENU ITEM 4 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m2_item4_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m2_item4_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m2_item4_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-        </div>
-        <div class="menu-item">
-		    	<div class="input-field col s4">
-	          <input id="item_name" type="text" class="validate">
-	          <label for="item_name">Itam Name</label>
+	        <!-- MENU ITEM 5 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m2_item5_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m2_item5_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m2_item5_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s6">
-	          <input id="item_desc" type="text" class="validate">
-	          <label for="item_desc">Short sentence about the item</label>
+
+	    	</div>
+
+	    	<!-- MENU 3 -->
+	    	<div id="menu3">
+	    		<h5 class="center">MENU 3</h5>
+	    		<div class="row center">
+		    		<div class="input-field col m6">
+			        <input id="item_name" type="text" class="validate" ng-model="newBus.m3_title">
+			        <label for="item_name">Menu Title</label>
+			      </div>
+		      </div>
+	    		<!-- MENU ITEM 1 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m3_item1_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m3_item1_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m3_item1_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s2">
-	          <input id="item_price" type="number" class="validate">
-	          <label for="item_price">Price</label>
+	        <!-- MENU ITEM 2 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m3_item2_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m3_item2_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m3_item2_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-        </div>
-        <div class="menu-item">
-		    	<div class="input-field col s4">
-	          <input id="item_name" type="text" class="validate">
-	          <label for="item_name">Itam Name</label>
+	        <!-- MENU ITEM 3 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m3_item3_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m3_item3_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m3_item3_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s6">
-	          <input id="item_desc" type="text" class="validate">
-	          <label for="item_desc">Short sentence about the item</label>
+	        <!-- MENU ITEM 4 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m3_item4_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m3_item4_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m3_item4_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-	        <div class="input-field col s2">
-	          <input id="item_price" type="number" class="validate">
-	          <label for="item_price">Price</label>
+	        <!-- MENU ITEM 5 -->
+	    		<div class="menu-item">
+			    	<div class="input-field col s4">
+		          <input id="item_name" type="text" class="validate" ng-model="newBus.m3_item5_name">
+		          <label for="item_name">Itam Name</label>
+		        </div>
+		        <div class="input-field col s6">
+		          <input id="item_desc" type="text" class="validate" ng-model="newBus.m3_item5_desc">
+		          <label for="item_desc">Short sentence about the item</label>
+		        </div>
+		        <div class="input-field col s2">
+		          <input id="item_price" type="number" class="validate" ng-model="newBus.m3_item5_price">
+		          <label for="item_price">Price</label>
+		        </div>
 	        </div>
-        </div>
-        <div class="menu-item">
-		    	<div class="input-field col s4">
-	          <input id="item_name" type="text" class="validate">
-	          <label for="item_name">Itam Name</label>
-	        </div>
-	        <div class="input-field col s6">
-	          <input id="item_desc" type="text" class="validate">
-	          <label for="item_desc">Short sentence about the item</label>
-	        </div>
-	        <div class="input-field col s2">
-	          <input id="item_price" type="number" class="validate">
-	          <label for="item_price">Price</label>
-	        </div>
-	         <a class="btn-floating btn-large waves-effect waves-light teal"><i class="material-icons">add</i></a>
-        </div>
+
+	    	</div>
+
 	    </div>
 
 	    <!-- HOURS TAB -->
@@ -330,49 +516,49 @@
 	    		<h5>Sunday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.sun">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Monday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.mon">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Tuesday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.tue">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Wednesday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.wed">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Thursday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.thu">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Friday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.fri">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Saturday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.sat">
 	        <label for="hours">Hours</label>
 	      </div>
 	    </div>
@@ -380,6 +566,7 @@
 	    <!-- IMAGES TAB -->
 	    <div id="images" class="col s12">
 	    	<div class="col s4">
+	    		<h5>Business Cover Image</h5>
 				  <form action="#">
 				    <div class="file-field input-field">
 				      <div class="btn">
@@ -387,12 +574,13 @@
 				        <input type="file">
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text" placeholder="Cover image here.">
+				        <input class="file-path validate" type="text" placeholder="Cover image here." ng-model="newBus.coverimg">
 				      </div>
 				    </div>
 				  </form>
     		</div>
     		<div class="col s4">
+    			<h5>Special Item Image 1</h5>
 				  <form action="#">
 				    <div class="file-field input-field">
 				      <div class="btn">
@@ -400,12 +588,13 @@
 				        <input type="file">
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text" placeholder="Parallax background">
+				        <input class="file-path validate" type="text" placeholder="Parallax background" ng-model="newBus.spbg1">
 				      </div>
 				    </div>
 				  </form>
     		</div>
     		<div class="col s4">
+    			<h5>Special Item Image 2</h5>
 				  <form action="#">
 				    <div class="file-field input-field">
 				      <div class="btn">
@@ -413,12 +602,13 @@
 				        <input type="file">
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text" placeholder="Parallax background">
+				        <input class="file-path validate" type="text" placeholder="Parallax background" ng-model="newBus.spbg2">
 				      </div>
 				    </div>
 				  </form>
     		</div>
 	    	<div class="col s12">
+	    		<h5>Gallery</h5>
 				  <form action="#">
 				    <div class="file-field input-field">
 				      <div class="btn">
@@ -426,7 +616,7 @@
 				        <input type="file" multiple>
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text" placeholder="Upload one or more photos">
+				        <input class="file-path validate" type="text" placeholder="Upload one or more photos" ng-model="newBus.gallery">
 				      </div>
 				    </div>
 				  </form>
@@ -442,8 +632,8 @@
 			        </div>
 			        <span class="card-title">Merofood Light</span>
 			        <div class="card-action">
-			          <a href="#">Preview</a>
-			          <a href="#">Use This</a>
+			          <a href="#">Preview</a> <!-- USE THIS TO PREVIEW SITE WITH MODAL -->
+			          <a ng-click="addBus(newBus)" href="#">Use This</a> <!-- REDIRECT TO NEWLY CREATED PAGE -->
 			        </div>
 			      </div>
 			    </div>
@@ -456,7 +646,7 @@
 			        <span class="card-title">Merofood Night</span>
 			        <div class="card-action">
 			          <a href="#">Preview</a>
-			          <a href="#">Use This</a>
+			          <a ng-click="addBus(newBus)" href="#">Use This</a> <!-- REDIRECT TO NEWLY CREATED PAGE -->
 			        </div>
 			      </div>
 			    </div>
