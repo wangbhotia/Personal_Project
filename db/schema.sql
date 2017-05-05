@@ -138,29 +138,30 @@ CREATE TABLE menuitems (
   menu_item_name varchar(100),
   menu_item_desc text,
   menu_item_price numeric(4,2),
-  mi_id integer references menu(id)
+  menuid integer references menu(id),
+  bus_id integer references business(id)
 )
 
 -- INSERT INTO menuitems
---   (menu_item_name, menu_item_desc, menu_item_price, mi_id)
+--   (menu_item_name, menu_item_desc, menu_item_price, menuid, bus_id)
 --   VALUES
---   ('House Steak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 12.99, 1),
---   ('Beef Steak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 18.99, 1),
---   ('Pork Steak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 15.99, 1),
---   ('Goat Steak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 29.99, 1),
---   ('Chicken Steak', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 10.99, 1),
+--   ('House Steak', 'HS Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 12.99, 1, 1),
+--   ('Beef Steak', 'BS Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 18.99, 1, 1),
+--   ('Pork Steak', 'PS Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 15.99, 1, 1),
+--   ('Goat Steak', 'GS Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 29.99, 1, 1),
+--   ('Chicken Steak', 'CS Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 10.99, 1, 1),
 
---   ('House Burger', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 8.99, 2),
---   ('Spicy Chicken', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 9.99, 2),
---   ('Beef Burger', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 10.99, 2),
---   ('Pork Burger', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 11.99, 2),
---   ('Big Burger', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 14.99, 2),
+--   ('House Burger', 'HB Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 8.99, 2, 1),
+--   ('Spicy Chicken', 'SC Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 9.99, 2, 1),
+--   ('Beef Burger', 'BB Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 10.99, 2, 1),
+--   ('Pork Burger', 'PB Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 11.99, 2, 1),
+--   ('Big Burger', 'BB Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 14.99, 2, 1),
 
---   ('Iced Tea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1.99, 3),
---   ('Coke', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 0.99, 3),
---   ('Diet Coke', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 0.99, 3),
---   ('Green Tea', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2.99, 3),
---   ('Lemon Ginger', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2.99, 3)
+--   ('Iced Tea', 'IT Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1.99, 3, 1),
+--   ('Coke', 'C Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 0.99, 3, 1),
+--   ('Diet Coke', 'DC Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 0.99, 3, 1),
+--   ('Green Tea', 'GT Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2.99, 3, 1),
+--   ('Lemon Ginger', 'LG Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2.99, 3, 1)
 
 
 

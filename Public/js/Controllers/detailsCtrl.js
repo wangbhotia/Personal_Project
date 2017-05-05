@@ -32,12 +32,22 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 	$scope.getSpecial();
 
 
-	// GET ALL MENUe
+	// GET ALL MENU
 	$scope.getMenu = function(){
-		mainService.getMenuData().then(function(response){
+		mainService.getMenuData(bid).then(function(response){
 			$scope.m1 = response;
-			// console.log($scope.m1);
-			$scope.itemdesc = $scope.m1.itemdesc
+			mainService.getMenuItemsData(bid).then(function(res){
+				let items = res;
+				for(let i = 0; i < $scope.m1.length; i++){
+					$scope.m1[i].items = [];
+					for(let j = 0; j < items.length; j++){
+						if(items[j].menuid === $scope.m1[i].id){
+							$scope.m1[i].items.push(items[j]);
+						}
+					}
+				}
+			});
+			// console.log('m1', $scope.m1);
 		});
 	}
 

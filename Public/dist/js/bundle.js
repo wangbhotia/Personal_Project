@@ -57,12 +57,22 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 
 	$scope.getSpecial();
 
-	// GET ALL MENUe
+	// GET ALL MENU
 	$scope.getMenu = function () {
-		mainService.getMenuData().then(function (response) {
+		mainService.getMenuData(bid).then(function (response) {
 			$scope.m1 = response;
-			// console.log($scope.m1);
-			$scope.itemdesc = $scope.m1.itemdesc;
+			mainService.getMenuItemsData(bid).then(function (res) {
+				var items = res;
+				for (var i = 0; i < $scope.m1.length; i++) {
+					$scope.m1[i].items = [];
+					for (var j = 0; j < items.length; j++) {
+						if (items[j].menuid === $scope.m1[i].id) {
+							$scope.m1[i].items.push(items[j]);
+						}
+					}
+				}
+			});
+			// console.log('m1', $scope.m1);
 		});
 	};
 
@@ -156,20 +166,20 @@ angular.module('merofood').service('mainService', function ($http) {
 		});
 	};
 
-	// this.getMenuData = function(id){
-	// 	return $http({
-	// 		method: 'GET',
-	// 		url: baseUrl + 'menu/' + id
-	// 	}).then(function(response){
-	// 		return response.data;
-	// 	});
-	// }
-	this.getMenuData = function () {
+	this.getMenuData = function (id) {
 		return $http({
 			method: 'GET',
-			url: baseUrl + 'menu'
+			url: baseUrl + 'menu/' + id
 		}).then(function (response) {
-			// console.log(response.data)
+			return response.data;
+		});
+	};
+
+	this.getMenuItemsData = function (id) {
+		return $http({
+			method: 'GET',
+			url: baseUrl + 'menuitems/' + id
+		}).then(function (response) {
 			return response.data;
 		});
 	};

@@ -39,22 +39,23 @@ app.get('/special/:id', function(req, res){
 	});
 });
 
-// app.get('/menu/:id', function(req, res){
-// 	let mId = parseInt(req.params.id);
-// 	db.get_menu(mId, function(err, menu){
-// 		if(!err){
-// 			res.send(menu);
-// 		} else {
-// 			res.send(err)
-// 		}
-// 	});
-// });
-
-app.get('/menu', function(req, res){
-	// let mId = parseInt(req.params.id);
-	db.get_menu( function(err, menu){
+app.get('/menu/:id', function(req, res){
+	let mId = parseInt(req.params.id);
+	db.get_menu(mId, function(err, menu){
 		if(!err){
+			console.log(menu)
 			res.send(menu);
+		} else {
+			res.send(err)
+		}
+	});
+});
+
+app.get('/menuitems/:id', function(req, res){
+	let miId = parseInt(req.params.id);
+	db.get_menu_items(miId, function(err, menuitems){
+		if(!err){
+			res.send(menuitems);
 		} else {
 			res.send(err)
 		}

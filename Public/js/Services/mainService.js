@@ -20,20 +20,20 @@ angular.module('merofood').service('mainService', function($http){
 		});
 	}
 
-	// this.getMenuData = function(id){
-	// 	return $http({
-	// 		method: 'GET',
-	// 		url: baseUrl + 'menu/' + id
-	// 	}).then(function(response){
-	// 		return response.data;
-	// 	});
-	// }
-	this.getMenuData = function(){
+	this.getMenuData = function(id){
 		return $http({
 			method: 'GET',
-			url: baseUrl + 'menu'
+			url: baseUrl + 'menu/' + id
 		}).then(function(response){
-			// console.log(response.data)
+			return response.data;
+		});
+	}
+
+	this.getMenuItemsData = function(id){
+		return $http({
+			method: 'GET',
+			url: baseUrl + 'menuitems/' + id
+		}).then(function(response){
 			return response.data;
 		});
 	}

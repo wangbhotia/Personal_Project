@@ -99,17 +99,13 @@
 			<div class="col s12 m4" ng-repeat="menu in m1">
 				<div class="bus-menu-col">
 					<h5>{{ menu.bus_menu_title }}</h5>
-					<!-- <div ng-repeat="name in menu.itemname"> -->
-						<dl>
-							<dt>{{ menu.itemname }}</dt>
-							<dd>
-								<div ng-repeat="item in itemdesc">
-								<small>{{ item }}</small>
-								</div>
-								<strong>{{ menu.itemprice }}</strong>
-							</dd>
-						</dl>
-					<!-- </div> -->
+					<dl ng-repeat="item in menu.items">
+						<dt>{{ item.menu_item_name }}</dt>
+						<dd>
+							<small>{{ item.menu_item_desc }}</small>
+							<strong>${{ item.menu_item_price }}</strong>
+						</dd>
+					</dl>
 				</div>
 			</div>
 
