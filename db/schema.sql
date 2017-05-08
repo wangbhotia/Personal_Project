@@ -31,6 +31,21 @@ CREATE TABLE business (
   bus_cover_img text,
   user_id integer references users(id)
 )
+
+business = [
+            req.body.name, 
+            req.body.slogan, 
+            req.body.phone, 
+            req.body.email, 
+            req.body.type, 
+            req.body.cuisine,
+            req.body.about,
+            req.body.happyh,
+            req.body.logo,
+            req.body.coverimg,
+            req.body.userid
+          ]
+
   -- featured bit 'false',
 
 -- INSERT INTO business
@@ -66,6 +81,14 @@ CREATE TABLE address (
 --   VALUES
 --   ('123 Main St.', 'Provo', 'Utah', 12345, 1)
 
+address = [
+            req.body.street,
+            req.body.city,
+            req.body.state,
+            req.body.zip,
+            req.body.busid
+          ]
+
 
 --HOURS TABLE bus_hours
 
@@ -94,6 +117,17 @@ CREATE TABLE hours (
 --     1
 --   )
 
+hours = [
+          req.body.sun,
+          req.body.mon,
+          req.body.tue,
+          req.body.wed,
+          req.body.thu,
+          req.body.fri,
+          req.body.sat,
+          req.body.busid
+        ]
+
 --SPECIAL TABLE --bus_special, parallax
 
 CREATE TABLE special (
@@ -104,6 +138,20 @@ CREATE TABLE special (
   parallax_img text,
   bus_id integer references business(id)
 )
+
+special = [
+            req.body.spname1,
+            req.body.spdesc1,
+            req.body.spimg1,
+            req.body.spbg1,
+            req.body.busid
+            -----------------
+            req.body.spname2,
+            req.body.spdesc2,
+            req.body.spimg2,
+            req.body.spbg2,
+            req.body.busid
+          ]
 
 -- INSERT INTO special
 --   (special_name, special_desc, special_img, parallax_img, bus_id)
@@ -132,6 +180,17 @@ CREATE TABLE menu (
 --   ('Steaks', 1),
 --   ('Burgers', 1),
 --   ('Drinks', 1)
+
+menu = [
+        req.body.m1_title,
+        req.body.busid
+        --------------------
+        req.body.m2_title,
+        req.body.busid
+        --------------------
+        req.body.m3_title,
+        req.body.busid
+      ]
 
 CREATE TABLE menuitems (
   id SERIAL PRIMARY KEY,
@@ -163,6 +222,94 @@ CREATE TABLE menuitems (
 --   ('Green Tea', 'GT Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2.99, 3, 1),
 --   ('Lemon Ginger', 'LG Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 2.99, 3, 1)
 
+menuitems = [
+              req.body.m1_item1_name,
+              req.body.m1_item1_desc,
+              req.body.m1_item1_price,
+              req.body.menuid
+              -------------------------
+              req.body.m1_item2_name,
+              req.body.m1_item2_desc,
+              req.body.m1_item2_price,
+              req.body.menuid
+              -------------------------
+              req.body.m1_item3_name,
+              req.body.m1_item3_desc,
+              req.body.m1_item3_price,
+              req.body.menuid
+              -------------------------
+              req.body.m1_item4_name,
+              req.body.m1_item4_desc,
+              req.body.m1_item4_price,
+              req.body.menuid
+              -------------------------
+              req.body.m1_item5_name,
+              req.body.m1_item5_desc,
+              req.body.m1_item5_price,
+              req.body.menuid
+
+
+              ---------------------------
+              ---------------------------
+              ---------------------------
+
+
+              req.body.m2_item1_name,
+              req.body.m2_item1_desc,
+              req.body.m2_item1_price,
+              req.body.menuid
+              -------------------------
+              req.body.m2_item2_name,
+              req.body.m2_item2_desc,
+              req.body.m2_item2_price,
+              req.body.menuid
+              -------------------------
+              req.body.m2_item3_name,
+              req.body.m2_item3_desc,
+              req.body.m2_item3_price,
+              req.body.menuid
+              -------------------------
+              req.body.m2_item4_name,
+              req.body.m2_item4_desc,
+              req.body.m2_item4_price,
+              req.body.menuid
+              -------------------------
+              req.body.m2_item5_name,
+              req.body.m2_item5_desc,
+              req.body.m2_item5_price,
+              req.body.menuid
+
+
+              ---------------------------
+              ---------------------------
+              ---------------------------
+
+
+              req.body.m3_item1_name,
+              req.body.m3_item1_desc,
+              req.body.m3_item1_price,
+              req.body.menuid
+              -------------------------
+              req.body.m3_item2_name,
+              req.body.m3_item2_desc,
+              req.body.m3_item2_price,
+              req.body.menuid
+              -------------------------
+              req.body.m3_item3_name,
+              req.body.m3_item3_desc,
+              req.body.m3_item3_price,
+              req.body.menuid
+              -------------------------
+              req.body.m3_item4_name,
+              req.body.m3_item4_desc,
+              req.body.m3_item4_price,
+              req.body.menuid
+              -------------------------
+              req.body.m3_item5_name,
+              req.body.m3_item5_desc,
+              req.body.m3_item5_price,
+              req.body.menuid
+            ]
 
 
 --GALLERY TABLE --bus_gallery
@@ -184,6 +331,11 @@ CREATE TABLE gallery (
 --   ('https://images.unsplash.com/photo-1490990813269-10586274747f?dpr=1&auto=format&fit=crop&w=1500&h=1225&q=80&cs=tinysrgb&crop=&bg=', 1),
 --   ('https://images.unsplash.com/photo-1477534980688-3ac008b36996?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=', 1),
 --   ('https://images.unsplash.com/photo-1492683513054-55277abccd99?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=', 1)
+
+gallery = [
+            req.body.gallery,
+            req.body.busid
+          ]
 
 
 --SOCIAL TABLE --bus_social
@@ -212,6 +364,17 @@ CREATE TABLE social (
 --     'https://www.twitter.com', 
 --     1
 --   )
+
+social = [
+          req.body.facebook,
+          req.body.googleplus,
+          req.body.instagram,
+          req.body.yelp,
+          req.body.tripadvisor,
+          req.body.pinterest,
+          req.body.twitter,
+          req.body.busid
+        ]
 
 
 ------------------------------------------
@@ -266,3 +429,22 @@ from menu
 join menuitems on
 menu.id = menuitems.mi_id
 group by menu.id
+
+
+
+ALTER TABLE address
+DROP id
+
+Alter table address
+add address_id serial primary key
+
+
+
+ALTER TABLE address
+DROP id cascade
+
+update menuitems
+set menuid = 3 where menuitems_id = 15
+
+delete from products
+where id = $1

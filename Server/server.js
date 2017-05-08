@@ -1,20 +1,22 @@
-let express = require('express'),
+const express = require('express'),
 		bodyParser = require('body-parser'),
 		cors = require('cors'),
 		massive = require('massive');
 
 const port = 3000;
-let app = express();
+const app = module.exports = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + './../public'));
 
-let conn = massive.connectSync({
+const conn = massive.connectSync({
 	connectionString: 'postgres://postgres:dm21-wb@localhost/merofood'
 });
 
 app.set('db', conn);
-let db = app.get('db');
+const db = app.get('db');
+const serverCtrl = require('./serverCtrl');
 
 app.get('/businesses', function(req, res){
 	db.get_all_bus(function(err, businesses){
@@ -43,7 +45,6 @@ app.get('/menu/:id', function(req, res){
 	let mId = parseInt(req.params.id);
 	db.get_menu(mId, function(err, menu){
 		if(!err){
-			console.log(menu)
 			res.send(menu);
 		} else {
 			res.send(err)
@@ -72,6 +73,8 @@ app.get('/gallery/:id', function(req, res){
 		}
 	});
 });
+
+app.post('/createbus', serverCtrl.newBus);
 
 
 

@@ -64,6 +64,9 @@ blockquote .featured {
 .card .card-title {
   font-weight: 500; }
 
+.main-card img {
+  max-height: 275px; }
+
 .cover-restaurants {
   margin-top: 30px;
   height: 30vh;

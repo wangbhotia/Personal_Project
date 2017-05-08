@@ -41,7 +41,7 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 				for(let i = 0; i < $scope.m1.length; i++){
 					$scope.m1[i].items = [];
 					for(let j = 0; j < items.length; j++){
-						if(items[j].menuid === $scope.m1[i].id){
+						if(items[j].menuid === $scope.m1[i].menu_id){
 							$scope.m1[i].items.push(items[j]);
 						}
 					}

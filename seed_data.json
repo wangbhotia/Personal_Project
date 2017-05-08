@@ -1,3 +1,90 @@
+
+
+// RAW RESPONSE FROM CONTROLLER
+city: "Provo"
+coverimg: "allen.jpg"
+cuisine: "Coffee"
+email: "star@bucks.com"
+facebook: "https://www.facebook.com"
+fri: "5 AM - 7 PM"
+gallery: "allen.jpg, aziz-cover.jpg, day.jpg, docter.jpg, fence.jpg, passengers.jpg"
+googleplus: "https://www.plus.google.com"
+instagram:  "https://www.instagram.com"
+logo: "account.png"
+m1_item1_desc: "KR Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+m1_item1_name: "Kenya Roast"
+m1_item1_price: 2.99
+m1_item2_desc: "BD Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+m1_item2_name: "Brazil Dark"
+m1_item2_price: 1.99
+m1_item3_desc: "CL Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+m1_item3_name: "China Light"
+m1_item3_price: 0.99
+m1_item4_desc: "AG Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+m1_item4_name: "American Ground"
+m1_item4_price: 5.99
+m1_item5_desc: "FP Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+m1_item5_name: "French Press"
+m1_item5_price: 3.99
+m1_title: "Coffee"
+m2_item1_desc: "GT"
+m2_item1_name: "Green Tea"
+m2_item1_price: 1.99
+m2_item2_desc: "LG"
+m2_item2_name: "Lemon Ginger"
+m2_item2_price: 1.99
+m2_item3_desc: "C"
+m2_item3_name: "Chai"
+m2_item3_price: 2.99
+m2_item4_desc: "JT"
+m2_item4_name: "Jasmine Tea"
+m2_item4_price: 0.99
+m2_item5_desc: "PT"
+m2_item5_name: "Peppermint Tea"
+m2_item5_price: 1.99
+m2_title: "Tea"
+m3_item1_desc: "IT"
+m3_item1_name: "Iced Tea"
+m3_item1_price: 0.99
+m3_item2_desc: "CC"
+m3_item2_name: "Coke"
+m3_item2_price: 1.99
+m3_item3_desc: "DC"
+m3_item3_name: "Diet Coke"
+m3_item3_price: 1.99
+m3_item4_desc: "OJ"
+m3_item4_name: "Orange Juice"
+m3_item4_price: 3.99
+m3_item5_desc: "AJ"
+m3_item5_name: "Apple Juice"
+m3_item5_price: 2.99
+m3_title: "Cold"
+mon: "5 AM - 7 PM"
+name: "Starbucks"
+phone: "123-456-7890"
+pinterest: "https://www.pinterest.com"
+sat: "5 AM - 7 PM"
+slogan: "Find a Star in you with Buck's coffee!"
+spbg1: "day.jpg"
+spbg2: "docter.jpg"
+spdesc1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit vestibulum, facilisis lacus ut, maximus dui. In hac habitasse platea dictumst. Maecenas accumsan pulvinar est id eleifend. Curabitur euismod lectus ac auctor viverra."
+spdesc2:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit vestibulum, facilisis lacus ut, maximus dui. In hac habitasse platea dictumst. Maecenas accumsan pulvinar est id eleifend. Curabitur euismod lectus ac auctor viverra."
+spimg1: "allen.jpg"
+spimg2: "aziz-cover.jpg"
+street: "111 Stars St."
+sun: "5 AM - 7 PM"
+thu: "5 AM - 7 PM"
+tripadvisor: "https://www.tripadvisor.com"
+tue: "5 AM - 7 PM"
+wed: "5 AM - 7 PM"
+yelp: "https://www.yelp.com"
+zip: "12345"
+
+
+
+
+
+
 [ 
 	{
 		"id": 1,

@@ -129,12 +129,16 @@
 			          <label for="facebook">Facebook</label>
 			        </div>
 			        <div class="input-field col s6">
+			          <input id="instagram" type="url" class="validate" ng-model="newBus.instagram">
+			          <label for="instagram">Instagram</label>
+			        </div>
+			        <div class="input-field col s6">
 			          <input id="google-plus" type="url" class="validate" ng-model="newBus.googleplus">
 			          <label for="google-plus">Google Plus</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="instagram" type="url" class="validate" ng-model="newBus.instagram">
-			          <label for="instagram">Instagram</label>
+			          <input id="twitter" type="url" class="validate" ng-model="newBus.twitter">
+			          <label for="twitter">Twitter</label>
 			        </div>
 			        <div class="input-field col s6">
 			          <input id="yelp" type="url" class="validate" ng-model="newBus.yelp">
@@ -143,10 +147,6 @@
 			        <div class="input-field col s6">
 			          <input id="trip-advisor" type="url" class="validate" ng-model="newBus.tripadvisor">
 			          <label for="trip-advisor">Trip Advisor</label>
-			        </div>
-			        <div class="input-field col s6">
-			          <input id="pinterest" type="url" class="validate" ng-model="newBus.pinterest">
-			          <label for="pinterest">Pinterest</label>
 			        </div>
 			      </div>
 			    </form>
@@ -170,20 +170,22 @@
           <input id="cuisine" type="text" class="validate" ng-model="newBus.cuisine">
           <label for="cuisine">Cuisine</label>
         </div>
-
-			  <div input-field class="col s12">
-    			<textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea" ng-model="newBus.about"></textarea>
-    			<label>Write a brief paragraph about your business.</label>
-				</div>
-
-				<div input-field class="col s12">
-    			<textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea" ng-model="newBus.happyh"></textarea>
-    			<label>Brief paragraph about Happy Hours or any Special Instructions.</label>
-				</div>
+        <div class="input-field col s12">
+          <input id="cuisine" type="text" class="validate" ng-model="newBus.about">
+          <label for="about">Write a brief paragraph about your business.</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="cuisine" type="text" class="validate" ng-model="newBus.happyh">
+          <label for="happyhours">Brief paragraph about Happy Hours or any Special Instructions.</label>
+        </div>
 
 				<!-- SPECIAL ITEM 1 -->
 	    	<div class="special-item-1">
-		    	<div class="col s6">
+	    		<div class="input-field col s3">
+          	<input id="cuisine" type="text" class="validate" ng-model="newBus.spname1">
+          	<label for="spname1">Item Name</label>
+        	</div>
+		    	<div class="col s3">
 					  <form action="#">
 					    <div class="file-field input-field">
 					      <div class="btn">
@@ -197,19 +199,19 @@
 					  </form>
 		  		</div>
 
-		    	<div class="col s6">
-				    <form>
-			        <div class="input-field">
-			          <textarea id="icon_prefix2" class="materialize-textarea" ng-model="newBus.spdesc1"></textarea>
-			          <label for="icon_prefix2">Write a brief paragraph about the item.</label>
-			        </div>
-				    </form>
-				  </div>
+		  		<div class="input-field col s6">
+          	<input id="cuisine" type="text" class="validate" ng-model="newBus.spdesc1">
+          	<label for="spdesc1">Write a brief paragraph about this item.</label>
+        	</div>
 				</div>
 
 				<!-- SPECIAL ITEM 2 -->
 				<div class="special-item-2">
-		    	<div class="col s6">
+					<div class="input-field col s3">
+          	<input id="cuisine" type="text" class="validate" ng-model="newBus.spname2">
+          	<label for="spname2">Item Name</label>
+        	</div>
+		    	<div class="col s3">
 					  <form action="#">
 					    <div class="file-field input-field">
 					      <div class="btn">
@@ -223,14 +225,10 @@
 					  </form>
 		  		</div>
 
-		    	<div class="col s6">
-				    <form>
-			        <div class="input-field">
-			          <textarea id="icon_prefix2" class="materialize-textarea" ng-model="newBus.spdesc2"></textarea>
-			          <label for="icon_prefix2">Write a brief paragraph about the item.</label>
-			        </div>
-				    </form>
-				  </div> 
+		    	<div class="input-field col s6">
+          	<input id="cuisine" type="text" class="validate" ng-model="newBus.spdesc2">
+          	<label for="spdesc2">Write a brief paragraph about this item.</label>
+        	</div> 
 				</div>
 
 	    </div>
@@ -646,7 +644,7 @@
 			        <span class="card-title">Merofood Night</span>
 			        <div class="card-action">
 			          <a href="#">Preview</a>
-			          <a ng-click="addBus(newBus)" href="#">Use This</a> <!-- REDIRECT TO NEWLY CREATED PAGE -->
+			          <a ng-click="addBus(newBus)" ui-sref="b">Use This</a> <!-- REDIRECT TO NEWLY CREATED PAGE -->
 			        </div>
 			      </div>
 			    </div>

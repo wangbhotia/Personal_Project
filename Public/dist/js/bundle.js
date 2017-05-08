@@ -67,7 +67,7 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 				for (var i = 0; i < $scope.m1.length; i++) {
 					$scope.m1[i].items = [];
 					for (var j = 0; j < items.length; j++) {
-						if (items[j].menuid === $scope.m1[i].id) {
+						if (items[j].menuid === $scope.m1[i].menu_id) {
 							$scope.m1[i].items.push(items[j]);
 						}
 					}
@@ -96,10 +96,10 @@ angular.module('merofood').controller('formsCtrl', function ($scope, mainService
 	$scope.addBus = function (newBus) {
 		console.log('addBus fn fired!!!');
 		console.log(newBus);
-		// mainService.addNewBus(newBus).then(function(respose){
-		// $scope.newBusiness = {};
-		// $scope.newB = response;
-		// });
+		mainService.addNewBus(newBus).then(function (respose) {
+			// console.log(respose);
+			$scope.business = response;
+		});
 	};
 });
 'use strict';
@@ -162,6 +162,8 @@ angular.module('merofood').service('mainService', function ($http) {
 
 	var baseUrl = 'http://localhost:3000/';
 
+	// GET ROUTES
+
 	this.getBusData = function () {
 		return $http({
 			method: 'GET',
@@ -204,6 +206,18 @@ angular.module('merofood').service('mainService', function ($http) {
 			url: baseUrl + 'gallery/' + id
 		}).then(function (response) {
 			return response.data;
+		});
+	};
+
+	// POST ROUTES
+
+	this.addNewBus = function (newBus) {
+		return $http({
+			method: 'POST',
+			url: baseUrl + 'createbus',
+			data: newBus
+		}).then(function (response) {
+			return response;
 		});
 	};
 });

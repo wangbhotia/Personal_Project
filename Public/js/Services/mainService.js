@@ -53,6 +53,14 @@ angular.module('merofood').service('mainService', function($http){
 
 	// POST ROUTES
 
-	
+	this.addNewBus = function(newBus){
+		return $http({
+			method: 'POST',
+			url: baseUrl + 'createbus',
+			data: newBus
+		}).then(function(response){
+			return response;
+		});
+	}
 
 });
