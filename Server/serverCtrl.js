@@ -62,54 +62,57 @@ module.exports = {
         		         [req.body.m3_title, newbus_id] ];
 
        	for (let i = 0; i < menu.length; i++) {
+       		
        		db.create_menu(menu[i], function(err, newmenu){
        			if(!err){
-       				// console.log('menu' + [i] + ':', newmenu[0].menu_id);
+       				// console.log('menu ' + [i] + ': ', newmenu[0].menu_id);
        				let newmenu_id = newmenu[0].menu_id;
+       				console.log('no error on menu');
 
        				let menuitems = [ 
-       					[ [req.body.m1_item1_name, req.body.m1_item1_desc, req.body.m1_item1_price, newmenu_id, newbus_id],
-      						[req.body.m1_item2_name, req.body.m1_item2_desc, req.body.m1_item2_price, newmenu_id, newbus_id],
-      						[req.body.m1_item3_name, req.body.m1_item3_desc, req.body.m1_item3_price, newmenu_id, newbus_id],
-      						[req.body.m1_item4_name, req.body.m1_item4_desc, req.body.m1_item4_price, newmenu_id, newbus_id],
-                  [req.body.m1_item5_name, req.body.m1_item5_desc, req.body.m1_item5_price, newmenu_id, newbus_id] ],
+   					[ [req.body.m1_item1_name, req.body.m1_item1_desc, parseFloat(req.body.m1_item1_price), newmenu_id, newbus_id],
+  						[req.body.m1_item2_name, req.body.m1_item2_desc, parseFloat(req.body.m1_item2_price), newmenu_id, newbus_id],
+  						[req.body.m1_item3_name, req.body.m1_item3_desc, parseFloat(req.body.m1_item3_price), newmenu_id, newbus_id],
+  						[req.body.m1_item4_name, req.body.m1_item4_desc, parseFloat(req.body.m1_item4_price), newmenu_id, newbus_id],
+              [req.body.m1_item5_name, req.body.m1_item5_desc, parseFloat(req.body.m1_item5_price), newmenu_id, newbus_id] 
+            ],
 
-                [ [req.body.m2_item1_name, req.body.m2_item1_desc, req.body.m2_item1_price, newmenu_id, newbus_id],
-    							[req.body.m2_item2_name, req.body.m2_item2_desc, req.body.m2_item2_price, newmenu_id, newbus_id],
-   								[req.body.m2_item3_name, req.body.m2_item3_desc, req.body.m2_item3_price, newmenu_id, newbus_id],
-    							[req.body.m2_item4_name, req.body.m2_item4_desc, req.body.m2_item4_price, newmenu_id, newbus_id],
-    							[req.body.m2_item5_name, req.body.m2_item5_desc, req.body.m2_item5_price, newmenu_id, newbus_id] ],
+            [ [req.body.m2_item1_name, req.body.m2_item1_desc, parseFloat(req.body.m2_item1_price), newmenu_id, newbus_id],
+							[req.body.m2_item2_name, req.body.m2_item2_desc, parseFloat(req.body.m2_item2_price), newmenu_id, newbus_id],
+							[req.body.m2_item3_name, req.body.m2_item3_desc, parseFloat(req.body.m2_item3_price), newmenu_id, newbus_id],
+							[req.body.m2_item4_name, req.body.m2_item4_desc, parseFloat(req.body.m2_item4_price), newmenu_id, newbus_id],
+							[req.body.m2_item5_name, req.body.m2_item5_desc, parseFloat(req.body.m2_item5_price), newmenu_id, newbus_id] 
+						],
 
-    						[ [req.body.m3_item1_name, req.body.m3_item1_desc, req.body.m3_item1_price, newmenu_id, newbus_id],
-                  [req.body.m3_item2_name, req.body.m3_item2_desc, req.body.m3_item2_price, newmenu_id, newbus_id],
-                  [req.body.m3_item3_name, req.body.m3_item3_desc, req.body.m3_item3_price, newmenu_id, newbus_id],
-                  [req.body.m3_item4_name, req.body.m3_item4_desc, req.body.m3_item4_price, newmenu_id, newbus_id],
-                  [req.body.m3_item5_name, req.body.m3_item5_desc, req.body.m3_item5_price, newmenu_id, newbus_id] ] 
-              ]
+						[ [req.body.m3_item1_name, req.body.m3_item1_desc, parseFloat(req.body.m3_item1_price), newmenu_id, newbus_id],
+              [req.body.m3_item2_name, req.body.m3_item2_desc, parseFloat(req.body.m3_item2_price), newmenu_id, newbus_id],
+              [req.body.m3_item3_name, req.body.m3_item3_desc, parseFloat(req.body.m3_item3_price), newmenu_id, newbus_id],
+              [req.body.m3_item4_name, req.body.m3_item4_desc, parseFloat(req.body.m3_item4_price), newmenu_id, newbus_id],
+              [req.body.m3_item5_name, req.body.m3_item5_desc, parseFloat(req.body.m3_item5_price), newmenu_id, newbus_id] 
+            ] 
+          ];
 
-
-       				for (let j = 0; j < menuitems.length; j++) {
-       					for(let k = 0; k < menuitems[j].length; k++){
-       						db.create_menuitems(menuitems[k], function(err, newitems){
-       							if(!err){
-       								console.log('no error on menuitems' + [k]);
-       							} else {
-       								console.log(err);
-       								res.send(err);
-       							}
-       						});
-       					}
-       				}
-       				console.log('no error on menu');
+	   					for(let k = 0; k < menuitems[i].length; k++){
+	   						// console.log('menuitems here: ', menuitems)
+	   						db.create_menuitems(menuitems[i][k], function(err, newitems){
+	   							if(!err){
+	   								console.log('no error on menuitems: ' + menuitems[i][k]);
+	   							} else {
+	   								console.log(err);
+	   								res.send(err);
+	   							}
+	   						});
+	   					}
        			} else {
        				console.log(err);
        				res.send(err);
        			}
-       		});
+       		});	
        	}
 
 
 				//this is an array of images
+				
 				// let gallery = req.body.gallery;
 				// console.log('gallery: ', gallery);
 				// for (let i = 0; i < gallery.length; i++) {
@@ -123,7 +126,7 @@ module.exports = {
 				// 	});
 				// }
 
-    		// return newbus[0].id;
+    		return res.send(newbus);
     	} else {
     		return res.send(err);
     	}
