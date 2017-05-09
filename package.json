@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wangbhotia/Personal_Project#readme",
   "dependencies": {
+    "aws-sdk": "^2.49.0",
     "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.17.1",
     "cors": "^2.8.3",

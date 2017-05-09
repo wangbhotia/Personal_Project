@@ -6,8 +6,8 @@ const express = require('express'),
 const port = 3000;
 const app = module.exports = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.static(__dirname + './../public'));
 
 const conn = massive.connectSync({
@@ -17,6 +17,7 @@ const conn = massive.connectSync({
 app.set('db', conn);
 const db = app.get('db');
 const serverCtrl = require('./serverCtrl');
+const awsCtrl = require('./awsCtrl');
 
 app.get('/businesses', function(req, res){
 	db.get_all_bus(function(err, businesses){
@@ -75,6 +76,8 @@ app.get('/gallery/:id', function(req, res){
 });
 
 app.post('/createbus', serverCtrl.newBus);
+
+app.post('/api/newimage', awsCtrl.postImage);
 
 app.put('/updatebus', serverCtrl.updateBus, serverCtrl.updateAddress, serverCtrl.updateHours, serverCtrl.updateSocial);
 

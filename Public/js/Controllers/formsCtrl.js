@@ -1,5 +1,6 @@
 angular.module('merofood').controller('formsCtrl', function($scope, mainService, $location){
 
+	$scope.images = [];
 	$scope.newBus = mainService.selected;
 
 	$scope.addBus = function(newBus){
