@@ -44,7 +44,7 @@
 			          <label for="city">City</label>
 			        </div>
 			        <div input-field class="col s2">
-						    <select ng-model="select.value" material-select watch ng-model="newBus.state">
+						    <select material-select watch ng-model="newBus.state">
 						      <option value="" disabled selected>State</option>
 						      <option value="AL">Alabama</option>
 									<option value="AK">Alaska</option>
@@ -162,7 +162,7 @@
 	    <!-- ABOUT TAB -->
 	    <div id="about" class="col s12">
 	    	<div input-field class="col s6">
-			    <select ng-model="select.value" material-select watch ng-model="newBus.bus_type">
+			    <select material-select watch ng-model="newBus.bus_type">
 			      <option value="" disabled selected>Type</option>
 			      <option value="Restaurant">Restaurant</option>
 						<option value="Coffee">Coffee / Cafe</option>
@@ -669,7 +669,7 @@
 			<a href="#!" class="waves-effect waves-green btn">BACK</a>
 		</div>
 		<div class="col s12 m4">
-			<a ng-click="updateBusiness(newBus)" class="waves-effect waves-green btn">SAVE & EXIT</a>
+			<a ng-click="updateBusiness(newBus)" class="waves-effect waves-green btn" ui-sref="b({ id: newBus.id })">SAVE & EXIT</a>
 		</div>
 		<div class="col s12 m4">
 			<a href="#!" class="waves-effect waves-green btn">NEXT</a>

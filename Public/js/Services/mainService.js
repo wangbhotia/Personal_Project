@@ -69,7 +69,6 @@ angular.module('merofood').service('mainService', function($http){
 	// PUT ROUTE -- UPDATE
 
 	this.updateBus = function(updatedBus){
-		console.log('mainService update: ', updatedBus);
 		return $http({
 			method: 'PUT',
 			url: baseUrl + 'updatebus',

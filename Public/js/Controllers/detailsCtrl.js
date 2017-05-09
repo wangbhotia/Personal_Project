@@ -1,8 +1,7 @@
 angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams, $location){
 	
 	var bid = parseInt($stateParams.id);
-	//var menuArray = [];
-	// console.log('detailsCtrl running.');
+	
 	// GET ALL BUSINESSES
 	$scope.getAllBus = function(){
 		mainService.getBusData().then(function(response){
@@ -12,7 +11,6 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 			for(var i = 0; i < response.length; i++){
 				if(response[i].id === bid){
 					$scope.b1 = response[i];
-					// mainService.selected = response[i];
 					// console.log($scope.b1);
 				}
 			}

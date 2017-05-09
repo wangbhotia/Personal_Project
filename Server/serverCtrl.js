@@ -133,43 +133,46 @@ module.exports = {
     });
   },
 
-  updateBus: function(req, res){
+  updateBus: function(req, res, next){
   	let toUpdateBus = [req.body.id, req.body.bus_name, req.body.bus_slogan, req.body.bus_phone, req.body.bus_email, req.body.bus_type, req.body.bus_cuisine, req.body.bus_desc, req.body.bus_happy_hours, req.body.bus_logo, req.body.bus_cover_img];
 
   	db.update_bus(toUpdateBus, function(err, updatedBus){
   		if(!err){
-  			return res.send(updatedBus);
+  			// return res.send(updatedBus);
   		} else {
   			console.log(err);
   			return res.send(err);
   		}
   	});
+  	next();
   },
 
-  updateAddress: function(req, res){
+  updateAddress: function(req, res, next){
   	let toUpdateAdd = [req.body.id, req.body.street, req.body.city, req.body.state, req.body.zip];
 
   	db.update_address(toUpdateAdd, function(err, updatedAdd){
   		if(!err){
-  			return res.send(updatedAdd);
+  			// return res.send(updatedAdd);
   		} else {
   			console.log(err);
   			return res.send(err);
   		}
   	});
+  	next();
   },
 
-  updateHours: function(req, res){
+  updateHours: function(req, res, next){
   	let toUpdateHours = [req.body.id, req.body.sunday, req.body.monday, req.body.tuesday, req.body.wednesday, req.body.thursday, req.body.friday, req.body.saturday];
 
   	db.update_hours(toUpdateHours, function(err, updatedHours){
   		if(!err){
-  			return res.send(updatedHours);
+  			// return res.send(updatedHours);
   		} else {
   			console.log(err);
   			return res.send(err);
   		}
   	});
+  	next();
   },
 
   updateSocial: function(req, res){
