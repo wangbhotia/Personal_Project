@@ -1,5 +1,7 @@
 angular.module('merofood').controller('mainCtrl', function($scope, mainService){
 
+	// console.log('mainCtrl running');
+
 	$scope.getBusiness = function(){
 		mainService.getBusData().then(function(response){
 			$scope.business = response;

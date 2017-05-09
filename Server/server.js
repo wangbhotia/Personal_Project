@@ -76,6 +76,10 @@ app.get('/gallery/:id', function(req, res){
 
 app.post('/createbus', serverCtrl.newBus);
 
+app.put('/updatebus', serverCtrl.updateBus, serverCtrl.updateAddress, serverCtrl.updateHours, serverCtrl.updateSocial);
+
+app.delete('/deletebus/:id', serverCtrl.deleteBus);
+
 
 
 app.listen(port, function(){

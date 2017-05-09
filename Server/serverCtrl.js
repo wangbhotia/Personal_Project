@@ -4,10 +4,10 @@ const app = require('./server'),
 module.exports = {
   newBus: function(req, res){
   	// console.log(req.body)
-		let busInfo = [req.body.name, req.body.slogan, req.body.phone, 
-      						req.body.email, req.body.type, req.body.cuisine,
-      						req.body.about, req.body.happyh, req.body.logo,
-      						req.body.coverimg]; //req.body.userid
+		let busInfo = [req.body.bus_name, req.body.bus_slogan, req.body.bus_phone, 
+      						req.body.bus_email, req.body.bus_type, req.body.bus_cuisine,
+      						req.body.bus_desc, req.body.bus_happy_hours, req.body.bus_logo,
+      						req.body.bus_cover_img]; //req.body.userid
     
     db.create_bus(busInfo, function(err, newbus){
     	if(!err){
@@ -24,7 +24,7 @@ module.exports = {
 					}
 				});
 
-				db.create_hours([req.body.sun, req.body.mon, req.body.tue, req.body.wed, req.body.thu, req.body.fri, req.body.sat,
+				db.create_hours([req.body.sunday, req.body.monday, req.body.tuesday, req.body.wednesday, req.body.thursday, req.body.friday, req.body.saturday,
           newbus_id], function(err, newhours){
 					if(!err){
 						console.log('on error on hours');
@@ -131,5 +131,70 @@ module.exports = {
     		return res.send(err);
     	}
     });
+  },
+
+  updateBus: function(req, res){
+  	let toUpdateBus = [req.body.id, req.body.bus_name, req.body.bus_slogan, req.body.bus_phone, req.body.bus_email, req.body.bus_type, req.body.bus_cuisine, req.body.bus_desc, req.body.bus_happy_hours, req.body.bus_logo, req.body.bus_cover_img];
+
+  	db.update_bus(toUpdateBus, function(err, updatedBus){
+  		if(!err){
+  			return res.send(updatedBus);
+  		} else {
+  			console.log(err);
+  			return res.send(err);
+  		}
+  	});
+  },
+
+  updateAddress: function(req, res){
+  	let toUpdateAdd = [req.body.id, req.body.street, req.body.city, req.body.state, req.body.zip];
+
+  	db.update_address(toUpdateAdd, function(err, updatedAdd){
+  		if(!err){
+  			return res.send(updatedAdd);
+  		} else {
+  			console.log(err);
+  			return res.send(err);
+  		}
+  	});
+  },
+
+  updateHours: function(req, res){
+  	let toUpdateHours = [req.body.id, req.body.sunday, req.body.monday, req.body.tuesday, req.body.wednesday, req.body.thursday, req.body.friday, req.body.saturday];
+
+  	db.update_hours(toUpdateHours, function(err, updatedHours){
+  		if(!err){
+  			return res.send(updatedHours);
+  		} else {
+  			console.log(err);
+  			return res.send(err);
+  		}
+  	});
+  },
+
+  updateSocial: function(req, res){
+  	let toUpdateSocial = [req.body.id, req.body.facebook, req.body.googleplus, req.body.instagram, req.body.yelp, req.body.tripadvisor, req.body.twitter];
+
+  	db.update_social(toUpdateSocial, function(err, updatedSocial){
+  		if(!err){
+  			return res.send(updatedSocial);
+  		} else {
+  			console.log(err);
+  			return res.send(err);
+  		}
+  	});
+  },
+
+  deleteBus: function(req, res){
+  	let toDelBusId = parseInt(req.params.id);
+  	db.delete_bus(toDelBusId, function(err, delbus){
+  		if(!err){
+  			return res.send(delbus);
+  		} else {
+  			console.log(err);
+  			return res.send(err);
+  		}
+  	});
   }
+
 }

@@ -2,6 +2,8 @@ angular.module('merofood').service('mainService', function($http){
 
 	var baseUrl = 'http://localhost:3000/';
 
+	this.selected = {};
+
 	// GET ROUTES
 	
 	this.getBusData = function(){
@@ -51,7 +53,7 @@ angular.module('merofood').service('mainService', function($http){
 	}
 
 
-	// POST ROUTES
+	// POST ROUTE
 
 	this.addNewBus = function(newBus){
 		return $http({
@@ -60,6 +62,20 @@ angular.module('merofood').service('mainService', function($http){
 			data: newBus
 		}).then(function(response){
 			return response;
+		});
+	}
+
+
+	// PUT ROUTE -- UPDATE
+
+	this.updateBus = function(updatedBus){
+		console.log('mainService update: ', updatedBus);
+		return $http({
+			method: 'PUT',
+			url: baseUrl + 'updatebus',
+			data: updatedBus
+		}).then(function(response){
+			return response.data;
 		});
 	}
 

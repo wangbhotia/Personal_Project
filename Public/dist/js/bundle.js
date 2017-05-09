@@ -30,7 +30,7 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 
 	var bid = parseInt($stateParams.id);
 	//var menuArray = [];
-
+	// console.log('detailsCtrl running.');
 	// GET ALL BUSINESSES
 	$scope.getAllBus = function () {
 		mainService.getBusData().then(function (response) {
@@ -40,6 +40,7 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 			for (var i = 0; i < response.length; i++) {
 				if (response[i].id === bid) {
 					$scope.b1 = response[i];
+					// mainService.selected = response[i];
 					// console.log($scope.b1);
 				}
 			}
@@ -89,6 +90,12 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 
 	$scope.getGallery();
 
+	// UPDATE ONE BUSINESS
+	$scope.editBusiness = function (b1) {
+		mainService.selected = b1;
+		$location.path('/new-bus');
+	};
+
 	// DELETE ONE BUSINESS
 	$scope.deleteBusiness = function (id) {
 		console.log(id);
@@ -100,7 +107,11 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 });
 'use strict';
 
-angular.module('merofood').controller('formsCtrl', function ($scope, mainService) {
+angular.module('merofood').controller('formsCtrl', function ($scope, mainService, $location) {
+
+	// console.log(mainService.selected);
+
+	$scope.newBus = mainService.selected;
 
 	$scope.addBus = function (newBus) {
 		console.log('addBus fn fired!!!');
@@ -110,10 +121,22 @@ angular.module('merofood').controller('formsCtrl', function ($scope, mainService
 			$scope.business = response;
 		});
 	};
+
+	// UPDATE BUSINESS
+
+	$scope.updateBusiness = function (update) {
+		console.log('update: ', update);
+		mainService.updateBus(update).then(function (response) {
+			console.log('update res: ', response);
+			// $location.path('/');
+		});
+	};
 });
 'use strict';
 
 angular.module('merofood').controller('mainCtrl', function ($scope, mainService) {
+
+	// console.log('mainCtrl running');
 
 	$scope.getBusiness = function () {
 		mainService.getBusData().then(function (response) {
@@ -190,6 +213,8 @@ angular.module('merofood').service('mainService', function ($http) {
 
 	var baseUrl = 'http://localhost:3000/';
 
+	this.selected = {};
+
 	// GET ROUTES
 
 	this.getBusData = function () {
@@ -237,7 +262,7 @@ angular.module('merofood').service('mainService', function ($http) {
 		});
 	};
 
-	// POST ROUTES
+	// POST ROUTE
 
 	this.addNewBus = function (newBus) {
 		return $http({
@@ -246,6 +271,19 @@ angular.module('merofood').service('mainService', function ($http) {
 			data: newBus
 		}).then(function (response) {
 			return response;
+		});
+	};
+
+	// PUT ROUTE -- UPDATE
+
+	this.updateBus = function (updatedBus) {
+		console.log('mainService update: ', updatedBus);
+		return $http({
+			method: 'PUT',
+			url: baseUrl + 'updatebus',
+			data: updatedBus
+		}).then(function (response) {
+			return response.data;
 		});
 	};
 

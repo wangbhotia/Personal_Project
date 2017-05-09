@@ -28,11 +28,11 @@
 			    <form class="col s12">
 			      <div class="row">
 			        <div class="input-field col s6">
-			          <input id="bus_name" type="text" class="validate" ng-model="newBus.name">
+			          <input id="bus_name" type="text" class="validate" ng-model="newBus.bus_name">
 			          <label for="bus_name">Business Name</label>
 			        </div>
 			        <div class="input-field col s6">
-			          <input id="bus_slogan" type="text" class="validate" ng-model="newBus.slogan">
+			          <input id="bus_slogan" type="text" class="validate" ng-model="newBus.bus_slogan">
 			          <label for="bus_slogan">Business Slogan</label>
 			        </div>
 			        <div class="input-field col s4">
@@ -117,17 +117,17 @@
 							        <input type="file">
 							      </div>
 							      <div class="file-path-wrapper">
-							        <input class="file-path validate" type="text" placeholder="Business logo (.png is better)" ng-model="newBus.logo">
+							        <input class="file-path validate" type="text" placeholder="Business logo (.png is better)" ng-model="newBus.bus_logo">
 							      </div>
 							    </div>
 							  </form>
 	        		</div>
 			        <div class="input-field col s4">
-			          <input id="phone" type="tel" class="validate" ng-model="newBus.phone">
+			          <input id="phone" type="tel" class="validate" ng-model="newBus.bus_phone">
 			          <label for="phone">Phone</label>
 			        </div>
 			        <div class="input-field col s4">
-			          <input id="email" type="email" class="validate" ng-model="newBus.email">
+			          <input id="email" type="email" class="validate" ng-model="newBus.bus_email">
 			          <label for="email">Email</label>
 			        </div>
 			        <div class="input-field col s6">
@@ -162,7 +162,7 @@
 	    <!-- ABOUT TAB -->
 	    <div id="about" class="col s12">
 	    	<div input-field class="col s6">
-			    <select ng-model="select.value" material-select watch ng-model="newBus.type">
+			    <select ng-model="select.value" material-select watch ng-model="newBus.bus_type">
 			      <option value="" disabled selected>Type</option>
 			      <option value="Restaurant">Restaurant</option>
 						<option value="Coffee">Coffee / Cafe</option>
@@ -173,15 +173,15 @@
 					</select>
 				</div>
 				<div class="input-field col s6">
-          <input id="cuisine" type="text" class="validate" ng-model="newBus.cuisine">
+          <input id="cuisine" type="text" class="validate" ng-model="newBus.bus_cuisine">
           <label for="cuisine">Cuisine</label>
         </div>
         <div class="input-field col s12">
-          <input id="cuisine" type="text" class="validate" ng-model="newBus.about">
+          <input id="cuisine" type="text" class="validate" ng-model="newBus.bus_desc">
           <label for="about">Write a brief paragraph about your business.</label>
         </div>
         <div class="input-field col s12">
-          <input id="cuisine" type="text" class="validate" ng-model="newBus.happyh">
+          <input id="cuisine" type="text" class="validate" ng-model="newBus.bus_happy_hours">
           <label for="happyhours">Brief paragraph about Happy Hours or any Special Instructions.</label>
         </div>
 
@@ -520,49 +520,49 @@
 	    		<h5>Sunday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate" ng-model="newBus.sun">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.sunday">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Monday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate" ng-model="newBus.mon">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.monday">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Tuesday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate" ng-model="newBus.tue">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.tuesday">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Wednesday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate" ng-model="newBus.wed">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.wednesday">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Thursday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate" ng-model="newBus.thu">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.thursday">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Friday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate" ng-model="newBus.fri">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.friday">
 	        <label for="hours">Hours</label>
 	      </div>
 	      <div class="week col s5">
 	    		<h5>Saturday</h5>
 	    	</div>
 	    	<div class="input-field col s7">
-	        <input id="hours" type="text" class="validate" ng-model="newBus.sat">
+	        <input id="hours" type="text" class="validate" ng-model="newBus.saturday">
 	        <label for="hours">Hours</label>
 	      </div>
 	    </div>
@@ -578,7 +578,7 @@
 				        <input type="file">
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text" placeholder="Cover image here." ng-model="newBus.coverimg">
+				        <input class="file-path validate" type="text" placeholder="Cover image here." ng-model="newBus.bus_cover_img">
 				      </div>
 				    </div>
 				  </form>
@@ -669,7 +669,7 @@
 			<a href="#!" class="waves-effect waves-green btn">BACK</a>
 		</div>
 		<div class="col s12 m4">
-			<a href="#!" class="waves-effect waves-green btn">SAVE & EXIT</a>
+			<a ng-click="updateBusiness(newBus)" class="waves-effect waves-green btn">SAVE & EXIT</a>
 		</div>
 		<div class="col s12 m4">
 			<a href="#!" class="waves-effect waves-green btn">NEXT</a>
