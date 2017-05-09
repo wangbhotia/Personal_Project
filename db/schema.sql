@@ -347,7 +347,7 @@ CREATE TABLE social (
   instagram text,
   yelp text,
   tripadvisor text,
-  pinterest text,
+  -- pinterest text,
   twitter text,
   bus_id integer references business(id)
 )
@@ -371,7 +371,6 @@ social = [
           req.body.instagram,
           req.body.yelp,
           req.body.tripadvisor,
-          req.body.pinterest,
           req.body.twitter,
           req.body.busid
         ]
