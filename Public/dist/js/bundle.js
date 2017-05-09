@@ -26,7 +26,7 @@ angular.module('merofood', ['ui.router', 'ui.materialize']).config(function ($st
 });
 'use strict';
 
-angular.module('merofood').controller('detailsCtrl', function ($scope, mainService, $stateParams) {
+angular.module('merofood').controller('detailsCtrl', function ($scope, mainService, $stateParams, $location) {
 
 	var bid = parseInt($stateParams.id);
 	//var menuArray = [];
@@ -88,6 +88,15 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 	};
 
 	$scope.getGallery();
+
+	// DELETE ONE BUSINESS
+	$scope.deleteBusiness = function (id) {
+		console.log(id);
+		mainService.deleteBus(id).then(function (response) {
+			alert('Business Successfully Deleted!!');
+			$location.path('/');
+		});
+	};
 });
 'use strict';
 
@@ -235,6 +244,17 @@ angular.module('merofood').service('mainService', function ($http) {
 			method: 'POST',
 			url: baseUrl + 'createbus',
 			data: newBus
+		}).then(function (response) {
+			return response;
+		});
+	};
+
+	// DELETE ROUTE
+
+	this.deleteBus = function (id) {
+		return $http({
+			method: 'DELETE',
+			url: baseUrl + 'deletebus/' + id
 		}).then(function (response) {
 			return response;
 		});

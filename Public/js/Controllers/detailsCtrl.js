@@ -1,4 +1,4 @@
-angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams){
+angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams, $location){
 	
 	var bid = parseInt($stateParams.id);
 	//var menuArray = [];
@@ -63,6 +63,16 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 	}
 
 	$scope.getGallery();
+
+
+	// DELETE ONE BUSINESS
+	$scope.deleteBusiness = function(id){
+		console.log(id);
+		mainService.deleteBus(id).then(function(response){
+			alert('Business Successfully Deleted!!');
+			$location.path('/');
+		});
+	}
 
 
 

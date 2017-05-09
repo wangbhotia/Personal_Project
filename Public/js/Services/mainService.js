@@ -63,4 +63,16 @@ angular.module('merofood').service('mainService', function($http){
 		});
 	}
 
+
+	// DELETE ROUTE
+
+	this.deleteBus = function(id){
+		return $http({
+			method: 'DELETE',
+			url: baseUrl + 'deletebus/' + id,
+		}).then(function(response){
+			return response;
+		});
+	}
+
 });
