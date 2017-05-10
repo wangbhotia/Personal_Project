@@ -104,24 +104,20 @@
 			          <label for="zip">Zip</label>
 			        </div>
 
-			        <!-- Amazon S3 TEST -->
-			        <!-- <div class="col s12">
-			        	<input type="file" >
-			        </div> -->
-
 			        <div class="col s4">
 							  <form action="#">
 							    <div class="file-field input-field">
 							      <div class="btn">
 							        <span>File</span>
-							        <input type="file" images="images" accept="image/*" fileread >
+							        <input type="file" images="images" accept="image/*" fileread ng-model="newBus.bus_logo">
 							      </div>
 							      <div class="file-path-wrapper">
-							        <input class="file-path validate" type="text" placeholder="Business logo (.png is better)" ng-model="newBus.bus_logo" ng-init="newBus.bus_logo=images">
+							        <input class="file-path validate" placeholder="Business logo (.png)">
 							      </div>
 							    </div>
 							  </form>
 	        		</div>
+	        		
 			        <div class="input-field col s4">
 			          <input id="phone" type="tel" class="validate" ng-model="newBus.bus_phone">
 			          <label for="phone">Phone</label>
@@ -189,17 +185,17 @@
 	    	<div class="special-item-1">
 	    		<div class="input-field col s3">
           	<input id="cuisine" type="text" class="validate" ng-model="newBus.spname1">
-          	<label for="spname1">Item Name</label>
+          	<label for="spname1">SPECIAL Item</label>
         	</div>
 		    	<div class="col s3">
 					  <form action="#">
 					    <div class="file-field input-field">
 					      <div class="btn">
 					        <span>File</span>
-					        <input type="file">
+					        <input type="file" images="images" accept="image/*" fileread ng-model="newBus.spimg1">
 					      </div>
 					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text" placeholder="Upload photo here" ng-model="newBus.spimg1">
+					        <input class="file-path validate" type="text" placeholder="Upload photo here">
 					      </div>
 					    </div>
 					  </form>
@@ -215,17 +211,17 @@
 				<div class="special-item-2">
 					<div class="input-field col s3">
           	<input id="cuisine" type="text" class="validate" ng-model="newBus.spname2">
-          	<label for="spname2">Item Name</label>
+          	<label for="spname2">SPECIAL Item</label>
         	</div>
 		    	<div class="col s3">
 					  <form action="#">
 					    <div class="file-field input-field">
 					      <div class="btn">
 					        <span>File</span>
-					        <input type="file">
+					        <input type="file" images="images" accept="image/*" fileread ng-model="newBus.spimg2">
 					      </div>
 					      <div class="file-path-wrapper">
-					        <input class="file-path validate" type="text" placeholder="Upload photo here" ng-model="newBus.spimg2">
+					        <input class="file-path validate" type="text" placeholder="Upload photo here">
 					      </div>
 					    </div>
 					  </form>
@@ -575,38 +571,38 @@
 				    <div class="file-field input-field">
 				      <div class="btn">
 				        <span>File</span>
-				        <input type="file">
+				        <input type="file" images="images" accept="image/*" fileread ng-model="newBus.bus_cover_img">
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text" placeholder="Cover image here." ng-model="newBus.bus_cover_img">
+				        <input class="file-path validate" type="text" placeholder="Cover image here.">
 				      </div>
 				    </div>
 				  </form>
     		</div>
     		<div class="col s4">
-    			<h5>Special Item Image 1</h5>
+    			<h5>Special Item Background 1</h5>
 				  <form action="#">
 				    <div class="file-field input-field">
 				      <div class="btn">
 				        <span>File</span>
-				        <input type="file">
+				        <input type="file" images="images" accept="image/*" fileread ng-model="newBus.spbg1">
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text" placeholder="Parallax background" ng-model="newBus.spbg1">
+				        <input class="file-path validate" type="text" placeholder="Parallax background" >
 				      </div>
 				    </div>
 				  </form>
     		</div>
     		<div class="col s4">
-    			<h5>Special Item Image 2</h5>
+    			<h5>Special Item Background 2</h5>
 				  <form action="#">
 				    <div class="file-field input-field">
 				      <div class="btn">
 				        <span>File</span>
-				        <input type="file">
+				        <input type="file" images="images" accept="image/*" fileread ng-model="newBus.spbg2">
 				      </div>
 				      <div class="file-path-wrapper">
-				        <input class="file-path validate" type="text" placeholder="Parallax background" ng-model="newBus.spbg2">
+				        <input class="file-path validate" type="text" placeholder="Parallax background" >
 				      </div>
 				    </div>
 				  </form>

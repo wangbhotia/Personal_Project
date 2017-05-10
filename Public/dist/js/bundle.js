@@ -109,11 +109,19 @@ angular.module('merofood').controller('formsCtrl', function ($scope, mainService
 
 	$scope.images = [];
 	$scope.newBus = mainService.selected;
-	console.log($scope.images);
+	// console.log($scope.images);
 	$scope.addBus = function (newBus) {
 		// console.log('addBus fn fired!!!');
+		newBus.bus_logo = $scope.images[0];
+		newBus.spimg1 = $scope.images[1];
+		newBus.spimg2 = $scope.images[2];
+		newBus.bus_cover_img = $scope.images[3];
+		newBus.spbg1 = $scope.images[4];
+		newBus.spbg2 = $scope.images[5];
+
 		console.log(newBus);
-		mainService.addNewBus(newBus).then(function (respose) {
+
+		mainService.addNewBus(newBus).then(function (response) {
 			// console.log(respose);
 			$scope.business = response;
 		});
@@ -123,6 +131,7 @@ angular.module('merofood').controller('formsCtrl', function ($scope, mainService
 
 	$scope.updateBusiness = function (update) {
 		mainService.updateBus(update).then(function (response) {
+			$scope.resFromDb = response;
 			// console.log('update res: ', response);
 			// $location.path('/');
 		});
@@ -168,11 +177,11 @@ angular.module('merofood').directive('fileread', function (imageService) {
 
           // console.log('elem: ', elem);
           var tempArray = elem[0].value.split('\\');
-          // console.log('tempArray: ', tempArray);
           var fileName = tempArray[tempArray.length - 1];
 
           imageService.storeImage(fileread, fileName).then(function (result) {
-            scope.images.unshift(result.data);
+            console.log(result.data.Location);
+            scope.images.push(result.data.Location);
             // console.log('fileread: ', scope.images);
           }).catch(function (err) {
             console.error(err);
