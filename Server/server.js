@@ -77,7 +77,7 @@ app.get('/gallery/:id', function(req, res){
 
 app.post('/createbus', serverCtrl.newBus);
 
-app.post('/api/newimage', awsCtrl.postImage);
+app.post('/newimage', awsCtrl.saveImage);
 
 app.put('/updatebus', serverCtrl.updateBus, serverCtrl.updateAddress, serverCtrl.updateHours, serverCtrl.updateSocial);
 

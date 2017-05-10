@@ -105,19 +105,19 @@
 			        </div>
 
 			        <!-- Amazon S3 TEST -->
-			        <div class="col s12">
-			        	<input type="file" images="images" accept="image/*" fileread>
-			        </div>
+			        <!-- <div class="col s12">
+			        	<input type="file" >
+			        </div> -->
 
 			        <div class="col s4">
 							  <form action="#">
 							    <div class="file-field input-field">
 							      <div class="btn">
 							        <span>File</span>
-							        <input type="file">
+							        <input type="file" images="images" accept="image/*" fileread >
 							      </div>
 							      <div class="file-path-wrapper">
-							        <input class="file-path validate" type="text" placeholder="Business logo (.png is better)" ng-model="newBus.bus_logo">
+							        <input class="file-path validate" type="text" placeholder="Business logo (.png is better)" ng-model="newBus.bus_logo" ng-init="newBus.bus_logo=images">
 							      </div>
 							    </div>
 							  </form>

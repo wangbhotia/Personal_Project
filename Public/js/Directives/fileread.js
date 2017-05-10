@@ -1,4 +1,4 @@
-angular.module('merofood').directive('fileread', function (imagesService) {
+angular.module('merofood').directive('fileread', function (imageService) {
   return {
     restrict: 'A',
     link: function (scope, elem, attrs) {
@@ -6,16 +6,19 @@ angular.module('merofood').directive('fileread', function (imagesService) {
         var reader = new FileReader();
 
         reader.onloadend = function (loadEvent) {
-          debugger;
+          // debugger;
           var fileread = loadEvent.target.result;
-          console.warn(fileread);
+          // console.warn(fileread);
 
-          var tempArray = elem['context'].value.split('\\');
+          // console.log('elem: ', elem);
+          var tempArray = elem[0].value.split('\\');
+          // console.log('tempArray: ', tempArray);
           var fileName = tempArray[tempArray.length - 1];
 
-          imagesService.storeImage(fileread, fileName)
+          imageService.storeImage(fileread, fileName)
           .then(function (result) {
             scope.images.unshift(result.data);
+            // console.log('fileread: ', scope.images);
           })
           .catch(function (err) {
             console.error(err);
@@ -27,7 +30,4 @@ angular.module('merofood').directive('fileread', function (imagesService) {
     }
   }
 });
-
-// .controller('MainController', function ($scope) {
-//   $scope.images = [];
-// });
+  

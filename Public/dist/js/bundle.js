@@ -109,10 +109,10 @@ angular.module('merofood').controller('formsCtrl', function ($scope, mainService
 
 	$scope.images = [];
 	$scope.newBus = mainService.selected;
-
+	console.log($scope.images);
 	$scope.addBus = function (newBus) {
 		// console.log('addBus fn fired!!!');
-		// console.log(newBus);
+		console.log(newBus);
 		mainService.addNewBus(newBus).then(function (respose) {
 			// console.log(respose);
 			$scope.business = response;
@@ -154,7 +154,7 @@ angular.module('merofood').controller('mainCtrl', function ($scope, mainService)
 });
 'use strict';
 
-angular.module('merofood').directive('fileread', function (imagesService) {
+angular.module('merofood').directive('fileread', function (imageService) {
   return {
     restrict: 'A',
     link: function link(scope, elem, attrs) {
@@ -162,15 +162,18 @@ angular.module('merofood').directive('fileread', function (imagesService) {
         var reader = new FileReader();
 
         reader.onloadend = function (loadEvent) {
-          debugger;
+          // debugger;
           var fileread = loadEvent.target.result;
-          console.warn(fileread);
+          // console.warn(fileread);
 
-          var tempArray = elem['context'].value.split('\\');
+          // console.log('elem: ', elem);
+          var tempArray = elem[0].value.split('\\');
+          // console.log('tempArray: ', tempArray);
           var fileName = tempArray[tempArray.length - 1];
 
-          imagesService.storeImage(fileread, fileName).then(function (result) {
+          imageService.storeImage(fileread, fileName).then(function (result) {
             scope.images.unshift(result.data);
+            // console.log('fileread: ', scope.images);
           }).catch(function (err) {
             console.error(err);
           });
@@ -181,10 +184,6 @@ angular.module('merofood').directive('fileread', function (imagesService) {
     }
   };
 });
-
-// .controller('MainController', function ($scope) {
-//   $scope.images = [];
-// });
 'use strict';
 
 angular.module('merofood').directive('footerDir', function () {
@@ -216,6 +215,28 @@ angular.module('merofood').directive('scrollSpy', function () {
 			});
 		}
 	};
+});
+'use strict';
+
+angular.module('merofood').factory('imageService', function ($http) {
+  // AMAZON S3
+
+  var service = {};
+
+  service.storeImage = function (imageData, fileName) {
+    var imageExtension = imageData.split(';')[0].split('/');
+    imageExtension = imageExtension[imageExtension.length - 1];
+
+    var newImage = {
+      imageName: fileName,
+      imageBody: imageData,
+      imageExtension: imageExtension,
+      userEmail: 'wangbhotia@gamil.com'
+    };
+
+    return $http.post('/newimage', newImage);
+  };
+  return service;
 });
 'use strict';
 
@@ -306,25 +327,5 @@ angular.module('merofood').service('mainService', function ($http) {
 			return response;
 		});
 	};
-
-	// AMAZON S3
-
-	this.service = {};
-
-	service.storeImage = function (imageData, fileName) {
-		var imageExtension = imageData.split(';')[0].split('/');
-		imageExtension = imageExtension[imageExtension.length - 1];
-
-		var newImage = {
-			imageName: fileName,
-			imageBody: imageData,
-			imageExtension: imageExtension,
-			userEmail: 'wangbhotia@gamil.com'
-		};
-
-		return $http.post('/api/newimage', newImage);
-	};
-
-	return imageService;
 });
 //# sourceMappingURL=bundle.js.map
