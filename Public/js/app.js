@@ -1,4 +1,4 @@
-angular.module('merofood', ['ui.router', 'ui.materialize'])
+angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow'])
 	.config(function($stateProvider, $urlRouterProvider){
 
 		$stateProvider

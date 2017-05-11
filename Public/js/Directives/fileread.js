@@ -16,7 +16,7 @@ angular.module('merofood').directive('fileread', function (imageService) {
 
           imageService.storeImage(fileread, fileName)
           .then(function (result) {
-            console.log(result.data.Location);
+            // console.log(result.data.Location);
             scope.images.push(result.data.Location);
             // console.log('fileread: ', scope.images);
           })

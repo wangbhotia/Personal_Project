@@ -229,16 +229,47 @@
 	<hr>
 	<div class="row center">
 		<h5 class="header">Options</h5>
-		<div class="col s12 m6">
+		<div class="col s12 m4">
+			<a data-target="feature" modal class="waves-effect waves-light btn">FEATURE</a>
+		</div>
+		<div class="col s12 m4">
 			<a ng-click="editBusiness(b1)" class="waves-effect waves-light btn">EDIT</a>
 		</div>
-		<div class="col s12 m6">
+		<div class="col s12 m4">
 			<a data-target="delete" modal class="waves-effect waves-light btn red">DELETE</a>
 		</div>
 	</div>
 </div>
 
-	<!-- SIGN IN -->
+	<!-- FEATURE -->
+	<div id="feature" class="modal feature-modal">
+		<div class="modal-content">
+	    <h4 class="header center">FEATURE THIS BUSINESS</h4>
+	    <br>
+	    <div class="center row">	
+    		<h5><strong>{{b1.bus_name}}</strong></h5>
+    		<br>
+    		<h5>Currently Featured: <strong>{{b1.featured}}</strong></h5>
+    		<div input-field class="col m4 offset-m4">
+			    <select material-select watch ng-model="featBus.featured">
+			      <option value="" disabled selected>Update: Yes / No</option>
+			      <option value="yes">yes</option>
+						<option value="no">no</option>
+					</select>
+				</div>
+	  	</div>    
+	  </div>
+	  <div class="row center">
+	  	<div class="col s6 m6">
+	  		<a class="modal-action modal-close waves-effect waves-light btn-large">Cancel</a>
+	  	</div>
+	    <div class="col s6 m6" ng-model="featBus.id" ng-init="featBus.id='b1.id'">
+	    	<a ng-click="featureBus(featBus)" class="modal-action modal-close waves-effect waves-light btn-large">Submit</a>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- DELETE -->
 	<div id="delete" class="modal delete-modal">
 		<div class="modal-content">
 	    <h4 class="header center">DELETE</h4>

@@ -71,6 +71,14 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 	}
 
 
+	// UPDATE FEATURED BUSINESS
+	$scope.featureBus = function(featBus){
+		// featBus.id = bid;
+		console.log(featBus);
+		// $location.path('/new-bus');
+	}
+
+
 	// DELETE ONE BUSINESS
 	$scope.deleteBusiness = function(id){
 		console.log(id);
