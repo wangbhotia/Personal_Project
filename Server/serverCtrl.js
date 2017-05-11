@@ -2,6 +2,62 @@ const app = require('./server'),
 			db = app.get('db');
 
 module.exports = {
+  getAllBus: function(req, res){
+    db.get_all_bus(function(err, businesses){
+      if(!err){
+        // console.log(businesses);
+        return res.send(businesses);
+      } else {
+        // console.log(err)
+        return res.send(err);
+      }
+    });
+  },
+
+  getSpecial: function(req, res){
+    let sId = parseInt(req.params.id);
+    db.get_special(sId, function(err, special){
+      if(!err){
+        res.send(special);
+      } else {
+        res.send(err)
+      }
+    });
+  },
+
+  getMenu: function(req, res){
+    let mId = parseInt(req.params.id);
+    db.get_menu(mId, function(err, menu){
+      if(!err){
+        res.send(menu);
+      } else {
+        res.send(err)
+      }
+    });
+  },
+
+  getMenuItems: function(req, res){
+    let miId = parseInt(req.params.id);
+    db.get_menu_items(miId, function(err, menuitems){
+      if(!err){
+        res.send(menuitems);
+      } else {
+        res.send(err)
+      }
+    });
+  },
+
+  getGallery: function(req, res){
+    let gId = parseInt(req.params.id);
+    db.get_gallery(gId, function(err, gallery){
+      if(!err){
+        res.send(gallery);
+      } else {
+        res.send(err)
+      }
+    });
+  },
+
   newBus: function(req, res){
   	// console.log(req.body)
 		let busInfo = [req.body.bus_name, req.body.bus_slogan, req.body.bus_phone, 

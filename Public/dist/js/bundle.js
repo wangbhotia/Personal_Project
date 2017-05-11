@@ -361,8 +361,6 @@ angular.module('merofood').controller('formsCtrl', function ($scope, mainService
 
 angular.module('merofood').controller('mainCtrl', function ($scope, mainService) {
 
-	// console.log('mainCtrl running');
-
 	$scope.cardflowSnapPage = {};
 
 	$scope.featured = [];
@@ -375,8 +373,7 @@ angular.module('merofood').controller('mainCtrl', function ($scope, mainService)
 
 	$scope.getBusiness = function () {
 		mainService.getBusData().then(function (response) {
-			// $scope.business = response;
-			// console.log($scope.business);
+			// console.log(response);
 			$scope.cards = response.length;
 			// console.log($scope.cards)
 
@@ -410,15 +407,30 @@ angular.module('merofood').controller('mainCtrl', function ($scope, mainService)
 	};
 
 	$scope.getBusiness();
+});
+'use strict';
 
-	// $scope.getSpecial = function(){
-	// 	mainService.getSpecialData().then(function(response){
-	// 		$scope.special = response;
-	// 		// console.log($scope.special);
-	// 	});
-	// }
+angular.module('merofood').controller('userCtrl', function ($scope, userService, $state) {
 
-	// $scope.getSpecial();
+  function getUser() {
+    userService.getUser().then(function (user) {
+      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+    });
+  }
+
+  getUser();
+
+  $scope.loginLocal = function (username, password) {
+    console.log('Logging in with', username, password);
+    userService.loginLocal({
+      username: username,
+      password: password
+    }).then(function (res) {
+      getUser();
+    });
+  };
+
+  $scope.logout = userService.logout;
 });
 'use strict';
 
@@ -595,5 +607,43 @@ angular.module('merofood').service('mainService', function ($http) {
 			return response;
 		});
 	};
+});
+'use strict';
+
+angular.module('merofood').service('userService', function ($http) {
+
+  this.loginLocal = function (credentials) {
+    return $http({
+      method: "POST",
+      url: '/auth/local',
+      data: credentials
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log('ERROR LOGGING IN!', err);
+    });
+  };
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
 });
 //# sourceMappingURL=bundle.js.map

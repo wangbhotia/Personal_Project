@@ -1,13 +1,27 @@
 const express = require('express'),
-		bodyParser = require('body-parser'),
-		cors = require('cors'),
-		massive = require('massive');
+			bodyParser = require('body-parser'),
+			cors = require('cors'),
+			massive = require('massive'),
+			config = require('./config.js'),
+			session = require('express-session'),
+			passport = require('passport'),
+			Auth0Strategy = require('passport-auth0');
 
 const port = 3000;
 const app = module.exports = express();
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+app.use(session({
+	resave: true,
+	saveUninitialized: true,
+	secret: config.secret
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(__dirname + './../public'));
 
 const conn = massive.connectSync({
@@ -16,64 +30,84 @@ const conn = massive.connectSync({
 
 app.set('db', conn);
 const db = app.get('db');
+
 const serverCtrl = require('./serverCtrl');
 const awsCtrl = require('./awsCtrl');
+// const authCtrl = require('./authCtrl');
 
-app.get('/businesses', function(req, res){
-	db.get_all_bus(function(err, businesses){
-		if(!err){
-			// console.log(businesses);
-			res.send(businesses);
-		} else {
-			// console.log(err)
-			res.send(err);
-		}
-	});
+
+passport.use(new Auth0Strategy({
+	domain:       config.auth0.domain,
+	clientID:     config.auth0.clientID,
+	clientSecret: config.auth0.clientSecret,
+	callbackURL:  '/auth/callback'
+},
+  function(accessToken, refreshToken, extraParams, profile, done){
+    //Find user in database
+    console.log(profile)
+    db.get_user([profile.id], function(err, user){
+      user = user[0];
+      if (!user) { //if there isn't one, we'll create one!
+        console.log('CREATING USER');
+        db.create_user([profile.name.givenName, profile.name.familyName, profile._json.email, profile.id], function(err, user) {
+          console.log('USER CREATED', user);
+          return done(err, user[0]); // GOES TO SERIALIZE USER
+        })
+      } else { //when we find the user, return it
+        console.log('FOUND USER', user);
+        return done(err, user);
+      }
+    })
+  }
+));
+
+//THIS IS INVOKED ONE TIME TO SET THINGS UP
+passport.serializeUser(function(userA, done) {
+  console.log('serializing', userA);
+  var userB = userA;
+  //Things you might do here :
+   //Serialize just the id, get other information to add to session, 
+  done(null, userB); //PUTS 'USER' ON THE SESSION
 });
 
-app.get('/special/:id', function(req, res){
-	let sId = parseInt(req.params.id);
-	db.get_special(sId, function(err, special){
-		if(!err){
-			res.send(special);
-		} else {
-			res.send(err)
-		}
-	});
+//USER COMES FROM SESSION - THIS IS INVOKED FOR EVERY ENDPOINT
+passport.deserializeUser(function(userB, done) {
+  var userC = userB;
+  //Things you might do here :
+    // Query the database with the user id, get other information to put on req.user
+  done(null, userC); //PUTS 'USER' ON REQ.USER
 });
 
-app.get('/menu/:id', function(req, res){
-	let mId = parseInt(req.params.id);
-	db.get_menu(mId, function(err, menu){
-		if(!err){
-			res.send(menu);
-		} else {
-			res.send(err)
-		}
-	});
+
+app.get('/auth', passport.authenticate('auth0'));
+
+app.get('/auth/callback',
+  passport.authenticate('auth0', {successRedirect: '/'}), function(req, res) {
+    res.status(200).send(req.user);
 });
 
-app.get('/menuitems/:id', function(req, res){
-	let miId = parseInt(req.params.id);
-	db.get_menu_items(miId, function(err, menuitems){
-		if(!err){
-			res.send(menuitems);
-		} else {
-			res.send(err)
-		}
-	});
+app.get('/auth/me', function(req, res) {
+  if (!req.user) return res.sendStatus(404);
+  //THIS IS WHATEVER VALUE WE GOT FROM userC variable above.
+  res.status(200).send(req.user);
 });
 
-app.get('/gallery/:id', function(req, res){
-	let gId = parseInt(req.params.id);
-	db.get_gallery(gId, function(err, gallery){
-		if(!err){
-			res.send(gallery);
-		} else {
-			res.send(err)
-		}
-	});
+app.get('/auth/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
 });
+
+
+
+app.get('/businesses', serverCtrl.getAllBus);
+
+app.get('/special/:id', serverCtrl.getSpecial);
+
+app.get('/menu/:id', serverCtrl.getMenu);
+
+app.get('/menuitems/:id', serverCtrl.getMenuItems);
+
+app.get('/gallery/:id', serverCtrl.getGallery);
 
 app.post('/createbus', serverCtrl.newBus);
 
@@ -82,7 +116,6 @@ app.post('/newimage', awsCtrl.saveImage);
 app.put('/updatebus', serverCtrl.updateBus, serverCtrl.updateAddress, serverCtrl.updateHours, serverCtrl.updateSocial);
 
 app.delete('/deletebus/:id', serverCtrl.deleteBus);
-
 
 
 app.listen(port, function(){

@@ -447,3 +447,8 @@ set menuid = 3 where menuitems_id = 15
 
 delete from products
 where id = $1
+
+
+
+ALTER TABLE table_name
+  ADD column_name column-definition;
