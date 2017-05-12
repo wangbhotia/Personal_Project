@@ -1,0 +1,14 @@
+
+.listall .bustypes {
+	max-height: 200px;
+}
+
+.listall .bustypes img {
+	max-height: 200px;
+	max-width: 200px;
+	overflow: hidden;
+}
+
+.listall .view-btn {
+	padding-right: 10px;
+}

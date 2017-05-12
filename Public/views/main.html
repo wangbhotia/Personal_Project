@@ -25,7 +25,9 @@
 
 	<!-- FEATURED SECTION -->
 <div class="container bus-cards-container">
-	<blockquote><h5 class="featured">Featured</h5></blockquote>
+	<blockquote class="row">
+		<h5 class="featured">Featured | <a ui-sref="all({type: 'Featured'})"><small class="black-text">See All</small></a></h5>
+	</blockquote>
 
 	<button 
   ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
@@ -69,7 +71,7 @@
 <div class="container cover-restaurants"></div>
 
 <div class="container bus-cards-container">
-	<blockquote><h5 class="featured">Restaurants</h5></blockquote>
+	<blockquote><h5 class="featured">Restaurants | <a ui-sref="all({type: 'Restaurants'})"><small class="black-text">See All</small></a></h5></blockquote>
 
 	<div class="bus-cards row">
 
@@ -107,7 +109,7 @@
 <div class="container cover-coffee"></div>
 
 <div class="container bus-cards-container">
-	<blockquote><h5 class="featured">Coffee / Cafe</h5></blockquote>
+	<blockquote><h5 class="featured">Coffee / Cafe | <a ui-sref="all({type: 'Coffee-Cafe'})"><small class="black-text">See All</small></a></h5></blockquote>
 	<div class="bus-cards row">
 		
 		<div ng-repeat="cc in coffeeCafe">
@@ -144,7 +146,7 @@
 <div class="container cover-bars"></div>
 
 <div class="container bus-cards-container">
-	<blockquote><h5 class="featured">Bars</h5></blockquote>
+	<blockquote><h5 class="featured">Bars | <a ui-sref="all({type: 'Bars'})"><small class="black-text">See All</small></a></h5></blockquote>
 	<div class="bus-cards row">
 
 		<div ng-repeat="bar in bars">
@@ -181,7 +183,7 @@
 <div class="container cover-bakery"></div>
 
 <div class="container bus-cards-container">
-	<blockquote><h5 class="featured">Bakery</h5></blockquote>
+	<blockquote><h5 class="featured">Bakery | <a ui-sref="all({type: 'Bakery'})"><small class="black-text">See All</small></a></h5></blockquote>
 	<div class="bus-cards row">
 		
 		<div ng-repeat="bake in bakeries">
@@ -239,7 +241,7 @@
 <div class="container cover-dessert"></div>
 
 <div class="container bus-cards-container">
-	<blockquote><h5 class="featured">Dessert</h5></blockquote>
+	<blockquote><h5 class="featured">Dessert | <a ui-sref="all({type: 'Dessert'})"><small class="black-text">See All</small></a></h5></blockquote>
 	<div class="bus-cards row">
 
 		<div ng-repeat="dess in desserts">
@@ -297,7 +299,7 @@
 <div class="container cover-foodtrucks"></div>
 
 <div class="container bus-cards-container">
-	<blockquote><h5 class="featured">Food Trucks / Take Outs</h5></blockquote>
+	<blockquote><h5 class="featured">Food Trucks / Take Outs | <a ui-sref="all({type: 'Food-Trucks-Take-Outs'})"><small class="black-text">See All</small></a></h5></blockquote>
 	<div class="bus-cards row">
 
 	  <div ng-repeat="takeout in takeouts">

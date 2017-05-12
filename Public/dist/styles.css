@@ -200,6 +200,17 @@ nav .brand-logo {
   max-width: 600px; }
 
 
+.listall .bustypes {
+  max-height: 200px; }
+
+.listall .bustypes img {
+  max-height: 200px;
+  max-width: 200px;
+  overflow: hidden; }
+
+.listall .view-btn {
+  padding-right: 10px; }
+
 .cover-container {
   height: 60vh;
   /*background: url('https://images.unsplash.com/photo-1490113355845-cdc3b65f0189?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;*/

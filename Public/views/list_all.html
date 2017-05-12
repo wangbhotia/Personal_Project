@@ -1,0 +1,26 @@
+
+<div class="container listall">
+	<h4>{{typeTitle}}</h4>
+	<div class="divider"></div>
+	<br>
+  <div class="col s12 m4 hoverable" ng-repeat="type in busType">
+    <div class="card horizontal bustypes">
+      <div class="card-image">
+        <img ng-src="{{type.bus_cover_img}}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+        	<h5 class="header">{{ type.bus_name }}</h5>
+        	<p><strong>{{ type.bus_slogan }}</strong></p>
+    			<p>{{ type.bus_phone }}</p>
+    			<p>{{ type.street }}</p>
+    			<p>{{ type.city }}, {{ type.state }}, {{ type.zip }}</p>
+    			<p>{{ type.bus_email }}</p>
+        </div>
+      </div>
+      <div class="valign-wrapper view-btn">
+        <a ui-sref="b({id: type.id})" class="btn grey">View</a>
+      </div>
+    </div>
+  </div>
+</div>

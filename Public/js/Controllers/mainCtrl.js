@@ -1,14 +1,14 @@
-angular.module('merofood').controller('mainCtrl', function($scope, mainService){
+angular.module('merofood').controller('mainCtrl', function($scope, mainService, $rootScope){
 
 	$scope.cardflowSnapPage = {};
 
-	$scope.featured = [];
-	$scope.restaurants = [];
-	$scope.coffeeCafe = [];
-	$scope.bars = [];
-	$scope.bakeries = [];
-	$scope.desserts = [];
-	$scope.takeouts = [];
+	$rootScope.featured = [];
+	$rootScope.restaurants = [];
+	$rootScope.coffeeCafe = [];
+	$rootScope.bars = [];
+	$rootScope.bakeries = [];
+	$rootScope.desserts = [];
+	$rootScope.takeouts = [];
 
 	$scope.getBusiness = function(){
 		mainService.getBusData().then(function(response){
@@ -18,28 +18,28 @@ angular.module('merofood').controller('mainCtrl', function($scope, mainService){
 
 			for (let i = 0; i < response.length; i++){
 				if(response[i].featured === 'yes'){
-					$scope.featured.push(response[i]);
+					$rootScope.featured.push(response[i]);
 				};
 			};
 
 			for(let j = 0; j < response.length; j++){
 				if(response[j].bus_type === 'Restaurant'){
-					$scope.restaurants.push(response[j]);
+					$rootScope.restaurants.push(response[j]);
 				}
 				if(response[j].bus_type === 'Coffee / Cafe'){
-					$scope.coffeeCafe.push(response[j]);
+					$rootScope.coffeeCafe.push(response[j]);
 				}
 				if(response[j].bus_type === 'Bar'){
-					$scope.bars.push(response[j]);
+					$rootScope.bars.push(response[j]);
 				}
 				if(response[j].bus_type === 'Bakery'){
-					$scope.bakeries.push(response[j]);
+					$rootScope.bakeries.push(response[j]);
 				}
 				if(response[j].bus_type === 'Dessert'){
-					$scope.desserts.push(response[j]);
+					$rootScope.desserts.push(response[j]);
 				}
 				if(response[j].bus_type === 'Food Trucks / Take Outs'){
-					$scope.takeouts.push(response[j]);
+					$rootScope.takeouts.push(response[j]);
 				}
 			};
 		});

@@ -9,6 +9,12 @@ angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow'])
 				controller: 'mainCtrl'
 			})
 
+			.state('all', {
+				url: '/all/:type',
+				templateUrl: '../views/list_all.html',
+				controller: 'listAllCtrl'
+			})
+
 			.state('b', {
 				url: '/b/:id',
 				templateUrl: '../views/merofood_default.html',
