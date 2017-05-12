@@ -10,6 +10,10 @@ angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow']).
 		url: '/all/:type',
 		templateUrl: '../views/list_all.html',
 		controller: 'listAllCtrl'
+	}).state('search', {
+		url: '/search',
+		templateUrl: '../views/search.html',
+		controller: 'searchCtrl'
 	}).state('b', {
 		url: '/b/:id',
 		templateUrl: '../views/merofood_default.html',
@@ -409,6 +413,7 @@ angular.module('merofood').controller('mainCtrl', function ($scope, mainService,
 	$scope.getBusiness = function () {
 		mainService.getBusData().then(function (response) {
 			// console.log(response);
+			$rootScope.searchAllBus = response;
 			$scope.cards = response.length;
 			// console.log($scope.cards)
 
@@ -442,6 +447,17 @@ angular.module('merofood').controller('mainCtrl', function ($scope, mainService,
 	};
 
 	$scope.getBusiness();
+
+	$scope.searchBusiness = function (searchKey) {
+		$rootScope.searchKeyMain = searchKey;
+	};
+});
+'use strict';
+
+angular.module('merofood').controller('searchCtrl', function ($scope, $rootScope) {
+
+	$scope.allBusForSearch = $rootScope.searchAllBus;
+	console.log($scope.allBusForSearch);
 });
 'use strict';
 
@@ -525,7 +541,6 @@ angular.module('merofood').directive('headerDir', function () {
 		controller: 'userCtrl'
 	};
 });
-"use strict";
 'use strict';
 
 angular.module('merofood').directive('scrollSpy', function () {

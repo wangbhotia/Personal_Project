@@ -15,6 +15,12 @@ angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow'])
 				controller: 'listAllCtrl'
 			})
 
+			.state('search', {
+				url: '/search',
+				templateUrl: '../views/search.html',
+				controller: 'searchCtrl'
+			})
+
 			.state('b', {
 				url: '/b/:id',
 				templateUrl: '../views/merofood_default.html',

@@ -13,8 +13,9 @@
 				<div class="search-display">			
 					<form class="cover-search">
 		        <div class="input-field">
-		          <input type="search">
+		          <input type="search" ng-model="searchKey">
 		          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+				      <i ng-click="searchBusiness(searchKey)" ui-sref="search" class="material-icons valign-wrapper">input</i>
 		        </div>
 		      </form>
 		    </div>

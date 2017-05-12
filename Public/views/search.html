@@ -1,0 +1,38 @@
+
+<div class="container listall">
+	
+  <div class="search-display">      
+    <form class="cover-search">
+      <div class="input-field">
+        <input type="search" ng-model="searchKey" ng-init="searchKey=searchKeyMain">
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons valign-wrapper">input</i>
+      </div>
+    </form>
+  </div>
+
+  <div class="divider"></div>
+  <br>
+
+  <div class="col s12 m4 hoverable" ng-repeat="search in allBusForSearch | filter:searchKey">
+    <div class="card horizontal bustypes">
+      <div class="card-image">
+        <img ng-src="{{search.bus_cover_img}}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+        	<h6><strong>{{ search.bus_name }}</strong></h6>
+        	<p><strong>{{ search.bus_slogan }}</strong></p>
+    			<p>{{ search.bus_phone }}</p>
+    			<p>{{ search.street }}</p>
+    			<p>{{ search.city }}, {{ search.state }}, {{ search.zip }}</p>
+    			<p>{{ search.bus_email }}</p>
+          <p>Category: {{ search.bus_type }}</p>
+        </div>
+      </div>
+      <div class="valign-wrapper view-btn">
+        <a ui-sref="b({id: search.id})" class="btn grey">View</a>
+      </div>
+    </div>
+  </div>
+</div>

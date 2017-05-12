@@ -13,6 +13,7 @@ angular.module('merofood').controller('mainCtrl', function($scope, mainService, 
 	$scope.getBusiness = function(){
 		mainService.getBusData().then(function(response){
 			// console.log(response);
+			$rootScope.searchAllBus = response;
 			$scope.cards = response.length;
 			// console.log($scope.cards)
 
@@ -46,5 +47,9 @@ angular.module('merofood').controller('mainCtrl', function($scope, mainService, 
 	}
 
 	$scope.getBusiness();
+
+	$scope.searchBusiness = function(searchKey){
+		$rootScope.searchKeyMain = searchKey;
+	}
 
 });
