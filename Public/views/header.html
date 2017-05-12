@@ -1,51 +1,18 @@
 
 <nav>
   <div class="nav-wrapper white">
-    <!-- <a href="#" class="brand-logo"><img src="../img/merofood-logo.png"></a> -->
-    <a ui-sref="home" class="brand-logo left black-text">mero<strong>food</strong></a> <!-- materialize-red-text text-lighten-1 -->
+    <a ui-sref="home" class="brand-logo left black-text">mero<strong>food</strong></a>
     <ul class="right">
       <li><a ui-sref="new-bus">+ Business</a></li>
-      <li><a data-target="register" modal>Sign Up</a></li>
-      <li><a href="/auth">Sign In</a></li>
-      <li><a href="/auth/logout">Sign Out</a></li>
+      <!-- <li><a data-target="register" modal>Sign Up</a></li> -->
+      <li><a href="/auth">{{user}}</a></li>
+      <li ng-show="isLoggedIn"><a href="/auth/logout">Sign Out</a></li>
     </ul>
   </div>
 </nav>
 
-	<!-- SIGN IN -->
-<!-- 	<div id="login" class="modal login-modal">
-		<div class="modal-content">
-	    <h4 class="header center">SIGN IN</h4>
-	    <br>
-	    <div>
-	    	<form>
-	      	<div class="email input-field">
-	      		<i class="material-icons prefix">account_circle</i>
-	          <input id="email" type="email" class="validate">
-	          <label for="email">Email</label>
-	      	</div>
-
-	      	<div class="password input-field">
-	      		<i class="material-icons prefix">lock</i>
-	          <input id="password" type="password" class="validate">
-	          <label for="password">Password</label>
-	      	</div>
-	    	</form>
-	  	</div>    
-	  </div>
-	  <div class="modal-footer row center">
-	    <div class="col s12 m6">
-	    	<a href="#!" class="modal-action waves-effect waves-green btn">Sign In</a>
-	    </div>
-	  	<div class="col s12 m6">
-	  		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Cancel</a>
-	  	</div>
-	  </div>
-	</div> -->
-
-
 	<!-- SIGN UP -->
-	<div id="register" class="modal register-modal">
+<!-- 	<div id="register" class="modal register-modal">
 		<div class="modal-content">
 	    <h4 class="header center">SIGN UP</h4>
 	    <br>
@@ -85,5 +52,5 @@
 	  	</div>
 	    
 	  </div>
-	</div>
+	</div> -->
         

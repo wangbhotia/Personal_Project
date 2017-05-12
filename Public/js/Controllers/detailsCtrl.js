@@ -81,9 +81,9 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 
 	// DELETE ONE BUSINESS
 	$scope.deleteBusiness = function(id){
-		console.log(id);
+		// console.log(id);
 		mainService.deleteBus(id).then(function(response){
-			alert('Business Successfully Deleted!!');
+			// alert('Business Successfully Deleted!');
 			$location.path('/');
 		});
 	}

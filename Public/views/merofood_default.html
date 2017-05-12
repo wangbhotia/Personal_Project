@@ -225,7 +225,7 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container" ng-show="isLoggedIn">
 	<hr>
 	<div class="row center">
 		<h5 class="header">Options</h5>
@@ -292,7 +292,7 @@
 	  		<a class="modal-action modal-close waves-effect waves-light btn-large">Cancel</a>
 	  	</div>
 	    <div class="col s6 m6">
-	    	<a ng-click="deleteBusiness(b1.id)" class="modal-action modal-close waves-effect waves-light btn-large red">Delete</a>
+	    	<a ng-click="deleteBusiness(b1.id)" onclick="Materialize.toast('Business Successfully Deleted!', 2000, 'red')" class="modal-action modal-close waves-effect waves-light btn-large red">Delete</a>
 	    </div>
 	  </div>
 	</div>

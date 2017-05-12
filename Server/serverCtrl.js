@@ -63,7 +63,7 @@ module.exports = {
 		let busInfo = [req.body.bus_name, req.body.bus_slogan, req.body.bus_phone, 
       						req.body.bus_email, req.body.bus_type, req.body.bus_cuisine,
       						req.body.bus_desc, req.body.bus_happy_hours, req.body.bus_logo,
-      						req.body.bus_cover_img]; //req.body.userid
+      						req.body.bus_cover_img, req.body.user_id]; //req.body.userid
     
     db.create_bus(busInfo, function(err, newbus){
     	if(!err){

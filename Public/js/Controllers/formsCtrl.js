@@ -1,7 +1,8 @@
-angular.module('merofood').controller('formsCtrl', function($scope, mainService, $location){
+angular.module('merofood').controller('formsCtrl', function($scope, mainService, $location, $rootScope){
 
 	$scope.images = [];
 	$scope.newBus = mainService.selected;
+
 	// console.log($scope.images);
 	$scope.addBus = function(newBus){
 		// console.log('addBus fn fired!!!');
@@ -11,8 +12,7 @@ angular.module('merofood').controller('formsCtrl', function($scope, mainService,
 		newBus.bus_cover_img = $scope.images[3];
 		newBus.spbg1 = $scope.images[4];
 		newBus.spbg2 = $scope.images[5];
-
-		console.log(newBus);
+		newBus.user_id = $rootScope.currentUserId;
 
 		mainService.addNewBus(newBus).then(function(response){
 			// console.log(respose);

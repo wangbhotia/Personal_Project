@@ -1,10 +1,16 @@
-angular.module('merofood').controller('userCtrl', function($scope, userService, $state){
+angular.module('merofood').controller('userCtrl', function($scope, userService, $state, $rootScope){
 
   function getUser() {
     userService.getUser().then(function(user) {
-      if (user) $scope.user = user.username;
-      else   $scope.user = 'NOT LOGGED IN';
-    })
+      if(user){
+        $scope.user = user.first_name;
+        $rootScope.currentUserId = user.id;
+        $rootScope.isLoggedIn = true;
+      } else {
+        $scope.user = 'Sign In';
+        $rootScope.isLoggedIn = false;
+      }  
+    });
   }
 
   getUser();

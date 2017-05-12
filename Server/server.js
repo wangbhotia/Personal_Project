@@ -33,7 +33,7 @@ const db = app.get('db');
 
 const serverCtrl = require('./serverCtrl');
 const awsCtrl = require('./awsCtrl');
-// const authCtrl = require('./authCtrl');
+// const authCtrl = require('./authCtrl'); // <-- TO DO
 
 
 passport.use(new Auth0Strategy({
@@ -48,12 +48,12 @@ passport.use(new Auth0Strategy({
     db.get_user([profile.id], function(err, user){
       user = user[0];
       if (!user) { //if there isn't one, we'll create one!
-        console.log('CREATING USER');
+        // console.log('CREATING USER');
         db.create_user([profile.name.givenName, profile.name.familyName, profile._json.email, profile.id], function(err, user) {
-          console.log('USER CREATED', user);
-          return done(err, user[0]); // GOES TO SERIALIZE USER
+          // console.log('USER CREATED', user);
+          return done(err, user[0]);
         })
-      } else { //when we find the user, return it
+      } else {
         console.log('FOUND USER', user);
         return done(err, user);
       }
@@ -61,20 +61,16 @@ passport.use(new Auth0Strategy({
   }
 ));
 
-//THIS IS INVOKED ONE TIME TO SET THINGS UP
+
 passport.serializeUser(function(userA, done) {
-  console.log('serializing', userA);
+  // console.log('serializing', userA);
   var userB = userA;
-  //Things you might do here :
-   //Serialize just the id, get other information to add to session, 
   done(null, userB); //PUTS 'USER' ON THE SESSION
 });
 
-//USER COMES FROM SESSION - THIS IS INVOKED FOR EVERY ENDPOINT
 passport.deserializeUser(function(userB, done) {
   var userC = userB;
-  //Things you might do here :
-    // Query the database with the user id, get other information to put on req.user
+  // console.log('userC: ', userC);
   done(null, userC); //PUTS 'USER' ON REQ.USER
 });
 
@@ -94,9 +90,9 @@ app.get('/auth/me', function(req, res) {
 
 app.get('/auth/logout', function(req, res) {
   req.logout();
+  // console.log('Logout Success');
   res.redirect('/');
 });
-
 
 
 app.get('/businesses', serverCtrl.getAllBus);

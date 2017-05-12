@@ -316,19 +316,20 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 
 	// DELETE ONE BUSINESS
 	$scope.deleteBusiness = function (id) {
-		console.log(id);
+		// console.log(id);
 		mainService.deleteBus(id).then(function (response) {
-			alert('Business Successfully Deleted!!');
+			// alert('Business Successfully Deleted!');
 			$location.path('/');
 		});
 	};
 });
 'use strict';
 
-angular.module('merofood').controller('formsCtrl', function ($scope, mainService, $location) {
+angular.module('merofood').controller('formsCtrl', function ($scope, mainService, $location, $rootScope) {
 
 	$scope.images = [];
 	$scope.newBus = mainService.selected;
+
 	// console.log($scope.images);
 	$scope.addBus = function (newBus) {
 		// console.log('addBus fn fired!!!');
@@ -338,8 +339,7 @@ angular.module('merofood').controller('formsCtrl', function ($scope, mainService
 		newBus.bus_cover_img = $scope.images[3];
 		newBus.spbg1 = $scope.images[4];
 		newBus.spbg2 = $scope.images[5];
-
-		console.log(newBus);
+		newBus.user_id = $rootScope.currentUserId;
 
 		mainService.addNewBus(newBus).then(function (response) {
 			// console.log(respose);
@@ -410,11 +410,18 @@ angular.module('merofood').controller('mainCtrl', function ($scope, mainService)
 });
 'use strict';
 
-angular.module('merofood').controller('userCtrl', function ($scope, userService, $state) {
+angular.module('merofood').controller('userCtrl', function ($scope, userService, $state, $rootScope) {
 
   function getUser() {
     userService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+      if (user) {
+        $scope.user = user.first_name;
+        $rootScope.currentUserId = user.id;
+        $rootScope.isLoggedIn = true;
+      } else {
+        $scope.user = 'Sign In';
+        $rootScope.isLoggedIn = false;
+      }
     });
   }
 
@@ -479,7 +486,8 @@ angular.module('merofood').directive('headerDir', function () {
 
 	return {
 		restrict: 'E',
-		templateUrl: '../../views/header.html'
+		templateUrl: '../../views/header.html',
+		controller: 'userCtrl'
 	};
 });
 "use strict";
@@ -618,6 +626,7 @@ angular.module('merofood').service('userService', function ($http) {
       url: '/auth/local',
       data: credentials
     }).then(function (res) {
+      // console.log(res);
       return res.data;
     }).catch(function (err) {
       console.log('ERROR LOGGING IN!', err);
@@ -629,9 +638,10 @@ angular.module('merofood').service('userService', function ($http) {
       method: 'GET',
       url: '/auth/me'
     }).then(function (res) {
+      // console.log(res)
       return res.data;
     }).catch(function (err) {
-      console.log(err);
+      // console.log(err);
     });
   };
 
@@ -640,6 +650,7 @@ angular.module('merofood').service('userService', function ($http) {
       method: 'GET',
       url: '/auth/logout'
     }).then(function (res) {
+      // console.log(res.data)
       return res.data;
     }).catch(function (err) {
       console.log(err);

@@ -7,6 +7,7 @@ angular.module('merofood').service('userService', function($http){
       data: credentials
     })
     .then(function(res) {
+      // console.log(res);
       return res.data;
     })
     .catch(function(err) {
@@ -20,10 +21,11 @@ angular.module('merofood').service('userService', function($http){
       url: '/auth/me'
     })
     .then(function(res) {
+      // console.log(res)
       return res.data;
     })
     .catch(function(err) {
-      console.log(err);
+      // console.log(err);
     })
   }
 
@@ -33,6 +35,7 @@ angular.module('merofood').service('userService', function($http){
       url: '/auth/logout'
     })
     .then(function(res) {
+      // console.log(res.data)
       return res.data;
     })
     .catch(function(err) {
