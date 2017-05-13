@@ -14,3 +14,7 @@
 .forms {
 	height: 780px;
 }
+
+.card .theme img {
+	height: 300px !important;
+}

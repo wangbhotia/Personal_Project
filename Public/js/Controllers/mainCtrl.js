@@ -1,6 +1,6 @@
 angular.module('merofood').controller('mainCtrl', function($scope, mainService, $rootScope){
 
-	$scope.cardflowSnapPage = {};
+	$scope.dataFromServer = false;
 
 	$rootScope.featured = [];
 	$rootScope.restaurants = [];
@@ -14,8 +14,6 @@ angular.module('merofood').controller('mainCtrl', function($scope, mainService, 
 		mainService.getBusData().then(function(response){
 			// console.log(response);
 			$rootScope.searchAllBus = response;
-			$scope.cards = response.length;
-			// console.log($scope.cards)
 
 			for (let i = 0; i < response.length; i++){
 				if(response[i].featured === 'yes'){
@@ -43,6 +41,7 @@ angular.module('merofood').controller('mainCtrl', function($scope, mainService, 
 					$rootScope.takeouts.push(response[j]);
 				}
 			};
+			$scope.dataFromServer = true;
 		});
 	}
 

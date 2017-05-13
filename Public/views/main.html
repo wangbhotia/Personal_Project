@@ -1,21 +1,19 @@
 
-	<!-- COVER & SEARCH SECTION -->
+<!-- COVER & SEARCH SECTION -->
 <div class="cover-container">
 	<div class="cover">
 		<div class="section no-pad-bot">
 			<div class="container">
 				<br><br>
 				<div class="row center">
-					<!-- <h5 class="header col s12 intro-text-1">Find the Best in Town</h5> -->
 					<h3 class="header col s12 intro-text">FIND THE BEST IN TOWN</h3>
 				</div>
-
 				<div class="search-display">			
 					<form class="cover-search">
 		        <div class="input-field">
 		          <input type="search" ng-model="searchKey">
 		          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-				      <i ng-click="searchBusiness(searchKey)" ui-sref="search" class="material-icons valign-wrapper">input</i>
+				      <i ng-click="searchBusiness(searchKey)" ui-sref="search" class="material-icons large">input</i>
 		        </div>
 		      </form>
 		    </div>
@@ -24,48 +22,51 @@
 	</div>
 </div>
 
-	<!-- FEATURED SECTION -->
+<!-- FEATURED SECTION -->
 <div class="container bus-cards-container">
-	<blockquote class="row">
+	<blockquote>
 		<h5 class="featured">Featured | <a ui-sref="all({type: 'Featured'})"><small class="black-text">See All</small></a></h5>
-	</blockquote>
+	</blockquote> 
 
-	<button 
-  ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
-  ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+  <div ng-if="dataFromServer">
+		<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
 
-   {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ cards.length/cardflowSnapPage.pageSize }}
+     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ featured.length/cardflowSnapPage.pageSize }}
 
-  <button 
-  ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
-  ng-disabled="cardflowSnapPage.current >= (cards.length - cardflowSnapPage.pageSize)">&gt;</button>
+  	<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+    	ng-disabled="cardflowSnapPage.current >= (featured.length - cardflowSnapPage.pageSize)">&gt;</button>
 
-
-	<cardflow class="featured-cards row">
-	  <div class="cardflow-card" ng-repeat="feat in featured">
-	    <div class="col s1 card sticky-action">
-	      <div ui-sref="b({ id: feat.id })" class="card-image main-card">
-	        <img ng-src="{{ feat.bus_cover_img }}">
-	      </div>
-	      <div class="card-content">
-	      	<span class="card-title activator">{{ feat.bus_name }}<i class="material-icons right">more_vert</i></span> 
-	        <p>{{ feat.bus_cuisine }} cuisine</p>
-	        <p class="truncate">{{ feat.bus_desc }}</p>
-	      </div>
-	      <div class="card-action">
-          <a ui-sref="b({ id: feat.id })">View</a>
-          <a>This is a link</a>
+    <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
+      <div class="cardflow-card featured" ng-repeat="feat in featured">
+        <div class="card sticky-action">
+          <div class="card-image" ui-sref="b({ id: feat.id })">
+            <img ng-src="{{feat.bus_cover_img}}">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator">{{feat.bus_name}}<i class="material-icons right">more_vert</i></span>
+            <p>{{ feat.bus_cuisine }} cuisine</p>
+	        	<p class="truncate">{{ feat.bus_desc }}</p>
+	        </div>
+          <div class="card-action">
+            <a ui-sref="b({ id: feat.id })">View</a>
+          	<a>This is a link</a>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ feat.bus_name }}<i class="material-icons right">close</i></span>
+            <p>{{ feat.bus_cuisine }} cuisine</p>
+  					<p>{{ feat.bus_phone }}</p>
+  					<p>{{ feat.bus_email }}</p>
+          </div>
         </div>
-	      <div class="card-reveal">
-    			<span class="card-title grey-text text-darken-4">{{ feat.bus_name }}<i class="material-icons right">close</i></span>
-    			<p>{{ feat.bus_cuisine }} cuisine</p>
-    			<p>{{ feat.bus_phone }}</p>
-    			<p>{{ feat.bus_email }}</p>
-  			</div>
-	    </div>
-	  </div> <!-- END OF NG-REPEAT  -->
-	</cardflow>
-</div> <!-- END OF FEATURED SECTION -->
+      </div>
+    </cardflow>
+  </div>
+
+</div> 
+<!-- END OF FEATURED SECTION -->
 
 
 	<!-- RESTAURANTS SECTION -->
@@ -74,282 +75,279 @@
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Restaurants | <a ui-sref="all({type: 'Restaurants'})"><small class="black-text">See All</small></a></h5></blockquote>
 
-	<div class="bus-cards row">
+	<div ng-if="dataFromServer">
+		<button
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
 
-		<div ng-repeat="res in restaurants">
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div ui-sref="b({ id: res.id })" class="card-image">
-		        <img ng-src="{{ res.bus_cover_img }}">
-		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">{{ res.bus_name }}<i class="material-icons right">more_vert</i></span>
-		        <p>{{ res.bus_cuisine }} cuisine</p>
-		        <p class="truncate">{{ res.bus_desc }}</p>
-		      </div>
-		      <div class="card-action">
-		      	<a ui-sref="b({ id: res.id })">View</a>
-            <a>This is a link</a>
+     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ restaurants.length/cardflowSnapPage.pageSize }}
+
+  	<button
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+    	ng-disabled="cardflowSnapPage.current >= (restaurants.length - cardflowSnapPage.pageSize)">&gt;</button>
+
+    <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
+      <div class="cardflow-card business" ng-repeat="res in restaurants">
+        <div class="card sticky-action">
+          <div class="card-image" ui-sref="b({ id: res.id })">
+            <img ng-src="{{res.bus_cover_img}}">
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">{{ res.bus_name }}<i class="material-icons right">close</i></span>
-      			<p>{{ res.bus_cuisine }} cuisine</p>
-      			<p>{{ res.bus_phone }}</p>
-      			<p>{{ res.bus_email }}</p>
-    			</div>
-		    </div>
-		  </div>
-		</div> <!-- END OF NG-REPEAT -->
+          <div class="card-content">
+            <span class="card-title activator">{{res.bus_name}}<i class="material-icons right">more_vert</i></span>
+            <p>{{ res.bus_cuisine }} cuisine</p>
+	        	<p class="truncate">{{ res.bus_desc }}</p>
+	        </div>
+          <div class="card-action">
+            <a ui-sref="b({ id: res.id })">View</a>
+          	<a>This is a link</a>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ res.bus_name }}<i class="material-icons right">close</i></span>
+            <p>{{ res.bus_cuisine }} cuisine</p>
+  					<p>{{ res.bus_phone }}</p>
+  					<p>{{ res.bus_email }}</p>
+          </div>
+        </div>
+      </div>
+    </cardflow>
+  </div>
 
-	</div>
-</div> <!-- END OF RESTAURANTS SECTION -->
+</div> 
+<!-- END OF RESTAURANTS SECTION -->
 
 
-	<!-- COFFEE / CAFE SECTION -->
+<!-- COFFEE / CAFE SECTION -->
 <div class="container cover-coffee"></div>
 
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Coffee / Cafe | <a ui-sref="all({type: 'Coffee-Cafe'})"><small class="black-text">See All</small></a></h5></blockquote>
-	<div class="bus-cards row">
-		
-		<div ng-repeat="cc in coffeeCafe">
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div ui-sref="b({ id: cc.id })" class="card-image">
-		        <img ng-src="{{ cc.bus_cover_img }}">
-		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">{{ cc.bus_name }}<i class="material-icons right">more_vert</i></span>
-		        <p>{{ cc.bus_cuisine }} cuisine</p>
-		        <p class="truncate">{{ cc.bus_desc }}</p>
-		      </div>
-		      <div class="card-action">
-		      	<a ui-sref="b({ id: cc.id })">View</a>
-            <a>This is a link</a>
+	
+	<div ng-if="dataFromServer">
+		<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+
+     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ coffeeCafe.length/cardflowSnapPage.pageSize }}
+
+  	<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+    	ng-disabled="cardflowSnapPage.current >= (coffeeCafe.length - cardflowSnapPage.pageSize)">&gt;</button>
+
+    <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
+      <div class="cardflow-card business" ng-repeat="cc in coffeeCafe">
+        <div class="card sticky-action">
+          <div class="card-image" ui-sref="b({ id: cc.id })">
+            <img ng-src="{{cc.bus_cover_img}}">
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">{{ cc.bus_name }}<i class="material-icons right">close</i></span>
-      			<p>{{ cc.bus_cuisine }} cuisine</p>
-      			<p>{{ cc.bus_phone }}</p>
-      			<p>{{ cc.bus_email }}</p>
-    			</div>
-		    </div>
-		  </div>
-		</div> <!-- END OF NG-REPEAT -->
+          <div class="card-content">
+            <span class="card-title activator">{{cc.bus_name}}<i class="material-icons right">more_vert</i></span>
+            <p>{{ cc.bus_cuisine }} cuisine</p>
+	        	<p class="truncate">{{ cc.bus_desc }}</p>
+	        </div>
+          <div class="card-action">
+            <a ui-sref="b({ id: cc.id })">View</a>
+          	<a>This is a link</a>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ cc.bus_name }}<i class="material-icons right">close</i></span>
+            <p>{{ cc.bus_cuisine }} cuisine</p>
+  					<p>{{ cc.bus_phone }}</p>
+  					<p>{{ cc.bus_email }}</p>
+          </div>
+        </div>
+      </div>
+    </cardflow>
+  </div>
 
-	</div>
-</div> <!-- END OF COFFEE / CAFE SECTION -->
+</div> 
+<!-- END OF COFFEE / CAFE SECTION -->
 
 
- <!-- BARS SECTION -->
+<!-- BARS SECTION -->
 <div class="container cover-bars"></div>
 
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Bars | <a ui-sref="all({type: 'Bars'})"><small class="black-text">See All</small></a></h5></blockquote>
-	<div class="bus-cards row">
 
-		<div ng-repeat="bar in bars">
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div ui-sref="b({ id: bar.id })" class="card-image">
-		        <img ng-src="{{ bar.bus_cover_img }}">
-		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">{{ bar.bus_name }}<i class="material-icons right">more_vert</i></span>
-		        <p>{{ bar.bus_phone }}</p>
-		        <p class="truncate">{{ bar.bus_desc }}</p>
-		      </div>
-		      <div class="card-action">
-		      	<a ui-sref="b({ id: bar.id })">View</a>
-            <a>This is a link</a>
+	<div ng-if="dataFromServer">
+		<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+
+     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ bars.length/cardflowSnapPage.pageSize }}
+
+  	<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+    	ng-disabled="cardflowSnapPage.current >= (bars.length - cardflowSnapPage.pageSize)">&gt;</button>
+
+    <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
+      <div class="cardflow-card business" ng-repeat="bar in bars">
+        <div class="card sticky-action">
+          <div class="card-image" ui-sref="b({ id: bar.id })">
+            <img ng-src="{{bar.bus_cover_img}}">
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">{{ bar.bus_name }}<i class="material-icons right">close</i></span>
-      			<p>{{ bar.bus_cuisine }} cuisine</p>
-      			<p>{{ bar.bus_phone }}</p>
-      			<p>{{ bar.bus_email }}</p>
-    			</div>
-		    </div>
-		  </div>
-		</div> <!-- END OF NG-REPEAT -->
+          <div class="card-content">
+            <span class="card-title activator">{{bar.bus_name}}<i class="material-icons right">more_vert</i></span>
+            <p>{{ bar.bus_cuisine }} cuisine</p>
+	        	<p class="truncate">{{ bar.bus_desc }}</p>
+	        </div>
+          <div class="card-action">
+            <a ui-sref="b({ id: bar.id })">View</a>
+          	<a>This is a link</a>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ bar.bus_name }}<i class="material-icons right">close</i></span>
+            <p>{{ bar.bus_cuisine }} cuisine</p>
+  					<p>{{ bar.bus_phone }}</p>
+  					<p>{{ bar.bus_email }}</p>
+          </div>
+        </div>
+      </div>
+    </cardflow>
+  </div>
+	
+</div> 
+<!-- END OF BARS SECTION -->
 
-	</div>
-</div> <!-- END OF BARS SECTION -->
 
-
-	<!-- BAKERY SECTION -->
+<!-- BAKERY SECTION -->
 <div class="container cover-bakery"></div>
 
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Bakery | <a ui-sref="all({type: 'Bakery'})"><small class="black-text">See All</small></a></h5></blockquote>
-	<div class="bus-cards row">
-		
-		<div ng-repeat="bake in bakeries">
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div ui-sref="b({ id: bake.id })" class="card-image">
-		        <img ng-src="{{ bake.bus_cover_img }}">
-		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">{{ bake.bus_name }}<i class="material-icons right">more_vert</i></span>
-		        <p>{{ bake.bus_phone }}</p>
-		        <p class="truncate">{{ bake.bus_desc }}</p>
-		      </div>
-		      <div class="card-action">
-		      	<a ui-sref="b({ id: bake.id })">View</a>
-            <a>This is a link</a>
+
+	<div ng-if="dataFromServer">
+		<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+
+     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ bakeries.length/cardflowSnapPage.pageSize }}
+
+  	<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+    	ng-disabled="cardflowSnapPage.current >= (bakeries.length - cardflowSnapPage.pageSize)">&gt;</button>
+
+    <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
+      <div class="cardflow-card business" ng-repeat="bake in bakeries">
+        <div class="card sticky-action">
+          <div class="card-image" ui-sref="b({ id: bake.id })">
+            <img ng-src="{{bake.bus_cover_img}}">
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">{{ bake.bus_name }}<i class="material-icons right">close</i></span>
-      			<p>{{ bake.bus_cuisine }} cuisine</p>
-      			<p>{{ bake.bus_phone }}</p>
-      			<p>{{ bake.bus_email }}</p>
-    			</div>
-		    </div>
-		  </div>
-		</div> <!-- END OF NG-REPEAT -->
-
-		<!-- <div class="row"> -->
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div class="card-image">
-		        <img src="https://images.unsplash.com/photo-1487004121828-9fa15a215a7a?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=">
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">Card Title<i class="material-icons right">more_vert</i></span>	        
-		        <p>I am a very simple card. I am good at containing small bits of information.</p>
-		      </div>
-		      <div class="card-action">
-            <a href="#">This is a link</a>
+          <div class="card-content">
+            <span class="card-title activator">{{bake.bus_name}}<i class="material-icons right">more_vert</i></span>
+            <p>{{ bake.bus_cuisine }} cuisine</p>
+	        	<p class="truncate">{{ bake.bus_desc }}</p>
+	        </div>
+          <div class="card-action">
+            <a ui-sref="b({ id: bake.id })">View</a>
+          	<a>This is a link</a>
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      			<p>Here is some more information about this product that is only revealed once clicked on.</p>
-    			</div>
-		    </div>
-		  </div>
-		<!-- </div> -->
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ bake.bus_name }}<i class="material-icons right">close</i></span>
+            <p>{{ bake.bus_cuisine }} cuisine</p>
+  					<p>{{ bake.bus_phone }}</p>
+  					<p>{{ bake.bus_email }}</p>
+          </div>
+        </div>
+      </div>
+    </cardflow>
+  </div>
 
-	</div>
-</div> <!-- END OF BAKERY SECTION -->
+</div> 
+<!-- END OF BAKERY SECTION -->
 
 
-	<!-- DESSERT SECTION -->
+<!-- DESSERT SECTION -->
 <div class="container cover-dessert"></div>
 
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Dessert | <a ui-sref="all({type: 'Dessert'})"><small class="black-text">See All</small></a></h5></blockquote>
-	<div class="bus-cards row">
+	
+	<div ng-if="dataFromServer">
+		<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
 
-		<div ng-repeat="dess in desserts">
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div ui-sref="b({ id: dess.id })" class="card-image">
-		        <img ng-src="{{ dess.bus_cover_img }}">
-		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">{{ dess.bus_name }}<i class="material-icons right">more_vert</i></span>
-		        <p>{{ dess.bus_phone }}</p>
-		        <p class="truncate">{{ dess.bus_desc }}</p>
-		      </div>
-		      <div class="card-action">
-		      	<a ui-sref="b({ id: dess.id })">View</a>
-            <a>This is a link</a>
+     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ desserts.length/cardflowSnapPage.pageSize }}
+
+  	<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+    	ng-disabled="cardflowSnapPage.current >= (desserts.length - cardflowSnapPage.pageSize)">&gt;</button>
+
+    <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
+      <div class="cardflow-card business" ng-repeat="dess in desserts">
+        <div class="card sticky-action">
+          <div class="card-image" ui-sref="b({ id: dess.id })">
+            <img ng-src="{{dess.bus_cover_img}}">
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">{{ dess.bus_name }}<i class="material-icons right">close</i></span>
-      			<p>{{ dess.bus_cuisine }} cuisine</p>
-      			<p>{{ dess.bus_phone }}</p>
-      			<p>{{ dess.bus_email }}</p>
-    			</div>
-		    </div>
-		  </div>
-		</div> <!-- END OF NG-REPEAT -->
-
-		<!-- <div class="row"> -->
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div class="card-image">
-		        <img src="https://images.unsplash.com/photo-1428259067396-2d6bd3827878?dpr=1&auto=format&fit=crop&w=1500&h=997&q=80&cs=tinysrgb&crop=&bg=">
-		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">Card Title<i class="material-icons right">more_vert</i></span> 
-		        <p>I am a very simple card. I am good at containing small bits of information.</p>
-		      </div>
-		      <div class="card-action">
-            <a href="#">This is a link</a>
+          <div class="card-content">
+            <span class="card-title activator">{{dess.bus_name}}<i class="material-icons right">more_vert</i></span>
+            <p>{{ dess.bus_cuisine }} cuisine</p>
+	        	<p class="truncate">{{ dess.bus_desc }}</p>
+	        </div>
+          <div class="card-action">
+            <a ui-sref="b({ id: dess.id })">View</a>
+          	<a>This is a link</a>
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      			<p>Here is some more information about this product that is only revealed once clicked on.</p>
-    			</div>
-		    </div>
-		  </div>
-		<!-- </div> -->
-	</div>
-</div> <!-- END OF DESSERT SECTION -->
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ dess.bus_name }}<i class="material-icons right">close</i></span>
+            <p>{{ dess.bus_cuisine }} cuisine</p>
+  					<p>{{ dess.bus_phone }}</p>
+  					<p>{{ dess.bus_email }}</p>
+          </div>
+        </div>
+      </div>
+    </cardflow>
+  </div>
+
+</div> 
+<!-- END OF DESSERT SECTION -->
 
 
-	<!-- FOOD TRUCK / TAKE OUTS SECTION -->
+<!-- FOOD TRUCK / TAKE OUTS SECTION -->
 <div class="container cover-foodtrucks"></div>
 
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Food Trucks / Take Outs | <a ui-sref="all({type: 'Food-Trucks-Take-Outs'})"><small class="black-text">See All</small></a></h5></blockquote>
-	<div class="bus-cards row">
+	
+	<div ng-if="dataFromServer">
+		<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
 
-	  <div ng-repeat="takeout in takeouts">
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div ui-sref="b({ id: takeout.id })" class="card-image">
-		        <img ng-src="{{ takeout.bus_cover_img }}">
-		        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">{{ takeout.bus_name }}<i class="material-icons right">more_vert</i></span>
-		        <p>{{ takeout.bus_cuisine }} cuisine</p>
-		        <p class="truncate">{{ takeout.bus_desc }}</p>
-		      </div>
-		      <div class="card-action">
-		      	<a ui-sref="b({ id: takeout.id })">View</a>
-            <a>This is a link</a>
+     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ takeouts.length/cardflowSnapPage.pageSize }}
+
+  	<button 
+    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+    	ng-disabled="cardflowSnapPage.current >= (takeouts.length - cardflowSnapPage.pageSize)">&gt;</button>
+
+    <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
+      <div class="cardflow-card business" ng-repeat="take in takeouts">
+        <div class="card sticky-action">
+          <div class="card-image" ui-sref="b({ id: take.id })">
+            <img ng-src="{{take.bus_cover_img}}">
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">{{ takeout.bus_name }}<i class="material-icons right">close</i></span>
-      			<p>{{ takeout.bus_cuisine }} cuisine</p>
-      			<p>{{ takeout.bus_phone }}</p>
-      			<p>{{ takeout.bus_email }}</p>
-    			</div>
-		    </div>
-		  </div>
-		</div> <!-- END OF NG-REPEAT -->
-
-		<!-- <div class="row"> -->
-		  <div class="col s12 m6 l3">
-		    <div class="card sticky-action">
-		      <div class="card-image">
-		        <img src="https://images.unsplash.com/photo-1478749485505-2a903a729c63?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=">
-		      </div>
-		      <div class="card-content">
-		      	<span class="card-title activator">Card Title<i class="material-icons right">more_vert</i></span>	        
-		        <p>I am a very simple card. I am good at containing small bits of information.</p>
-		      </div>
-		      <div class="card-action">
-            <a href="#">This is a link</a>
+          <div class="card-content">
+            <span class="card-title activator">{{take.bus_name}}<i class="material-icons right">more_vert</i></span>
+            <p>{{ take.bus_cuisine }} cuisine</p>
+	        	<p class="truncate">{{ take.bus_desc }}</p>
+	        </div>
+          <div class="card-action">
+            <a ui-sref="b({ id: take.id })">View</a>
+          	<a>This is a link</a>
           </div>
-		      <div class="card-reveal">
-      			<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      			<p>Here is some more information about this product that is only revealed once clicked on.</p>
-    			</div>
-		    </div>
-		  </div>
-		<!-- </div> -->
-	</div>
-</div>	<!-- END OF FOOD TRUCKS / TAKE OUTS SECTION -->
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{ take.bus_name }}<i class="material-icons right">close</i></span>
+            <p>{{ take.bus_cuisine }} cuisine</p>
+  					<p>{{ take.bus_phone }}</p>
+  					<p>{{ take.bus_email }}</p>
+          </div>
+        </div>
+      </div>
+    </cardflow>
+  </div>
 
- <!-- END OF MAIN SECTION -->
+</div>	
+<!-- END OF FOOD TRUCKS / TAKE OUTS SECTION -->
+
+<!-- END OF MAIN SECTION -->

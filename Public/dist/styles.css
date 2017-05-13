@@ -1,170 +1,22 @@
-
-/* just a demo, feel free to make this however you like in your app */
 .cardflow-wrapper {
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 500px; }
+  overflow: hidden; }
 
 .cardflow-container {
-  /* just make it big enough to float the second card next to first, so I can calculate offsets & width */
-  width: 200%;
-  /* disable text selection */
-  -webkit-touch-callout: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-tap-highlight-color: transparent;
-  outline: 0;
   cursor: pointer;
   /* card movement transition */
   transition: transform 0.25s ease-out;
   -webkit-transition: -webkit-transform 0.25s ease-out;
   -moz-transition: -moz-transform 0.25s ease-out;
   -o-transition: -o-transform 0.25s ease-out;
-  -ms-transition: -ms-transform 0.25s ease-out;
-  /* center cards in me */
-  /*padding-left: 50%;*/ }
+  -ms-transition: -ms-transform 0.25s ease-out; }
 
 .cardflow-card {
-  /*float:left;*/
-  /*margin-right: 10px;*/
-  /*width: auto;*/
-  /*height: 200px;*/
-  /*text-align: center;*/
-  /*line-height:200px;*/
-  /*background: #000;*/
-  /*background-size:cover;*/
-  /*border: 1px solid #000;*/
-  /* keep padding & borders inside box size */
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  /* active transition */
-  transition: border-color 0.5s ease-out;
-  -webkit-transition: border-color 0.5s ease-out;
-  -moz-transition: border-color 0.5s ease-out;
-  -o-transition: border-color 0.5s ease-out;
-  -ms-transition: border-color 0.5s ease-out; }
+  float: left;
+  margin-right: 10px; }
 
-/* disable dragging */
-/*.cardflow-card img {
-    pointer-events: none;
-}
-
-.cardflow-card.cardflow-active {
-    border-color: #fff;
-}*/
-/*.cardflow-carousel {
-    position: relative;
-}*/
-/* style carousel single-card flows */
-/*.cardflow-carousel,.cardflow-carousel .cardflow-card,.cardflow-carousel .cardflow-container,.cardflow-carousel .cardflow-wrapper {
-    width: 400px;
-    height: 400px;
-}*/
-.cardflow-carousel .cardflow-card {
-  line-height: 400px;
-  /*    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-    text-align: center;*/ }
-
-.carousel .cardflow-card {
-  /*margin-right: 0;*/ }
-
-.cardflow-carousel .indicators {
-  position: absolute;
-  /*background-color: #000;*/
-  /*background-color: rgba(0, 0, 0, 0.6);*/
-  z-index: 100;
-  bottom: 0;
-  left: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-  opacity: 0;
-  width: 100%;
-  text-align: center;
-  -webkit-transition: opacity 0.5s ease-out;
-  -moz-transition: opacity 0.5s ease-out;
-  -o-transition: opacity 0.5s ease-out;
-  -ms-transition: opacity 0.5s ease-out;
-  transition: opacity 0.5s ease-out; }
-
-.cardflow-carousel:hover .indicators {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=100);
-  opacity: 1; }
-
-.cardflow-carousel .indicator {
-  /*background-color: #000;*/
-  /*background-color: rgba(10, 10, 10, 0.6);*/
-  cursor: pointer;
-  width: 6px;
-  height: 6px;
-  display: inline-block;
-  border-radius: 50%;
-  margin: 2px;
-  -webkit-transition: color 0.5s ease-out;
-  -moz-transition: color 0.5s ease-out;
-  -o-transition: color 0.5s ease-out;
-  -ms-transition: color 0.5s ease-out;
-  transition: color 0.5s ease-out; }
-
-/*.cardflow-carousel .indicator.active {
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 0.6);
-}*/
-/*
-
-You can get much better cross-browser support by doing all your reflections & glows like this:
-http://webdesign.tutsplus.com/tutorials/cross-browser-css-reflections-glows-and-blurs--webdesign-6294
-
-*/
-cardflow .cardflow-wrapper {
-  height: 43vh;
-  /*padding-top: 10px;*/
-  /*background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.05, rgb(46,46,46)), color-stop(0.53, rgb(0,0,0)) );*/ }
-
-cardflow .cardflow-card {
-  /*-webkit-box-shadow: 0 0 8px 8px rgba(0,0,0,0.5);*/
-  /*box-shadow: 0 0 8px 8px rgba(0,0,0,0.5);*/
-  /*-webkit-box-reflect: below 1px -webkit-gradient( linear, left top, left bottom, from(transparent), color-stop(0.6, transparent), to(rgba(255, 255, 255, 0.5)) );*/
-  /*
-    this seems to mess up reflection in chrome.
-    I can fix with moving everything to 3d, but chrome was also
-    doing funny stuff with the transform matrix (mis-repainting)
-    I am just going to leave this out.
-    */
-  -webkit-transition: -webkit-transform 0.25s ease-out;
-  -moz-transition: -moz-transform 0.25s ease-out;
-  -o-transition: -o-transform 0.25s ease-out;
-  -ms-transition: -ms-transform 0.25s ease-out;
-  transition: transform 0.25s ease-out; }
-
-cardflow .cardflow-card.cardflow-active {
-  /*-webkit-box-shadow: 0 0 4px 4px rgba(127,127,127,0.5);*/
-  /*box-shadow: 0 0 4px 4px rgba(127,127,127,0.5);*/
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -o-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1); }
-
-/* disable indent & active card for page-driven coverflows */
 .page .cardflow-container {
-  /*padding-left: 0;*/ }
-
-.page .cardflow-card.cardflow-active {
-  /*border-color: #000;*/
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -o-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1); }
+  padding-left: 1px; }
 
 
 .page-footer {
@@ -199,7 +51,6 @@ nav .brand-logo {
 .register-modal {
   max-width: 600px; }
 
-
 .listall .bustypes {
   max-height: 200px; }
 
@@ -213,14 +64,9 @@ nav .brand-logo {
 
 .cover-container {
   height: 60vh;
-  /*background: url('https://images.unsplash.com/photo-1490113355845-cdc3b65f0189?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;*/
   background: url("../img/shops.jpg") center no-repeat;
   background-size: cover; }
 
-/*.intro-text-1 {
-  color: #fff;
-  font-weight: bold;
-}*/
 .intro-text {
   color: #fff;
   font-weight: bold; }
@@ -229,6 +75,10 @@ nav .brand-logo {
   width: 70%;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.6); }
+
+.input-field input[type=search] ~ .mdi-navigation-close,
+.input-field input[type=search] ~ .material-icons {
+  top: 8px; }
 
 .cover-search .input-field input {
   border-bottom: none; }
@@ -239,25 +89,25 @@ nav .brand-logo {
 blockquote .featured {
   font-weight: 600; }
 
-.featured-cards .col.s1 {
-  width: 300px;
-  height: 396px;
-  margin: 10px; }
+.featured .card {
+  width: 312px;
+  height: 430px; }
 
-.featured-cards .col {
-  padding: 0; }
+.business .card {
+  width: 247px;
+  height: 400px; }
 
 .card .card-title {
+  font-size: 1.2em;
   font-weight: 500; }
 
-.main-card img {
+.card img {
   height: 200px;
   width: auto; }
 
 .cover-restaurants {
   margin-top: 30px;
   height: 30vh;
-  /*background: url('../img/cover-american.jpg') center no-repeat;*/
   background: url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=") center no-repeat;
   background-size: cover; }
 
@@ -481,5 +331,8 @@ dd strong {
 
 .forms {
   height: 780px; }
+
+.card .theme img {
+  height: 300px !important; }
 
 /*# sourceMappingURL=maps/styles.css.map */
