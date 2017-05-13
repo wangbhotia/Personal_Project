@@ -277,159 +277,6 @@ angular.module('merofood').controller('userCtrl', function ($scope, userService,
 });
 'use strict';
 
-angular.module('merofood').factory('imageService', function ($http) {
-  // AMAZON S3
-
-  var service = {};
-
-  service.storeImage = function (imageData, fileName) {
-    var imageExtension = imageData.split(';')[0].split('/');
-    imageExtension = imageExtension[imageExtension.length - 1];
-
-    var newImage = {
-      imageName: fileName,
-      imageBody: imageData,
-      imageExtension: imageExtension,
-      userEmail: 'wangbhotia@gamil.com'
-    };
-
-    return $http.post('/newimage', newImage);
-  };
-  return service;
-});
-'use strict';
-
-angular.module('merofood').service('mainService', function ($http) {
-
-	var baseUrl = 'http://localhost:3000/';
-
-	this.selected = {};
-
-	// GET ROUTES
-
-	this.getBusData = function () {
-		return $http({
-			method: 'GET',
-			url: baseUrl + 'businesses'
-		}).then(function (response) {
-			return response.data;
-		});
-	};
-
-	this.getSpecialData = function (id) {
-		return $http({
-			method: 'GET',
-			url: baseUrl + 'special/' + id
-		}).then(function (response) {
-			return response.data;
-		});
-	};
-
-	this.getMenuData = function (id) {
-		return $http({
-			method: 'GET',
-			url: baseUrl + 'menu/' + id
-		}).then(function (response) {
-			return response.data;
-		});
-	};
-
-	this.getMenuItemsData = function (id) {
-		return $http({
-			method: 'GET',
-			url: baseUrl + 'menuitems/' + id
-		}).then(function (response) {
-			return response.data;
-		});
-	};
-
-	this.getGalleryData = function (id) {
-		return $http({
-			method: 'GET',
-			url: baseUrl + 'gallery/' + id
-		}).then(function (response) {
-			return response.data;
-		});
-	};
-
-	// POST ROUTE
-
-	this.addNewBus = function (newBus) {
-		return $http({
-			method: 'POST',
-			url: baseUrl + 'createbus',
-			data: newBus
-		}).then(function (response) {
-			return response;
-		});
-	};
-
-	// PUT ROUTE -- UPDATE
-
-	this.updateBus = function (updatedBus) {
-		return $http({
-			method: 'PUT',
-			url: baseUrl + 'updatebus',
-			data: updatedBus
-		}).then(function (response) {
-			return response.data;
-		});
-	};
-
-	// DELETE ROUTE
-
-	this.deleteBus = function (id) {
-		return $http({
-			method: 'DELETE',
-			url: baseUrl + 'deletebus/' + id
-		}).then(function (response) {
-			return response;
-		});
-	};
-});
-'use strict';
-
-angular.module('merofood').service('userService', function ($http) {
-
-  this.loginLocal = function (credentials) {
-    return $http({
-      method: "POST",
-      url: '/auth/local',
-      data: credentials
-    }).then(function (res) {
-      // console.log(res);
-      return res.data;
-    }).catch(function (err) {
-      console.log('ERROR LOGGING IN!', err);
-    });
-  };
-
-  this.getUser = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/me'
-    }).then(function (res) {
-      // console.log(res)
-      return res.data;
-    }).catch(function (err) {
-      // console.log(err);
-    });
-  };
-
-  this.logout = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/logout'
-    }).then(function (res) {
-      // console.log(res.data)
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-  };
-});
-'use strict';
-
 (function () {
     // set prefixed matrix transform without changing other elements of matrix
     // I tried out matrix3d, but it had visual artifacts in chrome
@@ -704,5 +551,158 @@ angular.module('merofood').directive('scrollSpy', function () {
 			});
 		}
 	};
+});
+'use strict';
+
+angular.module('merofood').factory('imageService', function ($http) {
+  // AMAZON S3
+
+  var service = {};
+
+  service.storeImage = function (imageData, fileName) {
+    var imageExtension = imageData.split(';')[0].split('/');
+    imageExtension = imageExtension[imageExtension.length - 1];
+
+    var newImage = {
+      imageName: fileName,
+      imageBody: imageData,
+      imageExtension: imageExtension,
+      userEmail: 'wangbhotia@gamil.com'
+    };
+
+    return $http.post('/newimage', newImage);
+  };
+  return service;
+});
+'use strict';
+
+angular.module('merofood').service('mainService', function ($http) {
+
+	var baseUrl = 'http://localhost:3000/';
+
+	this.selected = {};
+
+	// GET ROUTES
+
+	this.getBusData = function () {
+		return $http({
+			method: 'GET',
+			url: baseUrl + 'businesses'
+		}).then(function (response) {
+			return response.data;
+		});
+	};
+
+	this.getSpecialData = function (id) {
+		return $http({
+			method: 'GET',
+			url: baseUrl + 'special/' + id
+		}).then(function (response) {
+			return response.data;
+		});
+	};
+
+	this.getMenuData = function (id) {
+		return $http({
+			method: 'GET',
+			url: baseUrl + 'menu/' + id
+		}).then(function (response) {
+			return response.data;
+		});
+	};
+
+	this.getMenuItemsData = function (id) {
+		return $http({
+			method: 'GET',
+			url: baseUrl + 'menuitems/' + id
+		}).then(function (response) {
+			return response.data;
+		});
+	};
+
+	this.getGalleryData = function (id) {
+		return $http({
+			method: 'GET',
+			url: baseUrl + 'gallery/' + id
+		}).then(function (response) {
+			return response.data;
+		});
+	};
+
+	// POST ROUTE
+
+	this.addNewBus = function (newBus) {
+		return $http({
+			method: 'POST',
+			url: baseUrl + 'createbus',
+			data: newBus
+		}).then(function (response) {
+			return response;
+		});
+	};
+
+	// PUT ROUTE -- UPDATE
+
+	this.updateBus = function (updatedBus) {
+		return $http({
+			method: 'PUT',
+			url: baseUrl + 'updatebus',
+			data: updatedBus
+		}).then(function (response) {
+			return response.data;
+		});
+	};
+
+	// DELETE ROUTE
+
+	this.deleteBus = function (id) {
+		return $http({
+			method: 'DELETE',
+			url: baseUrl + 'deletebus/' + id
+		}).then(function (response) {
+			return response;
+		});
+	};
+});
+'use strict';
+
+angular.module('merofood').service('userService', function ($http) {
+
+  this.loginLocal = function (credentials) {
+    return $http({
+      method: "POST",
+      url: '/auth/local',
+      data: credentials
+    }).then(function (res) {
+      // console.log(res);
+      return res.data;
+    }).catch(function (err) {
+      console.log('ERROR LOGGING IN!', err);
+    });
+  };
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      // console.log(res)
+      return res.data;
+    }).catch(function (err) {
+      // console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      // console.log(res.data)
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
 });
 //# sourceMappingURL=bundle.js.map

@@ -118,6 +118,10 @@ blockquote .featured {
   height: 200px;
   width: auto; }
 
+.card-action i {
+  color: grey;
+  font-size: 1.5em; }
+
 .cover-restaurants {
   margin-top: 30px;
   height: 30vh;
