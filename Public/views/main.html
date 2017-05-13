@@ -28,16 +28,16 @@
 		<h5 class="featured">Featured | <a ui-sref="all({type: 'Featured'})"><small class="black-text">See All</small></a></h5>
 	</blockquote> 
 
-  <div ng-if="dataFromServer">
-		<button 
+  <div ng-if="dataFromServer" class="cardflow-row">
+    <div class="row cardflow-btn">
+		  <button class="left"
     	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
-    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+    	ng-disabled="cardflowSnapPage.current <= 0"><i class="material-icons">navigate_before</i></button>
 
-     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ featured.length/cardflowSnapPage.pageSize }}
-
-  	<button 
+  	 <button class="right"
     	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
-    	ng-disabled="cardflowSnapPage.current >= (featured.length - cardflowSnapPage.pageSize)">&gt;</button>
+    	ng-disabled="cardflowSnapPage.current >= (featured.length - cardflowSnapPage.pageSize)"><i class="material-icons">navigate_next</i></button>
+    </div>
 
     <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
       <div class="cardflow-card featured" ng-repeat="feat in featured">
@@ -75,16 +75,16 @@
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Restaurants | <a ui-sref="all({type: 'Restaurants'})"><small class="black-text">See All</small></a></h5></blockquote>
 
-	<div ng-if="dataFromServer">
-		<button
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
-    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+  <div ng-if="dataFromServer" class="cardflow-row">
+    <div class="row cardflow-btn">
+      <button class="left"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+      ng-disabled="cardflowSnapPage.current <= 0"><i class="material-icons">navigate_before</i></button>
 
-     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ restaurants.length/cardflowSnapPage.pageSize }}
-
-  	<button
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
-    	ng-disabled="cardflowSnapPage.current >= (restaurants.length - cardflowSnapPage.pageSize)">&gt;</button>
+     <button class="right"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+      ng-disabled="cardflowSnapPage.current >= (restaurants.length - cardflowSnapPage.pageSize)"><i class="material-icons">navigate_next</i></button>
+    </div>
 
     <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
       <div class="cardflow-card business" ng-repeat="res in restaurants">
@@ -122,16 +122,16 @@
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Coffee / Cafe | <a ui-sref="all({type: 'Coffee-Cafe'})"><small class="black-text">See All</small></a></h5></blockquote>
 	
-	<div ng-if="dataFromServer">
-		<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
-    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+  <div ng-if="dataFromServer" class="cardflow-row">
+    <div class="row cardflow-btn">
+      <button class="left"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+      ng-disabled="cardflowSnapPage.current <= 0"><i class="material-icons">navigate_before</i></button>
 
-     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ coffeeCafe.length/cardflowSnapPage.pageSize }}
-
-  	<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
-    	ng-disabled="cardflowSnapPage.current >= (coffeeCafe.length - cardflowSnapPage.pageSize)">&gt;</button>
+     <button class="right"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+      ng-disabled="cardflowSnapPage.current >= (coffeeCafe.length - cardflowSnapPage.pageSize)"><i class="material-icons">navigate_next</i></button>
+    </div>
 
     <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
       <div class="cardflow-card business" ng-repeat="cc in coffeeCafe">
@@ -169,16 +169,16 @@
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Bars | <a ui-sref="all({type: 'Bars'})"><small class="black-text">See All</small></a></h5></blockquote>
 
-	<div ng-if="dataFromServer">
-		<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
-    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+  <div ng-if="dataFromServer" class="cardflow-row">
+    <div class="row cardflow-btn">
+      <button class="left"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+      ng-disabled="cardflowSnapPage.current <= 0"><i class="material-icons">navigate_before</i></button>
 
-     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ bars.length/cardflowSnapPage.pageSize }}
-
-  	<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
-    	ng-disabled="cardflowSnapPage.current >= (bars.length - cardflowSnapPage.pageSize)">&gt;</button>
+     <button class="right"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+      ng-disabled="cardflowSnapPage.current >= (bars.length - cardflowSnapPage.pageSize)"><i class="material-icons">navigate_next</i></button>
+    </div>
 
     <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
       <div class="cardflow-card business" ng-repeat="bar in bars">
@@ -216,16 +216,16 @@
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Bakery | <a ui-sref="all({type: 'Bakery'})"><small class="black-text">See All</small></a></h5></blockquote>
 
-	<div ng-if="dataFromServer">
-		<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
-    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+  <div ng-if="dataFromServer" class="cardflow-row">
+    <div class="row cardflow-btn">
+      <button class="left"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+      ng-disabled="cardflowSnapPage.current <= 0"><i class="material-icons">navigate_before</i></button>
 
-     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ bakeries.length/cardflowSnapPage.pageSize }}
-
-  	<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
-    	ng-disabled="cardflowSnapPage.current >= (bakeries.length - cardflowSnapPage.pageSize)">&gt;</button>
+     <button class="right"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+      ng-disabled="cardflowSnapPage.current >= (bakeries.length - cardflowSnapPage.pageSize)"><i class="material-icons">navigate_next</i></button>
+    </div>
 
     <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
       <div class="cardflow-card business" ng-repeat="bake in bakeries">
@@ -263,16 +263,16 @@
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Dessert | <a ui-sref="all({type: 'Dessert'})"><small class="black-text">See All</small></a></h5></blockquote>
 	
-	<div ng-if="dataFromServer">
-		<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
-    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+  <div ng-if="dataFromServer" class="cardflow-row">
+    <div class="row cardflow-btn">
+      <button class="left"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+      ng-disabled="cardflowSnapPage.current <= 0"><i class="material-icons">navigate_before</i></button>
 
-     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ desserts.length/cardflowSnapPage.pageSize }}
-
-  	<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
-    	ng-disabled="cardflowSnapPage.current >= (desserts.length - cardflowSnapPage.pageSize)">&gt;</button>
+     <button class="right"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+      ng-disabled="cardflowSnapPage.current >= (desserts.length - cardflowSnapPage.pageSize)"><i class="material-icons">navigate_next</i></button>
+    </div>
 
     <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
       <div class="cardflow-card business" ng-repeat="dess in desserts">
@@ -310,16 +310,16 @@
 <div class="container bus-cards-container">
 	<blockquote><h5 class="featured">Food Trucks / Take Outs | <a ui-sref="all({type: 'Food-Trucks-Take-Outs'})"><small class="black-text">See All</small></a></h5></blockquote>
 	
-	<div ng-if="dataFromServer">
-		<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
-    	ng-disabled="cardflowSnapPage.current <= 0">&lt;</button>
+  <div ng-if="dataFromServer" class="cardflow-row">
+    <div class="row cardflow-btn">
+      <button class="left"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current - cardflowSnapPage.pageSize" 
+      ng-disabled="cardflowSnapPage.current <= 0"><i class="material-icons">navigate_before</i></button>
 
-     {{ cardflowSnapPage.current/cardflowSnapPage.pageSize+1 }} / {{ takeouts.length/cardflowSnapPage.pageSize }}
-
-  	<button 
-    	ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
-    	ng-disabled="cardflowSnapPage.current >= (takeouts.length - cardflowSnapPage.pageSize)">&gt;</button>
+     <button class="right"
+      ng-click="cardflowSnapPage.current = cardflowSnapPage.current + cardflowSnapPage.pageSize"  
+      ng-disabled="cardflowSnapPage.current >= (takeouts.length - cardflowSnapPage.pageSize)"><i class="material-icons">navigate_next</i></button>
+    </div>
 
     <cardflow model="cardflowSnapPage" mode="swipeSnapPage" class="page">
       <div class="cardflow-card business" ng-repeat="take in takeouts">
