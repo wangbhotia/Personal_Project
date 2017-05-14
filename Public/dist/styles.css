@@ -114,11 +114,12 @@ blockquote .featured {
   font-size: 1.2em;
   font-weight: 500; }
 
-/*THIS AFFECTS ALL CARDS*/
-/*.card img {
-  height: 200px;
-  width: auto;
-}*/
+.featured .card img {
+  height: 206px; }
+
+.business .card img {
+  height: 162px; }
+
 .card-action i {
   color: grey;
   font-size: 1.5em; }
@@ -187,6 +188,9 @@ blockquote .featured {
 .def-menu-container .def-menu-icon {
   padding-top: 100px;
   text-align: center; }
+
+.about-container {
+  height: 500px; }
 
 .section-container {
   height: 800px; }

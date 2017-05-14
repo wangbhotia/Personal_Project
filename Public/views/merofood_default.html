@@ -52,11 +52,13 @@
 	</div>
 </div>
 
-<div class="section-container">
+<div class="about-container">
 	<div class="container row center def-section-title">
 		<h4>Restaurant</h4>
 		<hr>
-		<p class="def-p-tag">{{ b1.bus_desc }}</p>
+		<div class="container">
+			<p class="def-p-tag">{{ b1.bus_desc }}</p>
+		</div>
 	</div>
 </div>
 
@@ -282,7 +284,7 @@
 	  		<a class="modal-action modal-close waves-effect waves-light btn-large">Cancel</a>
 	  	</div>
 	    <div class="col s6 m6">
-	    	<a ng-click="deleteBusiness(b1.id)" onclick="Materialize.toast('Business Successfully Deleted!', 2000, 'red')" class="modal-action modal-close waves-effect waves-light btn-large red">Delete</a>
+	    	<a ng-click="deleteBusiness(b1.id)" onclick="Materialize.toast('Business Successfully Deleted!', 2000, 'green')" class="modal-action modal-close waves-effect waves-light btn-large red">Delete</a>
 	    </div>
 	  </div>
 	</div>

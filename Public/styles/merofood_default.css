@@ -28,6 +28,10 @@
 	text-align: center;
 }
 
+.about-container {
+	height: 500px;
+}
+
 .section-container {
 	height: 800px;
 }
