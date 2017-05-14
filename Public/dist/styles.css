@@ -176,6 +176,9 @@ blockquote .featured {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3); }
 
+.def-logo {
+  height: 200px; }
+
 .def-logo img {
   max-height: 200px; }
 
@@ -258,6 +261,8 @@ dd strong {
 @media only screen and (max-width: 480px) {
   .def-cover-container br {
     display: none; }
+  .def-logo {
+    height: 160px; }
   .def-logo img {
     max-height: 150px; }
   .def-intro-text {

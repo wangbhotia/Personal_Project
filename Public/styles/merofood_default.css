@@ -11,6 +11,10 @@
 	background-color: rgba(0,0,0,0.3);
 }
 
+.def-logo {
+	height: 200px;
+}
+
 .def-logo img {
 	max-height: 200px;
 }
@@ -118,8 +122,12 @@ dd strong {
 		display: none;
 	}
 
+	.def-logo {
+		height: 160px;
+	}
+
   .def-logo img {
-	max-height: 150px;
+		max-height: 150px;
 	}
 
 	.def-intro-text {
