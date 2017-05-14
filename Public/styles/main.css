@@ -90,10 +90,11 @@ blockquote .featured {
   font-weight: 500;
 }
 
-.card img {
+/*THIS AFFECTS ALL CARDS*/
+/*.card img {
   height: 200px;
   width: auto;
-}
+}*/
 
 .card-action i {
   color: grey;

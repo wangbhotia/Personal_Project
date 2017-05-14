@@ -1,40 +1,42 @@
 'use strict';
 
-angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow']).config(function ($stateProvider, $urlRouterProvider) {
+angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow']).config(function ($stateProvider, $urlRouterProvider, $uiViewScrollProvider) {
 
-	$stateProvider.state('home', {
-		url: '/',
-		templateUrl: '../views/main.html',
-		controller: 'mainCtrl'
-	}).state('all', {
-		url: '/all/:type',
-		templateUrl: '../views/list_all.html',
-		controller: 'listAllCtrl'
-	}).state('search', {
-		url: '/search',
-		templateUrl: '../views/search.html',
-		controller: 'searchCtrl'
-	}).state('b', {
-		url: '/b/:id',
-		templateUrl: '../views/merofood_default.html',
-		controller: 'detailsCtrl'
-	}).state('default', {
-		url: '/default',
-		templateUrl: '../views/merofood_default.html'
-	}).state('night', {
-		url: '/night',
-		templateUrl: '../views/merofood_night.html'
-	}).state('new-bus', { //Only if a User is logged in
-		url: '/new-bus',
-		templateUrl: '../views/new_bus.html',
-		controller: 'formsCtrl'
-	});
+			$stateProvider.state('home', {
+						url: '/',
+						templateUrl: '../views/main.html',
+						controller: 'mainCtrl'
+			}).state('all', {
+						url: '/all/:type',
+						templateUrl: '../views/list_all.html',
+						controller: 'listAllCtrl'
+			}).state('search', {
+						url: '/search',
+						templateUrl: '../views/search.html',
+						controller: 'searchCtrl'
+			}).state('b', {
+						url: '/b/:id',
+						templateUrl: '../views/merofood_default.html',
+						controller: 'detailsCtrl'
+			}).state('default', {
+						url: '/default',
+						templateUrl: '../views/merofood_default.html'
+			}).state('night', {
+						url: '/night',
+						templateUrl: '../views/merofood_night.html'
+			}).state('new-bus', { //Only if a User is logged in
+						url: '/new-bus',
+						templateUrl: '../views/new_bus.html',
+						controller: 'formsCtrl'
+			});
 
-	$urlRouterProvider.otherwise('/');
+			$urlRouterProvider.otherwise('/');
+
+			$uiViewScrollProvider.useAnchorScroll();
 });
 'use strict';
 
-angular.module('merofood').controller('detailsCtrl', function ($scope, mainService, $stateParams, $location) {
+angular.module('merofood').controller('detailsCtrl', function ($scope, mainService, $stateParams, $location, scrollSrv) {
 
 	var bid = parseInt($stateParams.id);
 
@@ -116,6 +118,12 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 			// alert('Business Successfully Deleted!');
 			$location.path('/');
 		});
+	};
+
+	//SCROLL SPY
+	$scope.gotoElement = function (eID) {
+		$location.hash(eID);
+		scrollSrv.scrollTo(eID);
 	};
 });
 'use strict';
@@ -541,16 +549,54 @@ angular.module('merofood').directive('headerDir', function () {
 });
 'use strict';
 
-angular.module('merofood').directive('scrollSpy', function () {
+var $scope, $location;
 
-	return {
-		link: function link(scope, element, attrs) {
-			element.click(function () {
-				element.scrollSpy();
-				// console.log('Scroll Spy Fired!!!!');
-			});
-		}
-	};
+angular.module('merofood').service('scrollSrv', function () {
+
+    this.scrollTo = function (eID) {
+
+        var startY = currentYPosition();
+        var stopY = elmYPosition(eID);
+        var distance = stopY > startY ? stopY - startY : startY - stopY;
+        if (distance < 100) {
+            scrollTo(0, stopY);return;
+        }
+        var speed = Math.round(distance / 100);
+        if (speed >= 20) speed = 20;
+        var step = Math.round(distance / 25);
+        var leapY = stopY > startY ? startY + step : startY - step;
+        var timer = 0;
+        if (stopY > startY) {
+            for (var i = startY; i < stopY; i += step) {
+                setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+                leapY += step;if (leapY > stopY) leapY = stopY;timer++;
+            }return;
+        }
+        for (var i = startY; i > stopY; i -= step) {
+            setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+            leapY -= step;if (leapY < stopY) leapY = stopY;timer++;
+        }
+
+        function currentYPosition() {
+            // Firefox, Chrome, Opera, Safari
+            if (self.pageYOffset) return self.pageYOffset;
+            // Internet Explorer 6 - standards mode
+            if (document.documentElement && document.documentElement.scrollTop) return document.documentElement.scrollTop;
+            // Internet Explorer 6, 7 and 8
+            if (document.body.scrollTop) return document.body.scrollTop;
+            return 0;
+        }
+
+        function elmYPosition(eID) {
+            var elm = document.getElementById(eID);
+            var y = elm.offsetTop;
+            var node = elm;
+            while (node.offsetParent && node.offsetParent != document.body) {
+                node = node.offsetParent;
+                y += node.offsetTop;
+            }return y;
+        }
+    };
 });
 'use strict';
 

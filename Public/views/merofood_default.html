@@ -1,19 +1,6 @@
 
 	<!-- DEFAULT LIGHT THEME -->
 
-	<!-- hide-on-med-and-up -->
-<!-- 	<div class="fixed-action-btn click-to-toggle">
-    <a class="btn-floating btn-large red">
-      <i class="material-icons">menu</i>
-    </a>
-    <ul>
-      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-    </ul>
-  </div> -->
-
 	<!-- COVER -->
 <div class="def-cover-container" ng-style="{'background-image': 'url('+ b1.bus_cover_img +')'}">
 	<div class="bg-tint">
@@ -37,23 +24,23 @@
 				<div class="row center def-menu-container">
 
 					<div class="def-menu-icon col s3 m3 l3">
-						<a scroll-spy href="#menu">
+						<a ng-click="gotoElement('menu')">
 						<i class="medium material-icons white-text">restaurant_menu</i>
 						<span class="white-text">Menu</span></a>
 					</div>
 
 					<div class="def-menu-icon col s3 m3 l3">
-						<a scroll-spy href="#contact">
+						<a ng-click="gotoElement('contact')">
 						<i class="medium material-icons white-text">phone</i>
 						<span class="white-text">Contact</span></a>
 					</div>
 					<div class="def-menu-icon col s3 m3 l3" >
-						<a scroll-spy href="#hours">
+						<a ng-click="gotoElement('hours')">
 						<i class="medium material-icons white-text">query_builder</i>
 						<span class="white-text">Hours</span></a>
 					</div>
 					<div class="def-menu-icon col s3 m3 l3">
-						<a scroll-spy href="#gallery">
+						<a ng-click="gotoElement('gallery')">
 						<i class="medium material-icons white-text">perm_media</i>
 						<span class="white-text">Gallery</span></a>
 					</div>
@@ -90,7 +77,7 @@
 </div>
 
 
-<div id="menu" class="section-container def-bus-menu">
+<div id="menu" class="def-bus-menu">
 	<div class="container row def-section-title">
 		<h4 class="center">Menu</h4>
 		<hr>
@@ -113,6 +100,7 @@
 	</div>
 </div>
 
+
 <div class="section-container bus-parallax valign-wrapper" ng-style="{'background-image': 'url('+ s1[1].parallax_img +')'}">
 	<div class="container def-cards">
   	<div class="card horizontal custom-cards">
@@ -128,10 +116,10 @@
   	</div>
 	</div>
 </div>
+</section>
 
 
-
-<div id="hours" class="section-container">
+<div id="hours" class="hours-section">
 	<div class="container row center def-section-title">
 		<h4>Hours</h4>
 		<hr>
@@ -184,14 +172,14 @@
 </div>
 
 
-<div id="gallery" class="section-container">
+<div id="gallery" class="gallery-section">
 	<div class="container def-section-title">
 		<h4 class="center">Gallery</h4>
 		<br>
 	</div>
 	<div class="row gallery">
 		<div class="col s6 m4 l3" ng-repeat="img in g1">
-			<img class="responsive-img" ng-src="{{ img.gallery_img_url }}">
+			<img materialboxed class="materialboxed responsive-img" ng-src="{{ img.gallery_img_url }}">
 		</div>
 	</div>
 </div>
@@ -224,6 +212,8 @@
 		</div>
 	</div>
 </div>
+
+<!-- END OF BUSINESS PAGE -->
 
 <div class="container" ng-show="isLoggedIn">
 	<hr>

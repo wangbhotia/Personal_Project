@@ -1,4 +1,4 @@
-angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams, $location){
+angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams, $location, scrollSrv){
 	
 	var bid = parseInt($stateParams.id);
 	
@@ -87,7 +87,11 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 			$location.path('/');
 		});
 	}
-
-
+    
+	//SCROLL SPY
+  $scope.gotoElement = function (eID){
+  	$location.hash(eID);
+  	scrollSrv.scrollTo(eID); 
+  };
 
 });

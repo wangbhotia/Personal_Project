@@ -1,5 +1,5 @@
 angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow'])
-	.config(function($stateProvider, $urlRouterProvider){
+	.config(function($stateProvider, $urlRouterProvider, $uiViewScrollProvider){
 
 		$stateProvider
 
@@ -44,5 +44,7 @@ angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow'])
 			});
 
 			$urlRouterProvider.otherwise('/');
+
+			$uiViewScrollProvider.useAnchorScroll();
 
 	});
