@@ -665,7 +665,7 @@
 			<a href="#!" class="waves-effect waves-green btn">BACK</a>
 		</div>
 		<div class="col s12 m4">
-			<a ng-click="updateBusiness(newBus)" class="waves-effect waves-green btn" ui-sref="b({ id: newBus.id })">SAVE & EXIT</a>
+			<a ng-show="isEditing" ng-click="updateBusiness(newBus)" class="waves-effect waves-green btn" ui-sref="b({ id: newBus.id })">SAVE & EXIT</a>
 		</div>
 		<div class="col s12 m4">
 			<a href="#!" class="waves-effect waves-green btn">NEXT</a>

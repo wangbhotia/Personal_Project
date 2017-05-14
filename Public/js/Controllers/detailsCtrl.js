@@ -1,17 +1,15 @@
-angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams, $location, scrollSrv){
+angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams, $location, scrollSrv, $rootScope){
 	
 	var bid = parseInt($stateParams.id);
 	$scope.toFeatId = bid;
+	
 	// GET ALL BUSINESSES
 	$scope.getAllBus = function(){
 		mainService.getBusData().then(function(response){
-			// console.log(response);
-
 			// GET ONE BUSINESS WITH MATCHED ID
 			for(var i = 0; i < response.length; i++){
 				if(response[i].id === bid){
 					$scope.b1 = response[i];
-					// console.log($scope.b1);
 				}
 			}
 		});
@@ -24,7 +22,6 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 	$scope.getSpecial = function(){
 		mainService.getSpecialData(bid).then(function(response){
 			$scope.s1 = response;
-			// console.log($scope.s1);
 		});
 	}
 
@@ -46,7 +43,6 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 					}
 				}
 			});
-			// console.log('m1', $scope.m1);
 		});
 	}
 
@@ -57,7 +53,6 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 	$scope.getGallery = function(){
 		mainService.getGalleryData(bid).then(function(response){
 			$scope.g1 = response;
-			// console.log($scope.g1)
 		});
 	}
 
@@ -68,6 +63,11 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 	$scope.editBusiness = function(b1){
 		mainService.selected = b1;
 		$location.path('/new-bus');
+	}
+
+	// SHOW SAVE & EXIT BUTTON
+	$scope.edit = function(){
+		$rootScope.isEditing = true;
 	}
 
 
@@ -87,9 +87,7 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 
 	// DELETE ONE BUSINESS
 	$scope.deleteBusiness = function(id){
-		// console.log(id);
 		mainService.deleteBus(id).then(function(response){
-			// alert('Business Successfully Deleted!');
 			$location.path('/');
 		});
 	}

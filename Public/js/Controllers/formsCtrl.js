@@ -4,7 +4,6 @@ angular.module('merofood').controller('formsCtrl', function($scope, mainService,
 	$scope.newGallery = [];
 	$scope.newBus = mainService.selected;
 
-	// console.log($scope.images);
 	$scope.addBus = function(newBus){
 		// console.log('addBus fn fired!!!');
 		newBus.bus_logo = $scope.images[0];
@@ -22,7 +21,6 @@ angular.module('merofood').controller('formsCtrl', function($scope, mainService,
 		newBus.user_id = $rootScope.currentUserId;
 
 		mainService.addNewBus(newBus).then(function(response){
-			// console.log(respose);
 			$scope.business = response;
 		});
 	}
@@ -33,7 +31,6 @@ angular.module('merofood').controller('formsCtrl', function($scope, mainService,
 	$scope.updateBusiness = function(update){
 		mainService.updateBus(update).then(function(response){
 			$scope.resFromDb = response;
-			// console.log('update res: ', response);
 			// $location.path('/');
 		});
 	}
