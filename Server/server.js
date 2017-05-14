@@ -44,7 +44,7 @@ passport.use(new Auth0Strategy({
 },
   function(accessToken, refreshToken, extraParams, profile, done){
     //Find user in database
-    console.log(profile)
+    // console.log(profile)
     db.get_user([profile.id], function(err, user){
       user = user[0];
       if (!user) { //if there isn't one, we'll create one!
@@ -54,7 +54,7 @@ passport.use(new Auth0Strategy({
           return done(err, user[0]);
         })
       } else {
-        console.log('FOUND USER', user);
+        // console.log('FOUND USER', user);
         return done(err, user);
       }
     })
@@ -108,6 +108,8 @@ app.get('/gallery/:id', serverCtrl.getGallery);
 app.post('/createbus', serverCtrl.newBus);
 
 app.post('/newimage', awsCtrl.saveImage);
+
+app.put('/featbus', serverCtrl.featureBus);
 
 app.put('/updatebus', serverCtrl.updateBus, serverCtrl.updateAddress, serverCtrl.updateHours, serverCtrl.updateSocial);
 

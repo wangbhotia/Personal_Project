@@ -168,19 +168,18 @@ module.exports = {
 
 
 				//this is an array of images
-				
-				// let gallery = req.body.gallery;
+				let gallery = req.body.gallery;
 				// console.log('gallery: ', gallery);
-				// for (let i = 0; i < gallery.length; i++) {
-				// 	db.create_gallery([gallery[i], newbus_id], function(err, newgallery){
-				// 		if(!err){
-				// 			console.log('no error on gallery');
-				// 		} else {
-				// 			console.log(err);
-				// 			res.send(err);
-				// 		}
-				// 	});
-				// }
+				for (let i = 0; i < gallery.length; i++) {
+					db.create_gallery([gallery[i], newbus_id], function(err, newgallery){
+						if(!err){
+							console.log('no error on gallery');
+						} else {
+							console.log(err);
+							res.send(err);
+						}
+					});
+				}
 
     		return res.send(newbus);
     	} else {
@@ -242,6 +241,19 @@ module.exports = {
   			return res.send(err);
   		}
   	});
+  },
+
+  featureBus: function(req, res){
+    let featBus = [req.body.featured, req.body.id];
+
+    db.feature_bus(featBus, function(err, busFeatured){
+      if(!err){
+        return res.send(busFeatured);
+      } else {
+        console.log(err);
+        return res.send(err);
+      }
+    });
   },
 
   deleteBus: function(req, res){

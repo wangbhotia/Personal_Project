@@ -1,7 +1,7 @@
 angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams, $location, scrollSrv){
 	
 	var bid = parseInt($stateParams.id);
-	
+	$scope.toFeatId = bid;
 	// GET ALL BUSINESSES
 	$scope.getAllBus = function(){
 		mainService.getBusData().then(function(response){
@@ -73,9 +73,15 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 
 	// UPDATE FEATURED BUSINESS
 	$scope.featureBus = function(featBus){
-		// featBus.id = bid;
-		console.log(featBus);
-		// $location.path('/new-bus');
+		mainService.featureBus(featBus).then(function(response){
+			if(response[0].featured === 'yes'){
+				Materialize.toast('Your Business is now Featured!', 2000, 'green');
+			} 
+			if(response[0].featured === 'no'){
+				Materialize.toast('Your Business is no longer Featured!', 2000, 'red');
+			}
+			$location.path('/');
+		});
 	}
 
 

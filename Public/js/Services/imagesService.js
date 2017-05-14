@@ -1,4 +1,4 @@
-angular.module('merofood').factory('imageService', function($http){
+angular.module('merofood').factory('imageService', function($http, $rootScope){
   // AMAZON S3
 
   var service = {};
@@ -11,7 +11,7 @@ angular.module('merofood').factory('imageService', function($http){
       imageName: fileName,
       imageBody: imageData,
       imageExtension: imageExtension,
-      userEmail: 'wangbhotia@gamil.com'
+      userEmail: $rootScope.currentUserEmail
     }
 
     return $http.post('/newimage', newImage);

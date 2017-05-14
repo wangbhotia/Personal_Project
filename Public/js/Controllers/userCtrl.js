@@ -5,6 +5,7 @@ angular.module('merofood').controller('userCtrl', function($scope, userService, 
       if(user){
         $scope.user = user.first_name;
         $rootScope.currentUserId = user.id;
+        $rootScope.currentUserEmail = user.email;
         $rootScope.isLoggedIn = true;
       } else {
         $scope.user = 'Sign In';

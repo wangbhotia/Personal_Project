@@ -39,7 +39,7 @@ angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow']).
 angular.module('merofood').controller('detailsCtrl', function ($scope, mainService, $stateParams, $location, scrollSrv) {
 
 	var bid = parseInt($stateParams.id);
-
+	$scope.toFeatId = bid;
 	// GET ALL BUSINESSES
 	$scope.getAllBus = function () {
 		mainService.getBusData().then(function (response) {
@@ -106,9 +106,15 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 
 	// UPDATE FEATURED BUSINESS
 	$scope.featureBus = function (featBus) {
-		// featBus.id = bid;
-		console.log(featBus);
-		// $location.path('/new-bus');
+		mainService.featureBus(featBus).then(function (response) {
+			if (response[0].featured === 'yes') {
+				Materialize.toast('Your Business is now Featured!', 2000, 'green');
+			}
+			if (response[0].featured === 'no') {
+				Materialize.toast('Your Business is no longer Featured!', 2000, 'red');
+			}
+			$location.path('/');
+		});
 	};
 
 	// DELETE ONE BUSINESS
@@ -131,6 +137,7 @@ angular.module('merofood').controller('detailsCtrl', function ($scope, mainServi
 angular.module('merofood').controller('formsCtrl', function ($scope, mainService, $location, $rootScope) {
 
 	$scope.images = [];
+	$scope.newGallery = [];
 	$scope.newBus = mainService.selected;
 
 	// console.log($scope.images);
@@ -142,6 +149,12 @@ angular.module('merofood').controller('formsCtrl', function ($scope, mainService
 		newBus.bus_cover_img = $scope.images[3];
 		newBus.spbg1 = $scope.images[4];
 		newBus.spbg2 = $scope.images[5];
+
+		for (var i = 6; i < $scope.images.length; i++) {
+			$scope.newGallery.push($scope.images[i]);
+		}
+
+		newBus.gallery = $scope.newGallery;
 		newBus.user_id = $rootScope.currentUserId;
 
 		mainService.addNewBus(newBus).then(function (response) {
@@ -261,6 +274,7 @@ angular.module('merofood').controller('userCtrl', function ($scope, userService,
       if (user) {
         $scope.user = user.first_name;
         $rootScope.currentUserId = user.id;
+        $rootScope.currentUserEmail = user.email;
         $rootScope.isLoggedIn = true;
       } else {
         $scope.user = 'Sign In';
@@ -608,7 +622,7 @@ angular.module('merofood').service('scrollSrv', function () {
 });
 'use strict';
 
-angular.module('merofood').factory('imageService', function ($http) {
+angular.module('merofood').factory('imageService', function ($http, $rootScope) {
   // AMAZON S3
 
   var service = {};
@@ -621,7 +635,7 @@ angular.module('merofood').factory('imageService', function ($http) {
       imageName: fileName,
       imageBody: imageData,
       imageExtension: imageExtension,
-      userEmail: 'wangbhotia@gamil.com'
+      userEmail: $rootScope.currentUserEmail
     };
 
     return $http.post('/newimage', newImage);
@@ -702,6 +716,18 @@ angular.module('merofood').service('mainService', function ($http) {
 			method: 'PUT',
 			url: baseUrl + 'updatebus',
 			data: updatedBus
+		}).then(function (response) {
+			return response.data;
+		});
+	};
+
+	// FEATURE BUSINESS
+
+	this.featureBus = function (feat) {
+		return $http({
+			method: 'PUT',
+			url: baseUrl + 'featbus',
+			data: feat
 		}).then(function (response) {
 			return response.data;
 		});

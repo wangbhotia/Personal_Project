@@ -79,6 +79,19 @@ angular.module('merofood').service('mainService', function($http){
 	}
 
 
+	// FEATURE BUSINESS
+
+	this.featureBus = function(feat){
+		return $http({
+			method: 'PUT',
+			url: baseUrl + 'featbus',
+			data: feat
+		}).then(function(response){
+			return response.data;
+		});
+	}
+
+
 	// DELETE ROUTE
 
 	this.deleteBus = function(id){
