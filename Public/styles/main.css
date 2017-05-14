@@ -142,3 +142,13 @@ blockquote .featured {
   background: url('https://images.unsplash.com/photo-1471110338536-858caa3dbe45?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') center no-repeat;
   background-size: cover;
 }
+
+@media only screen and (max-width: 700px) {
+  .cover-container br {
+    display: none;
+  }
+  .cover-restaurants, .cover-coffee, .cover-bars, .cover-bakery, .cover-dessert, .cover-foodtrucks {
+    height: 15vh;
+  }
+
+}

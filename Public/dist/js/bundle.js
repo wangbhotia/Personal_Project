@@ -36,255 +36,6 @@ angular.module('merofood', ['ui.router', 'ui.materialize', 'angular-cardflow']).
 });
 'use strict';
 
-angular.module('merofood').controller('detailsCtrl', function ($scope, mainService, $stateParams, $location, scrollSrv) {
-
-	var bid = parseInt($stateParams.id);
-
-	// GET ALL BUSINESSES
-	$scope.getAllBus = function () {
-		mainService.getBusData().then(function (response) {
-			// console.log(response);
-
-			// GET ONE BUSINESS WITH MATCHED ID
-			for (var i = 0; i < response.length; i++) {
-				if (response[i].id === bid) {
-					$scope.b1 = response[i];
-					// console.log($scope.b1);
-				}
-			}
-		});
-	};
-
-	$scope.getAllBus();
-
-	// GET ALL SPECIAL
-	$scope.getSpecial = function () {
-		mainService.getSpecialData(bid).then(function (response) {
-			$scope.s1 = response;
-			// console.log($scope.s1);
-		});
-	};
-
-	$scope.getSpecial();
-
-	// GET ALL MENU
-	$scope.getMenu = function () {
-		mainService.getMenuData(bid).then(function (response) {
-			$scope.m1 = response;
-			mainService.getMenuItemsData(bid).then(function (res) {
-				var items = res;
-				for (var i = 0; i < $scope.m1.length; i++) {
-					$scope.m1[i].items = [];
-					for (var j = 0; j < items.length; j++) {
-						if (items[j].menuid === $scope.m1[i].menu_id) {
-							$scope.m1[i].items.push(items[j]);
-						}
-					}
-				}
-			});
-			// console.log('m1', $scope.m1);
-		});
-	};
-
-	$scope.getMenu();
-
-	// GET ALL GALLERY
-	$scope.getGallery = function () {
-		mainService.getGalleryData(bid).then(function (response) {
-			$scope.g1 = response;
-			// console.log($scope.g1)
-		});
-	};
-
-	$scope.getGallery();
-
-	// UPDATE ONE BUSINESS
-	$scope.editBusiness = function (b1) {
-		mainService.selected = b1;
-		$location.path('/new-bus');
-	};
-
-	// UPDATE FEATURED BUSINESS
-	$scope.featureBus = function (featBus) {
-		// featBus.id = bid;
-		console.log(featBus);
-		// $location.path('/new-bus');
-	};
-
-	// DELETE ONE BUSINESS
-	$scope.deleteBusiness = function (id) {
-		// console.log(id);
-		mainService.deleteBus(id).then(function (response) {
-			// alert('Business Successfully Deleted!');
-			$location.path('/');
-		});
-	};
-
-	//SCROLL SPY
-	$scope.gotoElement = function (eID) {
-		$location.hash(eID);
-		scrollSrv.scrollTo(eID);
-	};
-});
-'use strict';
-
-angular.module('merofood').controller('formsCtrl', function ($scope, mainService, $location, $rootScope) {
-
-	$scope.images = [];
-	$scope.newBus = mainService.selected;
-
-	// console.log($scope.images);
-	$scope.addBus = function (newBus) {
-		// console.log('addBus fn fired!!!');
-		newBus.bus_logo = $scope.images[0];
-		newBus.spimg1 = $scope.images[1];
-		newBus.spimg2 = $scope.images[2];
-		newBus.bus_cover_img = $scope.images[3];
-		newBus.spbg1 = $scope.images[4];
-		newBus.spbg2 = $scope.images[5];
-		newBus.user_id = $rootScope.currentUserId;
-
-		mainService.addNewBus(newBus).then(function (response) {
-			// console.log(respose);
-			$scope.business = response;
-		});
-	};
-
-	// UPDATE BUSINESS
-
-	$scope.updateBusiness = function (update) {
-		mainService.updateBus(update).then(function (response) {
-			$scope.resFromDb = response;
-			// console.log('update res: ', response);
-			// $location.path('/');
-		});
-	};
-});
-'use strict';
-
-angular.module('merofood').controller('listAllCtrl', function ($scope, $stateParams, $rootScope) {
-
-	var stateType = $stateParams.type;
-
-	$scope.typeTitle = stateType;
-	$scope.busType = [];
-
-	if (stateType === 'Featured') {
-		$scope.busType = $rootScope.featured;
-	}
-	if (stateType === 'Restaurants') {
-		$scope.busType = $rootScope.restaurants;
-	}
-	if (stateType === 'Coffee-Cafe') {
-		$scope.busType = $rootScope.coffeeCafe;
-	}
-	if (stateType === 'Bars') {
-		$scope.busType = $rootScope.bars;
-	}
-	if (stateType === 'Bakery') {
-		$scope.busType = $rootScope.bakeries;
-	}
-	if (stateType === 'Dessert') {
-		$scope.busType = $rootScope.desserts;
-	}
-	if (stateType === 'Food-Trucks-Take-Outs') {
-		$scope.busType = $rootScope.takeouts;
-	}
-});
-'use strict';
-
-angular.module('merofood').controller('mainCtrl', function ($scope, mainService, $rootScope) {
-
-	$scope.dataFromServer = false;
-
-	$rootScope.featured = [];
-	$rootScope.restaurants = [];
-	$rootScope.coffeeCafe = [];
-	$rootScope.bars = [];
-	$rootScope.bakeries = [];
-	$rootScope.desserts = [];
-	$rootScope.takeouts = [];
-
-	$scope.getBusiness = function () {
-		mainService.getBusData().then(function (response) {
-			// console.log(response);
-			$rootScope.searchAllBus = response;
-
-			for (var i = 0; i < response.length; i++) {
-				if (response[i].featured === 'yes') {
-					$rootScope.featured.push(response[i]);
-				};
-			};
-
-			for (var j = 0; j < response.length; j++) {
-				if (response[j].bus_type === 'Restaurant') {
-					$rootScope.restaurants.push(response[j]);
-				}
-				if (response[j].bus_type === 'Coffee / Cafe') {
-					$rootScope.coffeeCafe.push(response[j]);
-				}
-				if (response[j].bus_type === 'Bar') {
-					$rootScope.bars.push(response[j]);
-				}
-				if (response[j].bus_type === 'Bakery') {
-					$rootScope.bakeries.push(response[j]);
-				}
-				if (response[j].bus_type === 'Dessert') {
-					$rootScope.desserts.push(response[j]);
-				}
-				if (response[j].bus_type === 'Food Trucks / Take Outs') {
-					$rootScope.takeouts.push(response[j]);
-				}
-			};
-			$scope.dataFromServer = true;
-		});
-	};
-
-	$scope.getBusiness();
-
-	$scope.searchBusiness = function (searchKey) {
-		$rootScope.searchKeyMain = searchKey;
-	};
-});
-'use strict';
-
-angular.module('merofood').controller('searchCtrl', function ($scope, $rootScope) {
-
-	$scope.allBusForSearch = $rootScope.searchAllBus;
-});
-'use strict';
-
-angular.module('merofood').controller('userCtrl', function ($scope, userService, $state, $rootScope) {
-
-  function getUser() {
-    userService.getUser().then(function (user) {
-      if (user) {
-        $scope.user = user.first_name;
-        $rootScope.currentUserId = user.id;
-        $rootScope.isLoggedIn = true;
-      } else {
-        $scope.user = 'Sign In';
-        $rootScope.isLoggedIn = false;
-      }
-    });
-  }
-
-  getUser();
-
-  $scope.loginLocal = function (username, password) {
-    console.log('Logging in with', username, password);
-    userService.loginLocal({
-      username: username,
-      password: password
-    }).then(function (res) {
-      getUser();
-    });
-  };
-
-  $scope.logout = userService.logout;
-});
-'use strict';
-
 (function () {
     // set prefixed matrix transform without changing other elements of matrix
     // I tried out matrix3d, but it had visual artifacts in chrome
@@ -597,6 +348,263 @@ angular.module('merofood').service('scrollSrv', function () {
             }return y;
         }
     };
+});
+'use strict';
+
+angular.module('merofood').controller('detailsCtrl', function ($scope, mainService, $stateParams, $location, scrollSrv) {
+
+	var bid = parseInt($stateParams.id);
+
+	// GET ALL BUSINESSES
+	$scope.getAllBus = function () {
+		mainService.getBusData().then(function (response) {
+			// console.log(response);
+
+			// GET ONE BUSINESS WITH MATCHED ID
+			for (var i = 0; i < response.length; i++) {
+				if (response[i].id === bid) {
+					$scope.b1 = response[i];
+					// console.log($scope.b1);
+				}
+			}
+		});
+	};
+
+	$scope.getAllBus();
+
+	// GET ALL SPECIAL
+	$scope.getSpecial = function () {
+		mainService.getSpecialData(bid).then(function (response) {
+			$scope.s1 = response;
+			// console.log($scope.s1);
+		});
+	};
+
+	$scope.getSpecial();
+
+	// GET ALL MENU
+	$scope.getMenu = function () {
+		mainService.getMenuData(bid).then(function (response) {
+			$scope.m1 = response;
+			mainService.getMenuItemsData(bid).then(function (res) {
+				var items = res;
+				for (var i = 0; i < $scope.m1.length; i++) {
+					$scope.m1[i].items = [];
+					for (var j = 0; j < items.length; j++) {
+						if (items[j].menuid === $scope.m1[i].menu_id) {
+							$scope.m1[i].items.push(items[j]);
+						}
+					}
+				}
+			});
+			// console.log('m1', $scope.m1);
+		});
+	};
+
+	$scope.getMenu();
+
+	// GET ALL GALLERY
+	$scope.getGallery = function () {
+		mainService.getGalleryData(bid).then(function (response) {
+			$scope.g1 = response;
+			// console.log($scope.g1)
+		});
+	};
+
+	$scope.getGallery();
+
+	// UPDATE ONE BUSINESS
+	$scope.editBusiness = function (b1) {
+		mainService.selected = b1;
+		$location.path('/new-bus');
+	};
+
+	// UPDATE FEATURED BUSINESS
+	$scope.featureBus = function (featBus) {
+		// featBus.id = bid;
+		console.log(featBus);
+		// $location.path('/new-bus');
+	};
+
+	// DELETE ONE BUSINESS
+	$scope.deleteBusiness = function (id) {
+		// console.log(id);
+		mainService.deleteBus(id).then(function (response) {
+			// alert('Business Successfully Deleted!');
+			$location.path('/');
+		});
+	};
+
+	//SCROLL SPY
+	$scope.gotoElement = function (eID) {
+		$location.hash(eID);
+		scrollSrv.scrollTo(eID);
+	};
+});
+'use strict';
+
+angular.module('merofood').controller('formsCtrl', function ($scope, mainService, $location, $rootScope) {
+
+	$scope.images = [];
+	$scope.newBus = mainService.selected;
+
+	// console.log($scope.images);
+	$scope.addBus = function (newBus) {
+		// console.log('addBus fn fired!!!');
+		newBus.bus_logo = $scope.images[0];
+		newBus.spimg1 = $scope.images[1];
+		newBus.spimg2 = $scope.images[2];
+		newBus.bus_cover_img = $scope.images[3];
+		newBus.spbg1 = $scope.images[4];
+		newBus.spbg2 = $scope.images[5];
+		newBus.user_id = $rootScope.currentUserId;
+
+		mainService.addNewBus(newBus).then(function (response) {
+			// console.log(respose);
+			$scope.business = response;
+		});
+	};
+
+	// UPDATE BUSINESS
+
+	$scope.updateBusiness = function (update) {
+		mainService.updateBus(update).then(function (response) {
+			$scope.resFromDb = response;
+			// console.log('update res: ', response);
+			// $location.path('/');
+		});
+	};
+});
+'use strict';
+
+angular.module('merofood').controller('listAllCtrl', function ($scope, $stateParams, $rootScope) {
+
+	var stateType = $stateParams.type;
+
+	$scope.typeTitle = stateType;
+	$scope.busType = [];
+
+	if (stateType === 'Featured') {
+		$scope.busType = $rootScope.featured;
+	}
+	if (stateType === 'Restaurants') {
+		$scope.busType = $rootScope.restaurants;
+	}
+	if (stateType === 'Coffee-Cafe') {
+		$scope.busType = $rootScope.coffeeCafe;
+	}
+	if (stateType === 'Bars') {
+		$scope.busType = $rootScope.bars;
+	}
+	if (stateType === 'Bakery') {
+		$scope.busType = $rootScope.bakeries;
+	}
+	if (stateType === 'Dessert') {
+		$scope.busType = $rootScope.desserts;
+	}
+	if (stateType === 'Food-Trucks-Take-Outs') {
+		$scope.busType = $rootScope.takeouts;
+	}
+});
+'use strict';
+
+angular.module('merofood').controller('mainCtrl', function ($scope, mainService, $rootScope) {
+
+	$scope.dataFromServer = false;
+
+	$rootScope.featured = [];
+	$rootScope.restaurants = [];
+	$rootScope.coffeeCafe = [];
+	$rootScope.bars = [];
+	$rootScope.bakeries = [];
+	$rootScope.desserts = [];
+	$rootScope.takeouts = [];
+
+	$scope.getBusiness = function () {
+		mainService.getBusData().then(function (response) {
+			// console.log(response);
+			$rootScope.searchAllBus = response;
+
+			for (var i = 0; i < response.length; i++) {
+				if (response[i].featured === 'yes') {
+					$rootScope.featured.push(response[i]);
+				};
+			};
+
+			for (var j = 0; j < response.length; j++) {
+				if (response[j].bus_type === 'Restaurant') {
+					$rootScope.restaurants.push(response[j]);
+				}
+				if (response[j].bus_type === 'Coffee / Cafe') {
+					$rootScope.coffeeCafe.push(response[j]);
+				}
+				if (response[j].bus_type === 'Bar') {
+					$rootScope.bars.push(response[j]);
+				}
+				if (response[j].bus_type === 'Bakery') {
+					$rootScope.bakeries.push(response[j]);
+				}
+				if (response[j].bus_type === 'Dessert') {
+					$rootScope.desserts.push(response[j]);
+				}
+				if (response[j].bus_type === 'Food Trucks / Take Outs') {
+					$rootScope.takeouts.push(response[j]);
+				}
+			};
+			$scope.dataFromServer = true;
+		});
+	};
+
+	$scope.getBusiness();
+
+	$scope.searchBusiness = function (searchKey) {
+		$rootScope.searchKeyMain = searchKey;
+	};
+});
+'use strict';
+
+angular.module('merofood').controller('searchCtrl', function ($scope, $rootScope) {
+
+	$scope.allBusForSearch = $rootScope.searchAllBus;
+});
+'use strict';
+
+angular.module('merofood').controller('userCtrl', function ($scope, userService, $state, $rootScope, $location) {
+
+  function getUser() {
+    userService.getUser().then(function (user) {
+      if (user) {
+        $scope.user = user.first_name;
+        $rootScope.currentUserId = user.id;
+        $rootScope.isLoggedIn = true;
+      } else {
+        $scope.user = 'Sign In';
+        $rootScope.isLoggedIn = false;
+      }
+    });
+  }
+
+  getUser();
+
+  $rootScope.isSignedIn = function () {
+    if ($rootScope.isLoggedIn) {
+      $location.path('new-bus');
+    } else {
+      Materialize.toast('Please Sign In First.', 2000, 'red');
+    }
+  };
+
+  $scope.loginLocal = function (username, password) {
+    console.log('Logging in with', username, password);
+    userService.loginLocal({
+      username: username,
+      password: password
+    }).then(function (res) {
+      getUser();
+    });
+  };
+
+  $scope.logout = userService.logout;
 });
 'use strict';
 

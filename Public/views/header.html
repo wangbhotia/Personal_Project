@@ -3,54 +3,10 @@
   <div class="nav-wrapper white">
     <a ui-sref="home" class="brand-logo left black-text">mero<strong>food</strong></a>
     <ul class="right">
-      <li><a ui-sref="new-bus">+ Business</a></li>
-      <!-- <li><a data-target="register" modal>Sign Up</a></li> -->
+      <li><a ng-click="isSignedIn()">+ Business</a></li>
       <li><a href="/auth">{{user}}</a></li>
       <li ng-show="isLoggedIn"><a href="/auth/logout">Sign Out</a></li>
     </ul>
   </div>
 </nav>
-
-	<!-- SIGN UP -->
-<!-- 	<div id="register" class="modal register-modal">
-		<div class="modal-content">
-	    <h4 class="header center">SIGN UP</h4>
-	    <br>
-	    <div class="row">
-		    <form class="col s12">
-		      <div class="row">
-		        <div class="input-field col s6">
-		          <input id="first_name" type="text" class="validate">
-		          <label for="first_name">First Name</label>
-		        </div>
-		        <div class="input-field col s6">
-		          <input id="last_name" type="text" class="validate">
-		          <label for="last_name">Last Name</label>
-		        </div>
-		      </div>
-		      <div class="row">
-		        <div class="input-field col s12">
-		          <input id="email" type="email" class="validate">
-		          <label for="email">Email</label>
-		        </div>
-		      </div>
-		      <div class="row">
-		        <div class="input-field col s12">
-		          <input id="password" type="password" class="validate">
-		          <label for="password">Password</label>
-		        </div>
-		      </div>
-		    </form>
-		  </div>
-	  </div>
-	  <div class="modal-footer row center">
-	    <div class="col s12 m6">
-	    	<a href="#!" class="modal-action waves-effect waves-green btn">Sign Up</a>
-	    </div>
-	  	<div class="col s12 m6">
-	  		<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Cancel</a>
-	  	</div>
-	    
-	  </div>
-	</div> -->
         

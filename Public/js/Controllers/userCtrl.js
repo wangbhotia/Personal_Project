@@ -1,4 +1,4 @@
-angular.module('merofood').controller('userCtrl', function($scope, userService, $state, $rootScope){
+angular.module('merofood').controller('userCtrl', function($scope, userService, $state, $rootScope, $location){
 
   function getUser() {
     userService.getUser().then(function(user) {
@@ -14,6 +14,14 @@ angular.module('merofood').controller('userCtrl', function($scope, userService, 
   }
 
   getUser();
+
+  $rootScope.isSignedIn = function(){
+    if($rootScope.isLoggedIn){
+      $location.path('new-bus');
+    } else {
+      Materialize.toast('Please Sign In First.', 2000, 'red');
+    }
+  }
 
   $scope.loginLocal = function(username, password) {
     console.log('Logging in with', username, password);
