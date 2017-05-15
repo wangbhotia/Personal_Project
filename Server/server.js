@@ -22,7 +22,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(__dirname + './../public'));
+app.use(express.static(__dirname + './../Public'));
 
 const conn = massive.connectSync({
 	connectionString: config.elephant
