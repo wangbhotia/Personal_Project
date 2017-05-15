@@ -641,8 +641,6 @@ angular.module('merofood').factory('imageService', function ($http, $rootScope) 
 
 angular.module('merofood').service('mainService', function ($http) {
 
-	var baseUrl = 'http://localhost:3000/';
-
 	this.selected = {};
 
 	// GET ROUTES
@@ -650,7 +648,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.getBusData = function () {
 		return $http({
 			method: 'GET',
-			url: baseUrl + 'businesses'
+			url: 'businesses'
 		}).then(function (response) {
 			return response.data;
 		});
@@ -659,7 +657,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.getSpecialData = function (id) {
 		return $http({
 			method: 'GET',
-			url: baseUrl + 'special/' + id
+			url: 'special/' + id
 		}).then(function (response) {
 			return response.data;
 		});
@@ -668,7 +666,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.getMenuData = function (id) {
 		return $http({
 			method: 'GET',
-			url: baseUrl + 'menu/' + id
+			url: 'menu/' + id
 		}).then(function (response) {
 			return response.data;
 		});
@@ -677,7 +675,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.getMenuItemsData = function (id) {
 		return $http({
 			method: 'GET',
-			url: baseUrl + 'menuitems/' + id
+			url: 'menuitems/' + id
 		}).then(function (response) {
 			return response.data;
 		});
@@ -686,7 +684,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.getGalleryData = function (id) {
 		return $http({
 			method: 'GET',
-			url: baseUrl + 'gallery/' + id
+			url: 'gallery/' + id
 		}).then(function (response) {
 			return response.data;
 		});
@@ -697,7 +695,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.addNewBus = function (newBus) {
 		return $http({
 			method: 'POST',
-			url: baseUrl + 'createbus',
+			url: 'createbus',
 			data: newBus
 		}).then(function (response) {
 			return response;
@@ -709,7 +707,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.updateBus = function (updatedBus) {
 		return $http({
 			method: 'PUT',
-			url: baseUrl + 'updatebus',
+			url: 'updatebus',
 			data: updatedBus
 		}).then(function (response) {
 			return response.data;
@@ -721,7 +719,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.featureBus = function (feat) {
 		return $http({
 			method: 'PUT',
-			url: baseUrl + 'featbus',
+			url: 'featbus',
 			data: feat
 		}).then(function (response) {
 			return response.data;
@@ -733,7 +731,7 @@ angular.module('merofood').service('mainService', function ($http) {
 	this.deleteBus = function (id) {
 		return $http({
 			method: 'DELETE',
-			url: baseUrl + 'deletebus/' + id
+			url: 'deletebus/' + id
 		}).then(function (response) {
 			return response;
 		});
