@@ -1,13 +1,13 @@
 angular.module('merofood').controller('detailsCtrl', function($scope, mainService, $stateParams, $location, scrollSrv, $rootScope){
 	
-	var bid = parseInt($stateParams.id);
+	let bid = parseInt($stateParams.id);
 	$scope.toFeatId = bid;
 	
 	// GET ALL BUSINESSES
-	$scope.getAllBus = function(){
+	$scope.getAllBus = () => {
 		mainService.getBusData().then(function(response){
 			// GET ONE BUSINESS WITH MATCHED ID
-			for(var i = 0; i < response.length; i++){
+			for(let i = 0; i < response.length; i++){
 				if(response[i].id === bid){
 					$scope.b1 = response[i];
 				}
@@ -19,7 +19,7 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 
 
 	// GET ALL SPECIAL
-	$scope.getSpecial = function(){
+	$scope.getSpecial = () => {
 		mainService.getSpecialData(bid).then(function(response){
 			$scope.s1 = response;
 		});
@@ -29,7 +29,7 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 
 
 	// GET ALL MENU
-	$scope.getMenu = function(){
+	$scope.getMenu = () => {
 		mainService.getMenuData(bid).then(function(response){
 			$scope.m1 = response;
 			mainService.getMenuItemsData(bid).then(function(res){
@@ -50,7 +50,7 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 
 
 	// GET ALL GALLERY
-	$scope.getGallery = function(){
+	$scope.getGallery = () => {
 		mainService.getGalleryData(bid).then(function(response){
 			$scope.g1 = response;
 		});
@@ -60,19 +60,19 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 
 
 	// UPDATE ONE BUSINESS
-	$scope.editBusiness = function(b1){
+	$scope.editBusiness = (b1) =>{
 		mainService.selected = b1;
 		$location.path('/new-bus');
 	}
 
 	// SHOW SAVE & EXIT BUTTON
-	$scope.edit = function(){
+	$scope.edit = () => {
 		$rootScope.isEditing = true;
 	}
 
 
 	// UPDATE FEATURED BUSINESS
-	$scope.featureBus = function(featBus){
+	$scope.featureBus = (featBus) => {
 		mainService.featureBus(featBus).then(function(response){
 			if(response[0].featured === 'yes'){
 				Materialize.toast('Your Business is now Featured!', 2000, 'green');
@@ -86,14 +86,14 @@ angular.module('merofood').controller('detailsCtrl', function($scope, mainServic
 
 
 	// DELETE ONE BUSINESS
-	$scope.deleteBusiness = function(id){
+	$scope.deleteBusiness = (id) => {
 		mainService.deleteBus(id).then(function(response){
 			$location.path('/');
 		});
 	}
     
 	//SCROLL SPY
-  $scope.gotoElement = function (eID){
+  $scope.gotoElement = (eID) => {
   	$location.hash(eID);
   	scrollSrv.scrollTo(eID); 
   };

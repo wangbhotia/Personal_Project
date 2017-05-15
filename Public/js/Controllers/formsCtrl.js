@@ -4,7 +4,7 @@ angular.module('merofood').controller('formsCtrl', function($scope, mainService,
 	$scope.newGallery = [];
 	$scope.newBus = mainService.selected;
 
-	$scope.addBus = function(newBus){
+	$scope.addBus = (newBus) => {
 		// console.log('addBus fn fired!!!');
 		newBus.bus_logo = $scope.images[0];
 		newBus.spimg1 = $scope.images[1];
@@ -28,7 +28,7 @@ angular.module('merofood').controller('formsCtrl', function($scope, mainService,
 
 	// UPDATE BUSINESS
 
-	$scope.updateBusiness = function(update){
+	$scope.updateBusiness = (update) => {
 		mainService.updateBus(update).then(function(response){
 			$scope.resFromDb = response;
 			// $location.path('/');

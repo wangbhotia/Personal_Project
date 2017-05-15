@@ -16,7 +16,7 @@ angular.module('merofood').controller('userCtrl', function($scope, userService, 
 
   getUser();
 
-  $rootScope.isSignedIn = function(){
+  $rootScope.isSignedIn = () => {
     if($rootScope.isLoggedIn){
       $location.path('new-bus');
     } else {
@@ -24,7 +24,7 @@ angular.module('merofood').controller('userCtrl', function($scope, userService, 
     }
   }
 
-  $scope.loginLocal = function(username, password) {
+  $scope.loginLocal = (username, password) => {
     console.log('Logging in with', username, password);
     userService.loginLocal({
       username: username,

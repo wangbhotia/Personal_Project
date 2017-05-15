@@ -1,6 +1,6 @@
 angular.module('merofood').controller('listAllCtrl', function($scope, $stateParams, $rootScope){
 
-	var stateType = $stateParams.type;
+	let stateType = $stateParams.type;
 
 	$scope.typeTitle = stateType;
 	$scope.busType = [];

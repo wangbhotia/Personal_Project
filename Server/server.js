@@ -25,7 +25,7 @@ app.use(passport.session());
 app.use(express.static(__dirname + './../public'));
 
 const conn = massive.connectSync({
-	connectionString: 'postgres://postgres:dm21-wb@localhost/merofood'
+	connectionString: config.elephant
 });
 
 app.set('db', conn);
@@ -116,7 +116,7 @@ app.put('/updatebus', serverCtrl.updateBus, serverCtrl.updateAddress, serverCtrl
 app.delete('/deletebus/:id', serverCtrl.deleteBus);
 
 
-app.listen(port, function(){
+app.listen(port, () => {
 	console.log('App is running on port:', port);
 });
 

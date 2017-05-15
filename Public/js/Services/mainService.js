@@ -6,7 +6,7 @@ angular.module('merofood').service('mainService', function($http){
 
 	// GET ROUTES
 	
-	this.getBusData = function(){
+	this.getBusData = () => {
 		return $http({
 			method: 'GET',
 			url: baseUrl + 'businesses'
@@ -15,7 +15,7 @@ angular.module('merofood').service('mainService', function($http){
 		});
 	}
 
-	this.getSpecialData = function(id){
+	this.getSpecialData = (id) => {
 		return $http({
 			method: 'GET',
 			url: baseUrl + 'special/' + id
@@ -24,7 +24,7 @@ angular.module('merofood').service('mainService', function($http){
 		});
 	}
 
-	this.getMenuData = function(id){
+	this.getMenuData = (id) => {
 		return $http({
 			method: 'GET',
 			url: baseUrl + 'menu/' + id
@@ -33,7 +33,7 @@ angular.module('merofood').service('mainService', function($http){
 		});
 	}
 
-	this.getMenuItemsData = function(id){
+	this.getMenuItemsData = (id) => {
 		return $http({
 			method: 'GET',
 			url: baseUrl + 'menuitems/' + id
@@ -43,7 +43,7 @@ angular.module('merofood').service('mainService', function($http){
 	}
 
 
-	this.getGalleryData = function(id){
+	this.getGalleryData = (id) => {
 		return $http({
 			method: 'GET',
 			url: baseUrl + 'gallery/' + id
@@ -55,7 +55,7 @@ angular.module('merofood').service('mainService', function($http){
 
 	// POST ROUTE
 
-	this.addNewBus = function(newBus){
+	this.addNewBus = (newBus) => {
 		return $http({
 			method: 'POST',
 			url: baseUrl + 'createbus',
@@ -68,7 +68,7 @@ angular.module('merofood').service('mainService', function($http){
 
 	// PUT ROUTE -- UPDATE
 
-	this.updateBus = function(updatedBus){
+	this.updateBus = (updatedBus) => {
 		return $http({
 			method: 'PUT',
 			url: baseUrl + 'updatebus',
@@ -81,7 +81,7 @@ angular.module('merofood').service('mainService', function($http){
 
 	// FEATURE BUSINESS
 
-	this.featureBus = function(feat){
+	this.featureBus = (feat) => {
 		return $http({
 			method: 'PUT',
 			url: baseUrl + 'featbus',
@@ -94,7 +94,7 @@ angular.module('merofood').service('mainService', function($http){
 
 	// DELETE ROUTE
 
-	this.deleteBus = function(id){
+	this.deleteBus = (id) => {
 		return $http({
 			method: 'DELETE',
 			url: baseUrl + 'deletebus/' + id,

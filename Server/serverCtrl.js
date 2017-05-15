@@ -2,78 +2,54 @@ const app = require('./server'),
 			db = app.get('db');
 
 module.exports = {
-  getAllBus: function(req, res){
+  getAllBus: (req, res) => {
     db.get_all_bus(function(err, businesses){
-      if(!err){
-        // console.log(businesses);
-        return res.send(businesses);
-      } else {
-        // console.log(err)
-        return res.send(err);
-      }
+      (!err) ? res.send(businesses) : res.send(err);
     });
   },
 
-  getSpecial: function(req, res){
+  getSpecial: (req, res) => {
     let sId = parseInt(req.params.id);
     db.get_special(sId, function(err, special){
-      if(!err){
-        res.send(special);
-      } else {
-        res.send(err)
-      }
+      (!err) ? res.send(special) : res.send(err);
     });
   },
 
-  getMenu: function(req, res){
+  getMenu: (req, res) => {
     let mId = parseInt(req.params.id);
     db.get_menu(mId, function(err, menu){
-      if(!err){
-        res.send(menu);
-      } else {
-        res.send(err)
-      }
+      (!err) ? res.send(menu) : res.send(err);
     });
   },
 
-  getMenuItems: function(req, res){
+  getMenuItems: (req, res) => {
     let miId = parseInt(req.params.id);
     db.get_menu_items(miId, function(err, menuitems){
-      if(!err){
-        res.send(menuitems);
-      } else {
-        res.send(err)
-      }
+      (!err) ? res.send(menuitems) : res.send(err);
     });
   },
 
-  getGallery: function(req, res){
+  getGallery: (req, res) => {
     let gId = parseInt(req.params.id);
     db.get_gallery(gId, function(err, gallery){
-      if(!err){
-        res.send(gallery);
-      } else {
-        res.send(err)
-      }
+      (!err) ? res.send(gallery) : res.send(err);
     });
   },
 
-  newBus: function(req, res){
-  	// console.log(req.body)
+  newBus: (req, res) => {
 		let busInfo = [req.body.bus_name, req.body.bus_slogan, req.body.bus_phone, 
       						req.body.bus_email, req.body.bus_type, req.body.bus_cuisine,
       						req.body.bus_desc, req.body.bus_happy_hours, req.body.bus_logo,
-      						req.body.bus_cover_img, req.body.user_id]; //req.body.userid
+      						req.body.bus_cover_img, req.body.user_id];
     
     db.create_bus(busInfo, function(err, newbus){
     	if(!err){
     		let newbus_id = newbus[0].id;
-		  	console.log('new id from db:', newbus[0].id);
+		  	// console.log('new id from db:', newbus[0].id);
 
 				db.create_address([req.body.street, req.body.city, req.body.state, req.body.zip, newbus_id], function(err, newadd){
 					if(!err){
 						console.log('no error on address');
-						//return res.send(newadd);
 					} else {
 						console.log(err);
 						res.send(err);
@@ -121,7 +97,6 @@ module.exports = {
        		
        		db.create_menu(menu[i], function(err, newmenu){
        			if(!err){
-       				// console.log('menu ' + [i] + ': ', newmenu[0].menu_id);
        				let newmenu_id = newmenu[0].menu_id;
        				console.log('no error on menu');
 
@@ -169,7 +144,6 @@ module.exports = {
 
 				//this is an array of images
 				let gallery = req.body.gallery;
-				// console.log('gallery: ', gallery);
 				for (let i = 0; i < gallery.length; i++) {
 					db.create_gallery([gallery[i], newbus_id], function(err, newgallery){
 						if(!err){
@@ -188,7 +162,7 @@ module.exports = {
     });
   },
 
-  updateBus: function(req, res, next){
+  updateBus: (req, res, next) => {
   	let toUpdateBus = [req.body.id, req.body.bus_name, req.body.bus_slogan, req.body.bus_phone, req.body.bus_email, req.body.bus_type, req.body.bus_cuisine, req.body.bus_desc, req.body.bus_happy_hours, req.body.bus_logo, req.body.bus_cover_img];
 
   	db.update_bus(toUpdateBus, function(err, updatedBus){
@@ -202,7 +176,7 @@ module.exports = {
   	next();
   },
 
-  updateAddress: function(req, res, next){
+  updateAddress: (req, res, next) => {
   	let toUpdateAdd = [req.body.id, req.body.street, req.body.city, req.body.state, req.body.zip];
 
   	db.update_address(toUpdateAdd, function(err, updatedAdd){
@@ -216,7 +190,7 @@ module.exports = {
   	next();
   },
 
-  updateHours: function(req, res, next){
+  updateHours: (req, res, next) => {
   	let toUpdateHours = [req.body.id, req.body.sunday, req.body.monday, req.body.tuesday, req.body.wednesday, req.body.thursday, req.body.friday, req.body.saturday];
 
   	db.update_hours(toUpdateHours, function(err, updatedHours){
@@ -230,7 +204,7 @@ module.exports = {
   	next();
   },
 
-  updateSocial: function(req, res){
+  updateSocial: (req, res) => {
   	let toUpdateSocial = [req.body.id, req.body.facebook, req.body.googleplus, req.body.instagram, req.body.yelp, req.body.tripadvisor, req.body.twitter];
 
   	db.update_social(toUpdateSocial, function(err, updatedSocial){
@@ -243,7 +217,7 @@ module.exports = {
   	});
   },
 
-  featureBus: function(req, res){
+  featureBus: (req, res) => {
     let featBus = [req.body.featured, req.body.id];
 
     db.feature_bus(featBus, function(err, busFeatured){
@@ -256,7 +230,7 @@ module.exports = {
     });
   },
 
-  deleteBus: function(req, res){
+  deleteBus: (req, res) => {
   	let toDelBusId = parseInt(req.params.id);
   	db.delete_bus(toDelBusId, function(err, delbus){
   		if(!err){

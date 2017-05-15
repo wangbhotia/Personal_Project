@@ -10,7 +10,7 @@ angular.module('merofood').controller('mainCtrl', function($scope, mainService, 
 	$rootScope.desserts = [];
 	$rootScope.takeouts = [];
 
-	$scope.getBusiness = function(){
+	$scope.getBusiness = () => {
 		mainService.getBusData().then(function(response){
 			// console.log(response);
 			$rootScope.searchAllBus = response;
@@ -47,7 +47,7 @@ angular.module('merofood').controller('mainCtrl', function($scope, mainService, 
 
 	$scope.getBusiness();
 
-	$scope.searchBusiness = function(searchKey){
+	$scope.searchBusiness = (searchKey) => {
 		$rootScope.searchKeyMain = searchKey;
 	}
 
